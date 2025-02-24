@@ -1,0 +1,14 @@
+import React from "react";
+import "./navigation_bar.css";
+
+const Navigation_bar_head = () => {
+  return (
+    <div>
+      <div className="nav-head">
+        <img src="logo-nav-header.png" alt="" className="nav-head-img" />
+      </div>
+    </div>
+  );
+};
+
+export default Navigation_bar_head;
