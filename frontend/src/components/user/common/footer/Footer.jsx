@@ -11,14 +11,14 @@ const Footer = () => {
               <img src="logo.png" alt="" />
             </div>
             <div className="footer-col">
-              <h4>About Us</h4>
+              <h5>About Us</h5>
               <p>
                 Health plus pharmacy is your go-to pharmacy platform for
                 medicines, health products, doctor consultations and lab test.
               </p>
             </div>
             <div className="footer-col">
-              <h4>Quick Links</h4>
+              <h5>Quick Links</h5>
               <ul>
                 <li>
                   <a href="#">Home</a>
@@ -35,22 +35,22 @@ const Footer = () => {
               </ul>
             </div>
             <div className="footer-col">
-              <h4>Contact us</h4>
+              <h5>Contact us</h5>
               <p>Gmail: healthplus@gmail.com</p>
               <p>Phone: +94 776 679 711</p>
               <p>Location: Matara, Sri Lanka</p>
               <ul className="social-media">
                 <a href="#">
-                  <i className="fa-brands fa-facebook-f"></i>
+                  <i className="fa-brands fa-facebook-f footer-icon"></i>
                 </a>
                 <a href="#">
-                  <i className="fa-brands fa-instagram"></i>
+                  <i className="fa-brands fa-instagram footer-icon"></i>
                 </a>
                 <a href="#">
-                  <i className="fa-brands fa-x-twitter"></i>
+                  <i className="fa-brands fa-x-twitter footer-icon"></i>
                 </a>
                 <a href="#">
-                  <i className="fa-brands fa-linkedin-in"></i>
+                  <i className="fa-brands fa-linkedin-in footer-icon"></i>
                 </a>
               </ul>
             </div>
