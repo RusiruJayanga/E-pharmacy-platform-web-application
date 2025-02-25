@@ -30,8 +30,7 @@
 .footer .footer-col p:hover {
   opacity: 1;
 }
-.footer-col h4 {
-  font-size: 18px;
+.footer-col h5 {
   margin-bottom: 10px;
   text-transform: uppercase;
 }
@@ -39,17 +38,14 @@
   height: 200px;
   width: auto;
 }
-.footer-col ul {
-  font-size: 14px;
-  line-height: 1.6;
-  margin: 0;
-  padding: 0;
+.footer-row .footer-col ul {
   list-style: none;
 }
 .social-media {
-  width: 100%;
+  width: auto;
   display: flex;
   gap: 15px;
+  margin-top: 30px;
 }
 .social-media .footer-icon {
   height: 30px;
@@ -70,7 +66,6 @@
 }
 .footer-col ul li a {
   color: var(--text_color_lite);
-  text-decoration: none;
   transition: 300ms ease-out;
 }
 .footer-col ul li a:hover {
