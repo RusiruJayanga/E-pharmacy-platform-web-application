@@ -14,6 +14,7 @@ const App = () => {
       <Navigation_bar_head />
       <Navigation_bar />
       <Home />
+      <Footer />
     </div>
   );
 };
