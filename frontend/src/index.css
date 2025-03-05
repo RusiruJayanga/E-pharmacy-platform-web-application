@@ -32,7 +32,7 @@ body {
 }
 /* text universal styles */
 h1 {
-  font-size: 48px;
+  font-size: 58px;
   font-weight: 700;
 }
 h2 {
@@ -91,4 +91,15 @@ a {
   cursor: pointer;
   text-decoration: none;
   color: inherit;
+}
+/* scroller styles */
+::-webkit-scrollbar {
+  width: 6px;
+  background-color: var(--bg_color_4);
+}
+::-webkit-scrollbar-track {
+  background-color: var(--bg_color_4);
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--bg_color_strong_2);
 }
