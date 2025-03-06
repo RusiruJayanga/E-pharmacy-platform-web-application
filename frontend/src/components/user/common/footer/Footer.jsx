@@ -55,6 +55,7 @@ const Footer = () => {
               </ul>
             </div>
           </div>
+          {/* footer bottem */}
           <div className="footer-bottom">
             <p>&copy; 2025 Pharmacy Platform. All rights reserved.</p>
           </div>

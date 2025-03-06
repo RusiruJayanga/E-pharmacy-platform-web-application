@@ -80,7 +80,7 @@ const Navigation_bar = () => {
             <h4 className="nav-list-right">
               <i class="bi bi-bookmark"></i>
             </h4>
-            {/* translate Dropdown */}
+            {/* translate dropdown */}
             <h4
               className="nav-list-right translate-drop"
               onClick={(e) => {
@@ -98,7 +98,7 @@ const Navigation_bar = () => {
                 </div>
               )}
             </h4>
-            {/* account Dropdown */}
+            {/* account dropdown */}
             <h4
               className="nav-list-right account-drop"
               onClick={(e) => {

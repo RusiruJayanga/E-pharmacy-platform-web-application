@@ -25,7 +25,7 @@ body {
   --text_color_highlight_1: #14967f;
   --text_color_highlight_2: #095d7e;
   --text_color_highlight_3: #2c3e50;
-  /*Border radius*/
+  /* Border radius */
   --border_radius_1: 10px;
   --border_radios_2: 5px;
   --border_radios_button: 3px;
@@ -57,7 +57,7 @@ p {
   line-height: 1.6;
 }
 @media (max-width: 768px) {
-  /*responsive*/
+  /* responsive */
   h1 {
     font-size: 32px;
   }

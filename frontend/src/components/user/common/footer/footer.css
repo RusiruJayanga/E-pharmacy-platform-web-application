@@ -1,4 +1,4 @@
-/* Footer Styles */
+/* footer Styles */
 .footer {
   background: var(--bg_color_strong_2);
   color: var(--text_color_lite);
@@ -71,7 +71,7 @@
 .footer-col ul li a:hover {
   color: var(--text_color_highlight_1);
 }
-/*footer bottem*/
+/* footer bottem */
 .footer-bottom {
   margin-top: 20px;
   font-size: 14px;
@@ -86,7 +86,7 @@
   background-size: cover;
 }
 
-/* footer responsive*/
+/* footer responsive */
 @media (max-width: 768px) {
   .footer-row {
     flex-direction: column;
