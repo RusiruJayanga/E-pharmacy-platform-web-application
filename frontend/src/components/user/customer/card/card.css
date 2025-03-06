@@ -1,0 +1,26 @@
+/* product section styles */
+/* header */
+.product-head {
+  max-width: 800px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-inline: auto;
+  flex-wrap: wrap;
+  margin-top: 100px;
+  margin-bottom: 1000px;
+}
+.product-head h2 {
+  width: 200px;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.product-head p {
+  width: 500px;
+  height: auto;
+  padding: 10px;
+  text-align: justify;
+  border-bottom: 2px solid black;
+}

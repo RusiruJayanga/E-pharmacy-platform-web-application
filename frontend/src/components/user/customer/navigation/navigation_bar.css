@@ -1,5 +1,5 @@
-/*navigation styles*/
-/*header*/
+/* navigation styles */
+/* header */
 .nav-head {
   width: 100%;
   height: fit-content;
@@ -12,13 +12,13 @@
   height: 80px;
   width: auto;
 }
-/* header responsive*/
+/* header responsive */
 @media (max-width: 768px) {
   .nav-head .nav-head-img {
     height: 50px;
   }
 }
-/*content*/
+/* content */
 .nav-position {
   position: sticky;
   top: 0;
@@ -30,6 +30,10 @@ nav .nav-container {
   display: flex;
   justify-content: space-between;
   color: var(--text_color_lite);
+  animation: navAnimation linear forwards;
+  animation-timeline: view();
+  animation-range-start: 100vh;
+  animation-range-end: 110vh;
 }
 nav ul {
   padding: 0;
@@ -53,17 +57,25 @@ nav ul {
   align-items: center;
   text-transform: uppercase;
   cursor: pointer;
-  transition: 100ms ease-out;
+  transition: 300ms ease-out;
   border-bottom: 2px solid transparent;
-  opacity: 0.7;
+  opacity: 0.75;
 }
 .nav-container .nav-left .nav-list-left:hover {
   opacity: 1;
   border-bottom: 2px solid var(--bg_color_4);
+  animation: navAnimationHoverLeft linear forwards;
+  animation-timeline: view();
+  animation-range-start: 100vh;
+  animation-range-end: 110vh;
 }
 .nav-container .nav-left .active {
   opacity: 1;
   border-bottom: 2px solid var(--bg_color_4);
+  animation: navAnimationHoverLeft linear forwards;
+  animation-timeline: view();
+  animation-range-start: 100vh;
+  animation-range-end: 110vh;
 }
 .nav-container .nav-right {
   width: 280px;
@@ -81,13 +93,17 @@ nav ul {
   align-items: center;
   cursor: pointer;
   transition: 100ms ease-out;
-  opacity: 0.8;
+  opacity: 0.85;
 }
 .nav-container .nav-right .nav-list-right:hover {
   opacity: 1;
-  background-color: var(--secondary_color);
+  background-color: var(--bg_color_strong_2);
+  animation: navAnimationHoverRight linear forwards;
+  animation-timeline: view();
+  animation-range-start: 100vh;
+  animation-range-end: 110vh;
 }
-/*dropdown*/
+/* dropdown */
 .translate-drop {
   position: relative;
 }
@@ -126,7 +142,7 @@ nav ul {
   transition: 100ms ease-out;
 }
 .dropdown-item:hover {
-  background-color: var(--secondary_color);
+  background-color: var(--bg_color_strong_2);
   color: var(--text_color_lite);
 }
 .hamburger {
@@ -136,7 +152,24 @@ nav ul {
   height: 40px;
   margin: 20px;
 }
-/*responsive navbar*/
+/* scroll animation */
+@keyframes navAnimation {
+  100% {
+    background-color: var(--bg_color_4);
+    color: var(--text_color_highlight_3);
+  }
+}
+@keyframes navAnimationHoverLeft {
+  100% {
+    border-bottom: 2px solid var(--bg_color_strong_2);
+  }
+}
+@keyframes navAnimationHoverRight {
+  100% {
+    color: var(--text_color_lite);
+  }
+}
+/* responsive navbar */
 @media (max-width: 1010px) {
   .nav-container .nav-left {
     display: none;
