@@ -74,23 +74,158 @@ const Home = () => {
         </div>
       </div>
       {}
-      {/* product section */}
+      {/* medicines product section */}
       <div className="product-head">
         <h2>medicines</h2>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto
-          ime quisquam!Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-          Architecto ime quisquam!
+          Explore a wide range of genuine medicines from trusted pharmacies.
+          Order online with ease and get doorstep delivery for your healthcare
+          needs|
         </p>
       </div>
       <div className="product-container">
+        {/* repeat */}
         <div className="product-card">
-          <div></div>
-          <img src="" alt="" />
-          <div>Lorem ipsum dolor</div>
-          <div>Rs/ 89855.00</div>
-          <div></div>
+          <div className="product-card-discription">
+            <span>
+              <p>Name</p>
+              <h5>Lorem ipsum dolor</h5>
+            </span>
+            <div className="product-card-offers hot">
+              <p>
+                <i class="bi bi-prescription2"></i>
+              </p>
+            </div>
+          </div>
+          <div className="product-card-image">
+            <img src="product.png" alt="" />
+          </div>
+          <div className="product-card-price">
+            <span>
+              <p>Price -</p>
+              <h5>Rs/ 89855.00</h5>
+            </span>
+          </div>
+          <div className="product-card-see-more">
+            <p>See More</p>
+          </div>
         </div>
+        {/* repeat */}
+        {/* repeat */}
+        <div className="product-card">
+          <div className="product-card-discription">
+            <span>
+              <p>Name</p>
+              <h5>Lorem ipsum dolor</h5>
+            </span>
+            <div className="product-card-offers offer">
+              <p>
+                <i class="bi bi-prescription2"></i>
+              </p>
+            </div>
+          </div>
+          <div className="product-card-image">
+            <img src="product.png" alt="" />
+          </div>
+          <div className="product-card-price">
+            <span>
+              <p>Price -</p>
+              <h5>Rs/ 89855.00</h5>
+            </span>
+          </div>
+          <div className="product-card-see-more">
+            <p>See More</p>
+          </div>
+        </div>
+        {/* repeat */}
+        {/* repeat */}
+        <div className="product-card">
+          <div className="product-card-discription">
+            <span>
+              <p>Name</p>
+              <h5>Lorem ipsum dolor</h5>
+            </span>
+            <div className="product-card-offers hot">
+              <p>
+                <i class="bi bi-prescription2"></i>
+              </p>
+            </div>
+          </div>
+          <div className="product-card-image">
+            <img src="product.png" alt="" />
+          </div>
+          <div className="product-card-price">
+            <span>
+              <p>Price -</p>
+              <h5>Rs/ 89855.00</h5>
+            </span>
+          </div>
+          <div className="product-card-see-more">
+            <p>See More</p>
+          </div>
+        </div>
+        {/* repeat */}
+        {/* repeat */}
+        <div className="product-card">
+          <div className="product-card-discription">
+            <span>
+              <p>Name</p>
+              <h5>Lorem ipsum dolor</h5>
+            </span>
+            <div className="product-card-offers hot">
+              <p>
+                <i class="bi bi-prescription2"></i>
+              </p>
+            </div>
+          </div>
+          <div className="product-card-image">
+            <img src="product.png" alt="" />
+          </div>
+          <div className="product-card-price">
+            <span>
+              <p>Price -</p>
+              <h5>Rs/ 89855.00</h5>
+            </span>
+          </div>
+          <div className="product-card-see-more">
+            <p>See More</p>
+          </div>
+        </div>
+        {/* repeat */}
+        {/* repeat */}
+        <div className="product-card">
+          <div className="product-card-discription">
+            <span>
+              <p>Name</p>
+              <h5>Lorem ipsum dolor</h5>
+            </span>
+            <div className="product-card-offers hot">
+              <p>
+                <i class="bi bi-prescription2"></i>
+              </p>
+            </div>
+          </div>
+          <div className="product-card-image">
+            <img src="product.png" alt="product" />
+          </div>
+          <div className="product-card-price">
+            <span>
+              <p>Price -</p>
+              <h5>Rs/ 89855.00</h5>
+            </span>
+          </div>
+          <div className="product-card-see-more">
+            <p>See More</p>
+          </div>
+        </div>
+        {/* repeat */}
+      </div>
+      {/* product section end */}
+      {}
+      {/*margin section*/}
+      <div className="margin-section-container">
+        <div className="margin-section-left"></div>
+        <div className="margin-section-right"></div>
       </div>
     </div>
   );

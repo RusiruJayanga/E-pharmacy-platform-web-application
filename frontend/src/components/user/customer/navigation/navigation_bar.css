@@ -8,7 +8,7 @@
   background-color: var(--bg_color_strong_2);
   padding-left: 30px;
 }
-.nav-head .nav-head-img {
+.nav-head img {
   height: 80px;
   width: auto;
 }
@@ -116,7 +116,7 @@ nav ul {
   right: 0;
   background: var(--bg_color_4);
   color: var(--text_color_1);
-  border-radius: var(--border_radios_2);
+  border-radius: var(--border_radius_2);
   box-shadow: 0px 4px 8px rgba(39, 38, 38, 0.2);
   width: 120px;
   display: block;
@@ -138,7 +138,7 @@ nav ul {
   align-items: center;
   cursor: pointer;
   text-align: center;
-  border-radius: var(--border_radios_2);
+  border-radius: var(--border_radius_2);
   transition: 100ms ease-out;
 }
 .dropdown-item:hover {

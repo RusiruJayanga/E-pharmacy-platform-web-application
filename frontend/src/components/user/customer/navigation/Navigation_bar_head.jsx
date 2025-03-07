@@ -6,7 +6,7 @@ const Navigation_bar_head = () => {
     <div>
       {/* navigation head */}
       <div className="nav-head">
-        <img src="logo-nav-header.png" alt="" className="nav-head-img" />
+        <img src="logo-nav-header.png" alt="" />
       </div>
     </div>
   );
