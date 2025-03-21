@@ -32,7 +32,7 @@ const Home = () => {
             }}
           >
             <div className="home-slider-content">
-              <h1>Health Plus Pharmacy</h1>
+              <h1>Health&nbsp; Plus&nbsp; Pharmacy</h1>
               <p>
                 At Health Plus Pharmacy, we make healthcare easy and accessible.
                 Browse a wide range of medicines, health products,<br></br> lab
@@ -47,6 +47,7 @@ const Home = () => {
           </div>
         ))}
       </div>
+      {}
       {/* banners */}
       <div className="home-banner-container">
         <div className="home-banner banner1">
@@ -80,9 +81,10 @@ const Home = () => {
         <p>
           Explore a wide range of genuine medicines from trusted pharmacies.
           Order online with ease and get doorstep delivery for your healthcare
-          needs|
+          needs!
         </p>
       </div>
+      {}
       <div className="product-container">
         {/* repeat */}
         <div className="product-card">
@@ -220,13 +222,99 @@ const Home = () => {
         </div>
         {/* repeat */}
       </div>
+      <div className="product-card-show-more-products">
+        Show more <i class="bi bi-arrow-right"></i>
+      </div>
       {/* product section end */}
       {}
-      {/*margin section*/}
+      {/* margin section */}
       <div className="margin-section-container">
-        <div className="margin-section-left"></div>
-        <div className="margin-section-right"></div>
+        <div className="margin-section-content">
+          <h2>pharmacies</h2>
+          <p>
+            Find trusted pharmacies offering genuine medicines and healthcare
+            essentials. Compare prices, check availability, and order
+            conveniently online with doorstep delivery for a hassle-free
+            experience.
+          </p>
+        </div>
       </div>
+      {}
+      {/* pharmacies advertisement section */}
+      <div className="advertisement-container">
+        {/* repeat */}
+        <div className="advertisement-card">
+          <img src="product.png" alt="advertisement" />
+          <div className="advertisement-card-content">
+            <h5>Lorem ipsum dolor</h5>
+            <span>
+              <h5>Location</h5>{" "}
+              <p>
+                4.5 <i class="bi bi-star-fill"></i>
+              </p>
+            </span>
+            <div className="advertisement-card-see-more">
+              <p>See More</p>
+            </div>
+          </div>
+        </div>
+        {/* repeat */}
+        {/* repeat */}
+        <div className="advertisement-card">
+          <img src="product.png" alt="advertisement" />
+          <div className="advertisement-card-content">
+            <h5>Lorem ipsum dolor</h5>
+            <span>
+              <h5>Location</h5>{" "}
+              <p>
+                4.5 <i class="bi bi-star-fill"></i>
+              </p>
+            </span>
+            <div className="advertisement-card-see-more">
+              <p>See More</p>
+            </div>
+          </div>
+        </div>
+        {/* repeat */}
+        {/* repeat */}
+        <div className="advertisement-card">
+          <img src="product.png" alt="advertisement" />
+          <div className="advertisement-card-content">
+            <h5>Lorem ipsum dolor</h5>
+            <span>
+              <h5>Location</h5>{" "}
+              <p>
+                4.5 <i class="bi bi-star-fill"></i>
+              </p>
+            </span>
+            <div className="advertisement-card-see-more">
+              <p>See More</p>
+            </div>
+          </div>
+        </div>
+        {/* repeat */}
+        {/* repeat */}
+        <div className="advertisement-card">
+          <img src="product.png" alt="advertisement" />
+          <div className="advertisement-card-content">
+            <h5>Lorem ipsum dolor</h5>
+            <span>
+              <h5>Location</h5>{" "}
+              <p>
+                4.5 <i class="bi bi-star-fill"></i>
+              </p>
+            </span>
+            <div className="advertisement-card-see-more">
+              <p>See More</p>
+            </div>
+          </div>
+        </div>
+        {/* repeat */}
+      </div>
+      <div className="advertisement-card-show-more-products">
+        Show more <i class="bi bi-arrow-right"></i>
+      </div>
+      {/*advertisement section end */}
     </div>
   );
 };

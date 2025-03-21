@@ -38,6 +38,14 @@ const Navigation_bar = () => {
               Medicines
             </p>
             <p
+              onClick={() => set_manue("Pharmacies")}
+              className={`nav-list-left nav-responsive-left ${
+                manu === "Pharmacies" ? "active" : ""
+              }`}
+            >
+              pharmacies
+            </p>
+            <p
               onClick={() => set_manue("Doctors")}
               className={`nav-list-left nav-responsive-left ${
                 manu === "Doctors" ? "active" : ""
