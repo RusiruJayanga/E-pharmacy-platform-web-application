@@ -33,14 +33,14 @@ nav .nav-container {
   animation: navAnimation linear forwards;
   animation-timeline: view();
   animation-range-start: 100vh;
-  animation-range-end: 110vh;
+  animation-range-end: 101vh;
 }
 nav ul {
   padding: 0;
   margin: 0;
 }
 .nav-container .nav-left {
-  width: 700px;
+  width: 800px;
   height: 100%;
   display: flex;
   justify-content: space-around;
@@ -48,9 +48,9 @@ nav ul {
   margin-left: 20px;
 }
 .nav-container .nav-left .nav-list-left {
-  width: 110px;
+  width: 100px;
   height: 40px;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 400;
   display: flex;
   justify-content: center;
@@ -67,7 +67,7 @@ nav ul {
   animation: navAnimationHoverLeft linear forwards;
   animation-timeline: view();
   animation-range-start: 100vh;
-  animation-range-end: 110vh;
+  animation-range-end: 101vh;
 }
 .nav-container .nav-left .active {
   opacity: 1;
@@ -75,7 +75,7 @@ nav ul {
   animation: navAnimationHoverLeft linear forwards;
   animation-timeline: view();
   animation-range-start: 100vh;
-  animation-range-end: 110vh;
+  animation-range-end: 101vh;
 }
 .nav-container .nav-right {
   width: 280px;
@@ -139,7 +139,6 @@ nav ul {
   cursor: pointer;
   text-align: center;
   border-radius: var(--border_radius_2);
-  transition: 100ms ease-out;
 }
 .dropdown-item:hover {
   background-color: var(--bg_color_strong_2);
@@ -170,7 +169,7 @@ nav ul {
   }
 }
 /* responsive navbar */
-@media (max-width: 1010px) {
+@media (max-width: 1105px) {
   .nav-container .nav-left {
     display: none;
     color: var(--text_color_1);
@@ -201,9 +200,10 @@ nav ul {
     justify-content: center;
     border-radius: var(--border_radios_2);
     border-bottom: 0px;
+    transition: 0ms;
   }
   .nav-container .nav-left .nav-list-left:hover {
-    background-color: var(--secondary_color);
+    background-color: var(--bg_color_strong_2);
     color: var(--text_color_lite);
   }
 }
