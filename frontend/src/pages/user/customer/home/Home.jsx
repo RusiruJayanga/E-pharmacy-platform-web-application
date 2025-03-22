@@ -34,48 +34,49 @@ const Home = () => {
             <div className="home-slider-content">
               <h1>Health&nbsp; Plus&nbsp; Pharmacy</h1>
               <p>
-                At Health Plus Pharmacy, we make healthcare easy and accessible.
+                Health Plus Pharmacy, we make healthcare easy and accessible.
                 Browse a wide range of medicines, health products,<br></br> lab
                 tests, and doctor appointments—all from the comfort of your
                 home.
               </p>
               <div className="home-slider-button-container">
                 <button className="home-slider-left-button">SEARCH</button>
-                <button className="home-slider-right-button">SHOP</button>
+                <a href="#product-section">
+                  <button className="home-slider-right-button">SHOP</button>
+                </a>
               </div>
             </div>
           </div>
         ))}
       </div>
       {}
-      {/* banners */}
-      <div className="home-banner-container">
-        <div className="home-banner banner1">
-          <img src="home-banner1.png" alt="" />
-          <div className="home-banner-content">
-            <h5>Lab tests</h5>
-            <p>
-              Book reliable lab tests online with fast and accurate results.
-            </p>
+      {/* count section */}
+      <div className="count-container">
+        <div className="count-box">
+          <img src="count1.png" alt="count" />
+          <div className="count-content">
+            <h2>300 +</h2>
+            <h4>Sri Lankan Cities</h4>
           </div>
         </div>
-        <div className="home-banner banner2">
-          <img src="home-banner2.png" alt="" />
-          <div className="home-banner-content">
-            <h5>Health products</h5>
-            <p>Find top-quality health essentials for everyday wellness.</p>
+        <div className="count-box">
+          <img src="count2.png" alt="count" />
+          <div className="count-content">
+            <h2>666698</h2>
+            <h4>Orders Delivered</h4>
           </div>
         </div>
-        <div className="home-banner banner3">
-          <img src="home-banner3.png" alt="" />
-          <div className="home-banner-content">
-            <h5>Doctor appointments</h5>
-            <p>Consult expert doctors online or in-person easily.</p>
+        <div className="count-box">
+          <img src="count3.png" alt="count" />
+          <div className="count-content">
+            <h2>6666</h2>
+            <h4>Monthly Visitors</h4>
           </div>
         </div>
       </div>
       {}
       {/* medicines product section */}
+      <div id="product-section"></div>
       <div className="product-head">
         <h2>medicines</h2>
         <p>
@@ -315,6 +316,34 @@ const Home = () => {
         Show more <i class="bi bi-arrow-right"></i>
       </div>
       {/*advertisement section end */}
+      {}
+      {/* banners */}
+      <div className="home-banner-container">
+        <div className="home-banner banner1">
+          <img src="home-banner1.png" alt="banner" />
+          <div className="home-banner-content">
+            <h5>Lab tests</h5>
+            <p>
+              Book reliable lab tests online with fast and accurate results.
+            </p>
+          </div>
+        </div>
+        <div className="home-banner banner2">
+          <img src="home-banner2.png" alt="banner" />
+          <div className="home-banner-content">
+            <h5>Health products</h5>
+            <p>Find top-quality health essentials for everyday wellness.</p>
+          </div>
+        </div>
+        <div className="home-banner banner3">
+          <img src="home-banner3.png" alt="banner" />
+          <div className="home-banner-content">
+            <h5>Doctor appointments</h5>
+            <p>Consult expert doctors online or in-person easily.</p>
+          </div>
+        </div>
+      </div>
+      {}
     </div>
   );
 };
