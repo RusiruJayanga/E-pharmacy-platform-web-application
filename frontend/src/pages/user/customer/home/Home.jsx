@@ -1,7 +1,17 @@
 import React, { useState, useEffect } from "react";
 import "./home.css";
+//auto count
+import CountUp from "react-countup";
+import { useInView } from "react-intersection-observer";
+//slider
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import "../../../../components/user/customer/slider/slider.css";
 //product card css
 import "../../../../components/user/customer/card/card.css";
+//margin
+import "../../../../components/user/customer/margin/margin.css";
 
 //images for home slider
 const images = ["slider1.jpg", "slider2.jpg", "slider3.jpg", "slider4.jpg"];
@@ -16,6 +26,44 @@ const Home = () => {
 
     return () => clearInterval(interval);
   }, [currentIndex]);
+
+  //auto count
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.7,
+  });
+
+  //slider settings
+  const sliderSettings = {
+    dots: false,
+    infinite: true,
+    speed: 1000,
+    slidesToShow: 6,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    responsive: [
+      { breakpoint: 1024, settings: { slidesToShow: 3, slidesToScroll: 3 } },
+      { breakpoint: 600, settings: { slidesToShow: 2, slidesToScroll: 2 } },
+      { breakpoint: 480, settings: { slidesToShow: 1, slidesToScroll: 1 } },
+    ],
+  };
+  const categories = [
+    "Adult Care",
+    "Ayurveda",
+    "Dairy Products",
+    "Diabetic Care",
+    "Household Remedies",
+    "Kids",
+    "Mother & Baby Care",
+    "Personal Care",
+    "Pet Care",
+    "Surgical Items",
+    "Vitamins",
+  ];
+
+  //product fatch
+  const products = ["1", "2", "3", "4", "5", "6"];
 
   return (
     <div>
@@ -51,271 +99,142 @@ const Home = () => {
       </div>
       {}
       {/* count section */}
-      <div className="count-container">
+      <div className="count-container" ref={ref}>
         <div className="count-box">
           <img src="count1.png" alt="count" />
           <div className="count-content">
-            <h2>300 +</h2>
+            <h2>{inView && <CountUp start={0} end={300} duration={2} />}</h2>
             <h4>Sri Lankan Cities</h4>
           </div>
         </div>
         <div className="count-box">
           <img src="count2.png" alt="count" />
           <div className="count-content">
-            <h2>666698</h2>
+            <h2>{inView && <CountUp start={0} end={69669} duration={2} />}</h2>
             <h4>Orders Delivered</h4>
           </div>
         </div>
         <div className="count-box">
           <img src="count3.png" alt="count" />
           <div className="count-content">
-            <h2>6666</h2>
+            <h2>{inView && <CountUp start={0} end={750} duration={2} />}</h2>
             <h4>Monthly Visitors</h4>
           </div>
         </div>
       </div>
       {}
-      {/* medicines product section */}
+      {/* product section */}
+      {/* product head section */}
       <div id="product-section"></div>
       <div className="product-head">
-        <h2>medicines</h2>
-        <p>
-          Explore a wide range of genuine medicines from trusted pharmacies.
-          Order online with ease and get doorstep delivery for your healthcare
-          needs!
-        </p>
+        <h2>Product Categories</h2>
       </div>
       {}
+      {/* category slider section */}
+      <div className="slider-container">
+        <Slider {...sliderSettings}>
+          {categories.map((category, idx) => (
+            <div className="category-slider">
+              <div className="slider-item">
+                <div>
+                  <img
+                    src={`slider/${category.toLowerCase()}.png`}
+                    alt="category"
+                  />
+                </div>
+                <h5>{category}</h5>
+              </div>
+            </div>
+          ))}
+        </Slider>
+      </div>
+      {}
+      {/* product card section 1 */}
       <div className="product-container">
         {/* repeat */}
-        <div className="product-card">
-          <div className="product-card-discription">
-            <span>
-              <p>Name</p>
-              <h5>Lorem ipsum dolor</h5>
-            </span>
-            <div className="product-card-offers hot">
-              <p>
-                <i class="bi bi-prescription2"></i>
-              </p>
+        {products.map((product, idx) => (
+          <div className="product-card">
+            <div className="product-card-discription">
+              <span>
+                <p>Name</p>
+                <h5>Lorem ipsum dolor{product}</h5>
+              </span>
+              <div className="product-card-offers hot">
+                <p>
+                  <i class="bi bi-prescription2"></i>
+                </p>
+              </div>
+            </div>
+            <div className="product-card-image">
+              <img src="product.png" alt="product" />
+            </div>
+            <div className="product-card-price">
+              <span>
+                <p>Price -</p>
+                <h5>Rs/ 89855.00</h5>
+              </span>
+            </div>
+            <div className="product-card-see-more">
+              <p>See More</p>
             </div>
           </div>
-          <div className="product-card-image">
-            <img src="product.png" alt="" />
-          </div>
-          <div className="product-card-price">
-            <span>
-              <p>Price -</p>
-              <h5>Rs/ 89855.00</h5>
-            </span>
-          </div>
-          <div className="product-card-see-more">
-            <p>See More</p>
-          </div>
-        </div>
-        {/* repeat */}
-        {/* repeat */}
-        <div className="product-card">
-          <div className="product-card-discription">
-            <span>
-              <p>Name</p>
-              <h5>Lorem ipsum dolor</h5>
-            </span>
-            <div className="product-card-offers offer">
-              <p>
-                <i class="bi bi-prescription2"></i>
-              </p>
-            </div>
-          </div>
-          <div className="product-card-image">
-            <img src="product.png" alt="" />
-          </div>
-          <div className="product-card-price">
-            <span>
-              <p>Price -</p>
-              <h5>Rs/ 89855.00</h5>
-            </span>
-          </div>
-          <div className="product-card-see-more">
-            <p>See More</p>
-          </div>
-        </div>
-        {/* repeat */}
-        {/* repeat */}
-        <div className="product-card">
-          <div className="product-card-discription">
-            <span>
-              <p>Name</p>
-              <h5>Lorem ipsum dolor</h5>
-            </span>
-            <div className="product-card-offers hot">
-              <p>
-                <i class="bi bi-prescription2"></i>
-              </p>
-            </div>
-          </div>
-          <div className="product-card-image">
-            <img src="product.png" alt="" />
-          </div>
-          <div className="product-card-price">
-            <span>
-              <p>Price -</p>
-              <h5>Rs/ 89855.00</h5>
-            </span>
-          </div>
-          <div className="product-card-see-more">
-            <p>See More</p>
-          </div>
-        </div>
-        {/* repeat */}
-        {/* repeat */}
-        <div className="product-card">
-          <div className="product-card-discription">
-            <span>
-              <p>Name</p>
-              <h5>Lorem ipsum dolor</h5>
-            </span>
-            <div className="product-card-offers hot">
-              <p>
-                <i class="bi bi-prescription2"></i>
-              </p>
-            </div>
-          </div>
-          <div className="product-card-image">
-            <img src="product.png" alt="" />
-          </div>
-          <div className="product-card-price">
-            <span>
-              <p>Price -</p>
-              <h5>Rs/ 89855.00</h5>
-            </span>
-          </div>
-          <div className="product-card-see-more">
-            <p>See More</p>
-          </div>
-        </div>
-        {/* repeat */}
-        {/* repeat */}
-        <div className="product-card">
-          <div className="product-card-discription">
-            <span>
-              <p>Name</p>
-              <h5>Lorem ipsum dolor</h5>
-            </span>
-            <div className="product-card-offers hot">
-              <p>
-                <i class="bi bi-prescription2"></i>
-              </p>
-            </div>
-          </div>
-          <div className="product-card-image">
-            <img src="product.png" alt="product" />
-          </div>
-          <div className="product-card-price">
-            <span>
-              <p>Price -</p>
-              <h5>Rs/ 89855.00</h5>
-            </span>
-          </div>
-          <div className="product-card-see-more">
-            <p>See More</p>
-          </div>
-        </div>
+        ))}
         {/* repeat */}
       </div>
       <div className="product-card-show-more-products">
         Show more <i class="bi bi-arrow-right"></i>
       </div>
-      {/* product section end */}
+      {/* product section 1 end */}
       {}
       {/* margin section */}
       <div className="margin-section-container">
         <div className="margin-section-content">
-          <h2>pharmacies</h2>
+          <h2>Beauty Care</h2>
           <p>
-            Find trusted pharmacies offering genuine medicines and healthcare
-            essentials. Compare prices, check availability, and order
-            conveniently online with doorstep delivery for a hassle-free
-            experience.
+            Explore a wide selection of beauty care products tailored to
+            nourish, protect, and enhance your skin and hair. From skincare
+            essentials to haircare treatments and personal care items, find
+            everything you need for a glowing, healthy, and confident look.
           </p>
         </div>
       </div>
       {}
-      {/* pharmacies advertisement section */}
-      <div className="advertisement-container">
+      {/* product card section 2 */}
+      <div className="product-container">
         {/* repeat */}
-        <div className="advertisement-card">
-          <img src="product.png" alt="advertisement" />
-          <div className="advertisement-card-content">
-            <h5>Lorem ipsum dolor</h5>
-            <span>
-              <h5>Location</h5>{" "}
-              <p>
-                4.5 <i class="bi bi-star-fill"></i>
-              </p>
-            </span>
-            <div className="advertisement-card-see-more">
+        {products.map((product, idx) => (
+          <div className="product-card">
+            <div className="product-card-discription">
+              <span>
+                <p>Name</p>
+                <h5>Lorem ipsum dolor{product}</h5>
+              </span>
+              <div className="product-card-offers hot">
+                <p>
+                  <i class="bi bi-prescription2"></i>
+                </p>
+              </div>
+            </div>
+            <div className="product-card-image">
+              <img src="product.png" alt="product" />
+            </div>
+            <div className="product-card-price">
+              <span>
+                <p>Price -</p>
+                <h5>Rs/ 89855.00</h5>
+              </span>
+            </div>
+            <div className="product-card-see-more">
               <p>See More</p>
             </div>
           </div>
-        </div>
-        {/* repeat */}
-        {/* repeat */}
-        <div className="advertisement-card">
-          <img src="product.png" alt="advertisement" />
-          <div className="advertisement-card-content">
-            <h5>Lorem ipsum dolor</h5>
-            <span>
-              <h5>Location</h5>{" "}
-              <p>
-                4.5 <i class="bi bi-star-fill"></i>
-              </p>
-            </span>
-            <div className="advertisement-card-see-more">
-              <p>See More</p>
-            </div>
-          </div>
-        </div>
-        {/* repeat */}
-        {/* repeat */}
-        <div className="advertisement-card">
-          <img src="product.png" alt="advertisement" />
-          <div className="advertisement-card-content">
-            <h5>Lorem ipsum dolor</h5>
-            <span>
-              <h5>Location</h5>{" "}
-              <p>
-                4.5 <i class="bi bi-star-fill"></i>
-              </p>
-            </span>
-            <div className="advertisement-card-see-more">
-              <p>See More</p>
-            </div>
-          </div>
-        </div>
-        {/* repeat */}
-        {/* repeat */}
-        <div className="advertisement-card">
-          <img src="product.png" alt="advertisement" />
-          <div className="advertisement-card-content">
-            <h5>Lorem ipsum dolor</h5>
-            <span>
-              <h5>Location</h5>{" "}
-              <p>
-                4.5 <i class="bi bi-star-fill"></i>
-              </p>
-            </span>
-            <div className="advertisement-card-see-more">
-              <p>See More</p>
-            </div>
-          </div>
-        </div>
+        ))}
         {/* repeat */}
       </div>
-      <div className="advertisement-card-show-more-products">
+      <div className="product-card-show-more-products">
         Show more <i class="bi bi-arrow-right"></i>
       </div>
-      {/*advertisement section end */}
+      {/* product section 2 end */}
       {}
       {/* banners */}
       <div className="home-banner-container">

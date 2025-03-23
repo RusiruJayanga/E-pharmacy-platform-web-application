@@ -1,33 +1,4 @@
 /* card section styles */
-/* header */
-.product-head {
-  max-width: 1000px;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  margin-inline: auto;
-  flex-wrap: wrap;
-  cursor: default;
-  margin-top: 200px;
-  text-transform: uppercase;
-}
-.product-head h2 {
-  width: 200px;
-  height: auto;
-  color: var(--text_color_highlight_1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.product-head p {
-  max-width: 600px;
-  height: auto;
-  padding: 10px;
-  line-height: 1.3;
-  text-align: justify;
-  text-transform: lowercase;
-  border-bottom: 2px solid var(--bg_color_strong_2);
-}
 /* product card */
 .product-container {
   width: 90.3%;
