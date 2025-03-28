@@ -5,7 +5,7 @@ const Navigation_bar_head = () => {
   return (
     <div>
       {/* navigation head */}
-      <div className="nav-head">
+      <div className="nav-head" id="home">
         <img src="logo-nav-header.png" alt="" />
       </div>
     </div>

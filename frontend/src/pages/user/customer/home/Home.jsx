@@ -64,6 +64,20 @@ const Home = () => {
 
   //product fatch
   const products = ["1", "2", "3", "4", "5", "6"];
+  //advertisement fatch
+  const advertisement = [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "11",
+  ];
 
   return (
     <div>
@@ -103,7 +117,7 @@ const Home = () => {
         <div className="count-box">
           <img src="count1.png" alt="count" />
           <div className="count-content">
-            <h2>{inView && <CountUp start={0} end={300} duration={2} />}</h2>
+            <h2>{inView && <CountUp start={0} end={300} duration={2} />}+</h2>
             <h4>Sri Lankan Cities</h4>
           </div>
         </div>
@@ -124,9 +138,9 @@ const Home = () => {
       </div>
       {}
       {/* product section */}
-      {/* product head section */}
+      {/* head section */}
       <div id="product-section"></div>
-      <div className="product-head">
+      <div className="section-head">
         <h2>Product Categories</h2>
       </div>
       {}
@@ -186,8 +200,8 @@ const Home = () => {
       </div>
       {/* product section 1 end */}
       {}
-      {/* margin section */}
-      <div className="margin-section-container">
+      {/* margin section 2 */}
+      <div className="margin-section-container section2">
         <div className="margin-section-content">
           <h2>Beauty Care</h2>
           <p>
@@ -234,31 +248,165 @@ const Home = () => {
       <div className="product-card-show-more-products">
         Show more <i class="bi bi-arrow-right"></i>
       </div>
-      {/* product section 2 end */}
+      {/* product section 3 end */}
       {}
-      {/* banners */}
-      <div className="home-banner-container">
-        <div className="home-banner banner1">
-          <img src="home-banner1.png" alt="banner" />
-          <div className="home-banner-content">
-            <h5>Lab tests</h5>
+      {/* services section */}
+      {/* head section */}
+      <div className="section-head">
+        <h2>our services</h2>
+      </div>
+      {}
+      <div className="services-container">
+        <div className="services-box">
+          <div className="services-image">
+            <img
+              src="service/ordering.png"
+              alt="services"
+              className="services1"
+            />
+          </div>
+          <h4>Online Medicine Ordering</h4>
+          <p>
+            Easily order prescription and over-the-counter medicines from
+            trusted pharmacies. Enjoy a seamless shopping experience with
+            doorstep delivery for your convenience.
+          </p>
+        </div>
+        <div className="services-box">
+          <div className="services-image">
+            <img
+              src="service/prescription.png"
+              alt="services"
+              className="services2"
+            />
+          </div>
+          <h4>Prescription Upload & Refill</h4>
+          <p>
+            Upload your prescription for easy medicine orders. Set automatic
+            refill reminders to never miss a dose and ensure continuous
+            medication availability.
+          </p>
+        </div>
+        <div className="services-box">
+          <div className="services-image">
+            <img
+              src="service/locator.png"
+              alt="services"
+              className="services3"
+            />
+          </div>
+          <h4>Pharmacy Locator</h4>
+          <p>
+            Find nearby pharmacies with our location-based search feature.
+            Compare availability and prices before placing your order at the
+            most convenient pharmacy.
+          </p>
+        </div>
+        <div className="services-box">
+          <div className="services-image">
+            <img
+              src="service/emergency.png"
+              alt="services"
+              className="services4"
+            />
+          </div>
+          <h4>Emergency Medicine Assistance</h4>
+          <p>
+            Get urgent medicines delivered quickly during emergencies. Our
+            platform ensures a fast and reliable service for critical healthcare
+            needs.
+          </p>
+        </div>
+        <div className="services-box">
+          <div className="services-image">
+            <img
+              src="service/language.png"
+              alt="services"
+              className="services5"
+            />
+          </div>
+          <h4>Multi-Language Support</h4>
+          <p>
+            Access our platform in English, Sinhala, and Tamil for a
+            user-friendly experience. Choose your preferred language for better
+            navigation and service.
+          </p>
+        </div>
+        <div className="services-box">
+          <div className="services-image">
+            <img
+              src="service/delivery.png"
+              alt="services"
+              className="services6"
+            />
+          </div>
+          <h4>Fast & Reliable Delivery</h4>
+          <p>
+            Get your medicines and health essentials delivered to your doorstep
+            quickly and securely. Choose from standard, express, or same-day
+            delivery options for a hassle-free experience.
+          </p>
+        </div>
+        <div className="services-box">
+          <div className="services-image">
+            <img
+              src="service/support.png"
+              alt="services"
+              className="services7"
+            />
+          </div>
+          <h4>24/7 Customer Support</h4>
+          <p>
+            Our dedicated support team is available round the clock to assist
+            you with your orders, prescriptions, and any queries. Get instant
+            help through chat, call, or email.
+          </p>
+        </div>
+        <div className="services-box">
+          <div className="services-image">
+            <img
+              src="service/prices.png"
+              alt="services"
+              className="services8"
+            />
+          </div>
+          <h4>Affordable Prices & Discounts</h4>
+          <p>
+            Enjoy competitive pricing on all medicines and healthcare products.
+            Get exclusive discounts, special offers, and cashback deals to save
+            more on your medical needs.
+          </p>
+        </div>
+      </div>
+      {}
+      {/* contact section */}
+      {/* head section */}
+      <div id="contact"></div>
+      <div className="section-head">
+        <h2>contact us</h2>
+      </div>
+      {}
+      <div className="contact-container">
+        <div className="contact-left">
+          <img src="contact.jpeg" alt="contact" />
+        </div>
+        <div className="contact-right">
+          <div className="contact-form">
+            <input name="Name" placeholder="Name"></input>
+            <p>console.error</p>
+            <input name="Contact Number" placeholder="Contact Number"></input>
+            <p>console.error</p>
+            <input name="Email" placeholder="Email"></input>
+            <p>console.error</p>
+            <textarea
+              className="textinput input-element"
+              placeholder="Message"
+            ></textarea>
             <p>
-              Book reliable lab tests online with fast and accurate results.
+              console.error <span> 100/100</span>
             </p>
-          </div>
-        </div>
-        <div className="home-banner banner2">
-          <img src="home-banner2.png" alt="banner" />
-          <div className="home-banner-content">
-            <h5>Health products</h5>
-            <p>Find top-quality health essentials for everyday wellness.</p>
-          </div>
-        </div>
-        <div className="home-banner banner3">
-          <img src="home-banner3.png" alt="banner" />
-          <div className="home-banner-content">
-            <h5>Doctor appointments</h5>
-            <p>Consult expert doctors online or in-person easily.</p>
+
+            <button className="contact-button">Send</button>
           </div>
         </div>
       </div>
