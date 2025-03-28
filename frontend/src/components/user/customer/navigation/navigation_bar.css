@@ -40,7 +40,7 @@ nav ul {
   margin: 0;
 }
 .nav-container .nav-left {
-  width: 800px;
+  width: 700px;
   height: 100%;
   display: flex;
   justify-content: space-around;
@@ -171,7 +171,7 @@ nav ul {
   }
 }
 /* responsive navbar */
-@media (max-width: 1105px) {
+@media (max-width: 1022px) {
   .nav-container .nav-left {
     display: none;
     color: var(--text_color_1);

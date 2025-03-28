@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "./navigation_bar.css";
+//login
+import LoginModel from "../../../../modules/user/customer/login/login";
 
 const Navigation_bar = () => {
   //drop down menu
@@ -12,6 +14,8 @@ const Navigation_bar = () => {
   const [menuOpen, set_menu_open] = useState(false);
   //active menu
   const [manu, set_manue] = useState("Home");
+  //login
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
 
   return (
     <div className="nav-position" onClick={closeDropdowns}>
@@ -62,14 +66,6 @@ const Navigation_bar = () => {
               Lab Tests
             </p>
             <p
-              onClick={() => set_manue("Devices")}
-              className={`nav-list-left nav-responsive-left ${
-                manu === "Devices" ? "active" : ""
-              }`}
-            >
-              Devices
-            </p>
-            <p
               onClick={() => set_manue("Accessories")}
               className={`nav-list-left nav-responsive-left ${
                 manu === "Accessories" ? "active" : ""
@@ -106,7 +102,7 @@ const Navigation_bar = () => {
                 </div>
               )}
             </h4>
-            {/* account dropdown */}
+            {/* Account Dropdown */}
             <h4
               className="nav-list-right account-drop"
               onClick={(e) => {
@@ -115,14 +111,28 @@ const Navigation_bar = () => {
                 translatesetShowDropdown(false);
               }}
             >
-              <i class="bi bi-person"></i>
+              <i className="bi bi-person"></i>
               {accountshowDropdown && (
                 <div className="dropdown-menu dropdown-menu-account">
-                  <p className="dropdown-item">Login</p>
+                  <p
+                    className="dropdown-item"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      accountsetShowDropdown(false);
+                      setIsLoginOpen(true);
+                    }}
+                  >
+                    Login
+                  </p>
                   <p className="dropdown-item">Signup</p>
                 </div>
               )}
             </h4>
+            {/* login module */}
+            <LoginModel
+              isOpen={isLoginOpen}
+              onClose={() => setIsLoginOpen(false)}
+            />
           </ul>
         </div>
       </nav>

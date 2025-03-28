@@ -93,6 +93,15 @@ a {
   text-decoration: none;
   color: inherit;
 }
+input {
+  height: 50px;
+  border-radius: var(--border_radius_2);
+  border: 1px solid var(--primary_color);
+  padding-right: 16px;
+  padding-left: 16px;
+  font-size: 16px;
+  font-weight: 300;
+}
 /* scroller styles */
 ::-webkit-scrollbar {
   width: 6px;

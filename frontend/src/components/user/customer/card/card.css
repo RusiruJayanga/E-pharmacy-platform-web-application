@@ -115,7 +115,7 @@
   grid-template-columns: repeat(auto-fit, 300px);
   gap: 20px;
   justify-content: center;
-  margin-top: 100px;
+  margin-top: 60px;
 }
 .advertisement-container .advertisement-card {
   width: min(300px, 100%);
@@ -204,5 +204,10 @@
   gap: 10px;
   cursor: pointer;
   border-radius: var(--border_radius_2);
-  margin-bottom: 500px;
+}
+.advertisement-container-img {
+  width: min(300px, 100%);
+  height: 120px;
+  object-fit: cover;
+  border-radius: var(--border_radius_1);
 }
