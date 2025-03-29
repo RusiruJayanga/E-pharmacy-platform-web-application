@@ -1,11 +1,12 @@
 import React from "react";
+//animation
 import { motion } from "framer-motion";
 import "./login.css";
 
-const login = ({ isOpen, onClose }) => {
+const Login = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
   return (
-    <div className="customer-login-popup-overlay" onClick={onClose}>
+    <div className="popup-overlay" onClick={onClose}>
       <motion.div
         className="customer-login-popup-content"
         onClick={(e) => e.stopPropagation()}
@@ -27,10 +28,10 @@ const login = ({ isOpen, onClose }) => {
           <input name="Password" placeholder="Password"></input>
           <p>console.error</p>
         </div>
-        <button className="contact-button">Send</button>
+        <button>Send</button>
       </motion.div>
     </div>
   );
 };
 
-export default login;
+export default Login;
