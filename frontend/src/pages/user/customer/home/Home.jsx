@@ -10,7 +10,7 @@ import "slick-carousel/slick/slick-theme.css";
 import "../../../../components/user/customer/slider/slider.css";
 //product card css
 import "../../../../components/user/customer/card/card.css";
-//margin
+//margin css
 import "../../../../components/user/customer/margin/margin.css";
 
 //images for home slider
@@ -59,7 +59,6 @@ const Home = () => {
     "Personal Care",
     "Pet Care",
     "Surgical Items",
-    "Vitamins",
   ];
 
   //product fatch
@@ -167,7 +166,7 @@ const Home = () => {
       <div className="product-container">
         {/* repeat */}
         {products.map((product, idx) => (
-          <div className="product-card">
+          <div className="product-card" id={idx}>
             <div className="product-card-discription">
               <span>
                 <p>Name</p>
@@ -200,8 +199,8 @@ const Home = () => {
       </div>
       {/* product section 1 end */}
       {}
-      {/* margin section 2 */}
-      <div className="margin-section-container section2">
+      {/* margin section 1 */}
+      <div className="margin-section-container section1">
         <div className="margin-section-content">
           <h2>Beauty Care</h2>
           <p>
@@ -217,7 +216,7 @@ const Home = () => {
       <div className="product-container">
         {/* repeat */}
         {products.map((product, idx) => (
-          <div className="product-card">
+          <div className="product-card" id={idx}>
             <div className="product-card-discription">
               <span>
                 <p>Name</p>

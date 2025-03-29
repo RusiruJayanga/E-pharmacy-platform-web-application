@@ -1,0 +1,92 @@
+/* signup styles */
+.popup-overlay .customer-signup-popup-content {
+  background: var(--bg_color_4);
+  color: var(--text_color_1);
+  border-radius: var(--border_radius_1);
+  max-width: 700px;
+  width: 100%;
+  height: 600px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: default;
+}
+.popup-overlay .customer-signup-popup-content .customer-signup-left {
+  width: 300px;
+  height: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.popup-overlay .customer-signup-popup-content .customer-signup-left img {
+  width: 150px;
+  height: auto;
+}
+.popup-overlay .customer-signup-popup-content .customer-signup-left h2 {
+  color: var(--text_color_highlight_3);
+}
+.popup-overlay .customer-signup-popup-content .customer-signup-right {
+  width: 400px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.popup-overlay
+  .customer-signup-popup-content
+  .customer-signup-right
+  .customer-signup-close {
+  width: 370px;
+  margin-top: -10px;
+}
+.popup-overlay
+  .customer-signup-popup-content
+  .customer-signup-right
+  .customer-signup-close
+  h3 {
+  width: 20px;
+  cursor: pointer;
+  margin-left: auto;
+}
+.popup-overlay
+  .customer-signup-popup-content
+  .customer-signup-right
+  .customer-signup-form {
+  width: 350px;
+}
+.popup-overlay
+  .customer-signup-popup-content
+  .customer-signup-right
+  .customer-signup-form
+  input {
+  width: 100%;
+  margin-top: 15px;
+}
+.popup-overlay
+  .customer-signup-popup-content
+  .customer-signup-right
+  .customer-signup-form
+  p {
+  font-size: 13px;
+  height: 15px;
+  opacity: 0.7;
+  color: red;
+}
+.popup-overlay .customer-signup-popup-content .customer-signup-right button {
+  width: 150px;
+  margin-top: 20px;
+  background-color: var(--bg_color_strong_2);
+  color: var(--text_color_lite);
+  border: 2px solid var(--bg_color_strong_2);
+}
+.popup-overlay
+  .customer-signup-popup-content
+  .customer-signup-right
+  button:hover {
+  background-color: var(--bg_color_4);
+  color: var(--text_color_1);
+}

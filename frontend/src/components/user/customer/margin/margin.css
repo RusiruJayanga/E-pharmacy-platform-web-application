@@ -1,7 +1,6 @@
-/* margin styles */
+/* margin section styles */
 /* home margin section */
 .margin-section-container {
-  margin-top: 150px;
   width: 100%;
   height: 50dvh;
   background-size: cover;
@@ -45,12 +44,15 @@
       rgba(45, 68, 92, 0.711) 100%
     ),
     url(margin-section-bg1.jpg);
+  margin-top: 150px;
 }
-.section2 {
+/* medicines page margin styles */
+.Medicines-section1 {
   background-image: linear-gradient(
       270deg,
       rgba(0, 95, 78, 0.642) 0%,
       rgba(45, 68, 92, 0.711) 100%
     ),
-    url(margin-section-bg2.jpg);
+    url(medicines-section-bg.jpg);
+  margin-top: -60px;
 }

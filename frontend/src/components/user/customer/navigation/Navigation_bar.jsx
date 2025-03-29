@@ -1,7 +1,12 @@
 import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "./navigation_bar.css";
+//animation
+import { motion } from "framer-motion";
 //login
 import LoginModel from "../../../../modules/user/customer/login/login";
+//signup
+import SignupModel from "../../../../modules/user/customer/signup/signup";
 
 const Navigation_bar = () => {
   //drop down menu
@@ -16,6 +21,8 @@ const Navigation_bar = () => {
   const [manu, set_manue] = useState("Home");
   //login
   const [isLoginOpen, setIsLoginOpen] = useState(false);
+  //signup
+  const [isSignupOpen, setIsSignupOpen] = useState(false);
 
   return (
     <div className="nav-position" onClick={closeDropdowns}>
@@ -25,54 +32,66 @@ const Navigation_bar = () => {
             ☰
           </h4>
           <ul className={`nav-left nav-responsive ${menuOpen ? "open" : ""}`}>
-            <p
-              onClick={() => set_manue("Home")}
-              className={`nav-list-left nav-responsive-left ${
-                manu === "Home" ? "active" : ""
-              }`}
-            >
-              Home
-            </p>
-            <p
-              onClick={() => set_manue("Medicines")}
-              className={`nav-list-left nav-responsive-left ${
-                manu === "Medicines" ? "active" : ""
-              }`}
-            >
-              Medicines
-            </p>
-            <p
-              onClick={() => set_manue("Pharmacies")}
-              className={`nav-list-left nav-responsive-left ${
-                manu === "Pharmacies" ? "active" : ""
-              }`}
-            >
-              pharmacies
-            </p>
-            <p
-              onClick={() => set_manue("Doctors")}
-              className={`nav-list-left nav-responsive-left ${
-                manu === "Doctors" ? "active" : ""
-              }`}
-            >
-              Doctors
-            </p>
-            <p
-              onClick={() => set_manue("Lab-Tests")}
-              className={`nav-list-left nav-responsive-left ${
-                manu === "Lab-Tests" ? "active" : ""
-              }`}
-            >
-              Lab Tests
-            </p>
-            <p
-              onClick={() => set_manue("Accessories")}
-              className={`nav-list-left nav-responsive-left ${
-                manu === "Accessories" ? "active" : ""
-              }`}
-            >
-              Accessories
-            </p>
+            <Link to="/Home">
+              <p
+                onClick={() => set_manue("Home")}
+                className={`nav-list-left nav-responsive-left ${
+                  manu === "Home" ? "active" : ""
+                }`}
+              >
+                Home
+              </p>
+            </Link>
+            <Link to="/Medicines">
+              <p
+                onClick={() => set_manue("Medicines")}
+                className={`nav-list-left nav-responsive-left ${
+                  manu === "Medicines" ? "active" : ""
+                }`}
+              >
+                Medicines
+              </p>
+            </Link>
+            <Link to="/Pharmacies">
+              <p
+                onClick={() => set_manue("Pharmacies")}
+                className={`nav-list-left nav-responsive-left ${
+                  manu === "Pharmacies" ? "active" : ""
+                }`}
+              >
+                Pharmacies
+              </p>
+            </Link>
+            <Link to="/Doctors">
+              <p
+                onClick={() => set_manue("Doctors")}
+                className={`nav-list-left nav-responsive-left ${
+                  manu === "Doctors" ? "active" : ""
+                }`}
+              >
+                Doctors
+              </p>
+            </Link>
+            <Link to="/Lab_Tests">
+              <p
+                onClick={() => set_manue("Lab-Tests")}
+                className={`nav-list-left nav-responsive-left ${
+                  manu === "Lab-Tests" ? "active" : ""
+                }`}
+              >
+                Lab Tests
+              </p>
+            </Link>
+            <Link to="/Accessories">
+              <p
+                onClick={() => set_manue("Accessories")}
+                className={`nav-list-left nav-responsive-left ${
+                  manu === "Accessories" ? "active" : ""
+                }`}
+              >
+                Accessories
+              </p>
+            </Link>
           </ul>
           <ul className="nav-right">
             <h4 className="nav-list-right">
@@ -95,11 +114,17 @@ const Navigation_bar = () => {
             >
               <i className="bi bi-translate"></i>
               {translateshowDropdown && (
-                <div className="dropdown-menu dropdown-menu-translate">
+                <motion.div
+                  initial={{ opacity: 0, y: -5 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.4 }}
+                  className="dropdown-menu dropdown-menu-translate"
+                >
                   <p className="dropdown-item">English</p>
                   <p className="dropdown-item">සිංහල</p>
                   <p className="dropdown-item">தமிழ்</p>
-                </div>
+                </motion.div>
               )}
             </h4>
             {/* Account Dropdown */}
@@ -113,7 +138,13 @@ const Navigation_bar = () => {
             >
               <i className="bi bi-person"></i>
               {accountshowDropdown && (
-                <div className="dropdown-menu dropdown-menu-account">
+                <motion.div
+                  initial={{ opacity: 0, y: -5 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.4 }}
+                  className="dropdown-menu dropdown-menu-account"
+                >
                   <p
                     className="dropdown-item"
                     onClick={(e) => {
@@ -124,14 +155,28 @@ const Navigation_bar = () => {
                   >
                     Login
                   </p>
-                  <p className="dropdown-item">Signup</p>
-                </div>
+                  <p
+                    className="dropdown-item"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      accountsetShowDropdown(false);
+                      setIsSignupOpen(true);
+                    }}
+                  >
+                    Signup
+                  </p>
+                </motion.div>
               )}
             </h4>
             {/* login module */}
             <LoginModel
               isOpen={isLoginOpen}
               onClose={() => setIsLoginOpen(false)}
+            />
+            {/* signup module */}
+            <SignupModel
+              isOpen={isSignupOpen}
+              onClose={() => setIsSignupOpen(false)}
             />
           </ul>
         </div>
