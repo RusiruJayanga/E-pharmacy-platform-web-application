@@ -92,6 +92,130 @@
 .count-container .count-box h2 {
   color: var(--text_color_highlight_2);
 }
+/* direction section */
+.direction-container {
+  max-width: 1300px;
+  height: auto;
+  margin-inline: auto;
+  display: grid;
+  grid-template-areas:
+    "one two three"
+    "one four four";
+  gap: 10px;
+  margin-top: 100px;
+  cursor: default;
+}
+.direction-container > div.box-medicines {
+  grid-area: one;
+}
+.direction-container > div.box-doctors {
+  grid-area: two;
+}
+.direction-container > div.box-lab {
+  grid-area: three;
+}
+.direction-container > div.box-pharmacies {
+  grid-area: four;
+}
+.direction-container .direction-box {
+  border-radius: var(--border_radius_1);
+  padding: 10px;
+}
+.direction-container .direction-box img {
+  width: 150px;
+  height: auto;
+}
+.direction-container .direction-box button {
+  width: 150px;
+  margin-top: 10px;
+}
+.direction-container .box-medicines {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  height: auto;
+}
+.direction-container .box-medicines .direction-box-content {
+  text-align: center;
+}
+.direction-container .box-medicines .direction-box-content p {
+  text-align: left;
+}
+.direction-container .box-doctors,
+.box-lab,
+.box-pharmacies {
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.direction-container .box-medicines {
+  background-color: #e3f2fd;
+  border: 2px solid #2196f3;
+}
+.direction-container .box-medicines h3 {
+  color: #2196f3;
+}
+.direction-container .box-medicines button {
+  background-color: #2196f3;
+  border: 1px solid #2196f3;
+  color: var(--text_color_lite);
+}
+.direction-container .box-medicines button:hover {
+  background-color: #e3f2fd;
+  color: #2196f3;
+}
+.direction-container .box-doctors {
+  background-color: #f3e5f5;
+  border: 2px solid #9c27b0;
+}
+.direction-container .box-doctors h3 {
+  color: #9c27b0;
+}
+.direction-container .box-doctors button {
+  background-color: #9c27b0;
+  border: 1px solid #9c27b0;
+  color: var(--text_color_lite);
+}
+.direction-container .box-doctors button:hover {
+  background-color: #f3e5f5;
+  color: #9c27b0;
+}
+.direction-container .box-lab {
+  background-color: #e8f5e9;
+  border: 2px solid #4caf50;
+}
+.direction-container .box-lab h3 {
+  color: #4caf50;
+}
+.direction-container .box-lab button {
+  background-color: #4caf50;
+  border: 1px solid #4caf50;
+  color: var(--text_color_lite);
+}
+.direction-container .box-lab button:hover {
+  background-color: #e8f5e9;
+  color: #4caf50;
+}
+.direction-container .box-pharmacies {
+  background-color: #fff3e0;
+  border: 2px solid #ff9800;
+}
+.direction-container .box-pharmacies h3 {
+  color: #ff9800;
+}
+.direction-container .box-pharmacies button {
+  background-color: #ff9800;
+  border: 1px solid #ff9800;
+  color: var(--text_color_lite);
+}
+.direction-container .box-pharmacies button:hover {
+  background-color: #fff3e0;
+  color: #ff9800;
+}
 /* head section */
 .section-head {
   max-width: 500px;
@@ -123,7 +247,8 @@
   width: min(250px, 100%);
   min-height: 350px;
   border-radius: var(--border_radius_1);
-  border: 1px solid var(--bg_color_5);
+  border: 1px solid var(--bg_color_4);
+  background-color: var(--bg_color_2);
   display: block;
   text-align: center;
   padding: 15px;
@@ -141,28 +266,28 @@
   object-fit: cover;
 }
 .services1 {
-  background-color: #e9b527;
+  background-color: #ffc62a;
 }
 .services2 {
-  background-color: #5ac7e1;
+  background-color: #43d9ff;
 }
 .services3 {
-  background-color: #d6ecff;
+  background-color: #e7f4ff;
 }
 .services4 {
-  background-color: #ff9495;
+  background-color: #ff8e5a;
 }
 .services5 {
-  background-color: #8bec68;
+  background-color: #84ff58;
 }
 .services6 {
-  background-color: #349bd6;
+  background-color: #447fff;
 }
 .services7 {
-  background-color: #7fffd4;
+  background-color: #65fdca;
 }
 .services8 {
-  background-color: #fcd735;
+  background-color: #fffc2e;
 }
 .services-container .services-box h4 {
   margin-top: 10px;
@@ -170,8 +295,7 @@
   color: var(--text_color_highlight_2);
 }
 .services-container .services-box p {
-  text-align: justify;
-  text-justify: inter-character;
+  text-wrap: balance;
   margin-top: 10px;
 }
 /* contact section */

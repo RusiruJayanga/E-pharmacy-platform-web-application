@@ -1,7 +1,7 @@
 import React from "react";
+import "./signup.css";
 //animation
 import { motion } from "framer-motion";
-import "./signup.css";
 
 const Signup = ({ isOpen, onClose }) => {
   if (!isOpen) return null;

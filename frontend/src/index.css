@@ -14,7 +14,7 @@ body {
   --primary_color: #14967f;
   --secondary_color: #095d7e;
   --bg_color_1: #e2fcd6;
-  --bg_color_2: #275244;
+  --bg_color_2: #f0f8ff;
   --bg_color_3: #009464;
   --bg_color_4: #ffffff;
   --bg_color_5: #f3f3f3;
@@ -55,7 +55,7 @@ h5 {
 p {
   font-size: 16px;
   font-weight: 300;
-  line-height: 1.6;
+  line-height: 1.4;
 }
 @media (max-width: 768px) {
   /* responsive */

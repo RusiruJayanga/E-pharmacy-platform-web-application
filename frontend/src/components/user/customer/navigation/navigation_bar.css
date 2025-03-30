@@ -77,6 +77,9 @@ nav ul {
   animation-range-start: 100vh;
   animation-range-end: 101vh;
 }
+.nav-container .nav-left .active:hover {
+  border-bottom: 2px solid transparent;
+}
 .nav-container .nav-right {
   width: 280px;
   height: 100%;

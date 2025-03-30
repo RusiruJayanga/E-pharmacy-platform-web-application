@@ -136,11 +136,61 @@ const Home = () => {
         </div>
       </div>
       {}
+      {/* direction section */}
+      <div className="direction-container">
+        <div className="direction-box box-medicines">
+          <img src="direction/box-medicines.png" alt="direction" />
+          <div className="direction-box-content">
+            <h3>Medicines</h3>
+            <p>
+              Find a wide range of prescription and over-the-counter medicines
+              for various health needs, delivered to your doorstep.
+            </p>
+            <button>See More</button>
+          </div>
+        </div>
+        <div className="direction-box box-doctors">
+          <img src="direction/box-doctors.png" alt="direction" />
+          <div className="direction-box-content">
+            <h3>Doctors</h3>
+            <p>
+              Book online consultations with certified doctors for expert
+              medical advice, prescriptions, and health guidance.
+            </p>
+            <button>See More</button>
+          </div>
+        </div>
+        <div className="direction-box box-lab">
+          <img src="direction/box-lab.png" alt="direction" />
+          <div className="direction-box-content">
+            <h3>Lab Tests</h3>
+            <p>
+              Schedule diagnostic tests from trusted labs with home sample
+              collection and get accurate reports online.
+            </p>
+            <button>See More</button>
+          </div>
+        </div>
+        <div className="direction-box box-pharmacies">
+          <img src="direction/box-pharmacies.png" alt="direction" />
+          <div className="direction-box-content">
+            <h3>Pharmacies</h3>
+            <p>
+              Easily find and connect with nearby pharmacies offering a wide
+              range of medicines, health products, and medical essentials.
+              Browse trusted pharmacies, check product availability, compare
+              prices, and place orders for doorstep delivery or in-store pickup.
+            </p>
+            <button>See More</button>
+          </div>
+        </div>
+      </div>
+      {}
       {/* product section */}
       {/* head section */}
       <div id="product-section"></div>
       <div className="section-head">
-        <h2>Product Categories</h2>
+        <h2>Accessory Categories</h2>
       </div>
       {}
       {/* category slider section */}
@@ -404,7 +454,6 @@ const Home = () => {
             <p>
               console.error <span> 100/100</span>
             </p>
-
             <button className="contact-button">Send</button>
           </div>
         </div>
