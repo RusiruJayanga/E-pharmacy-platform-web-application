@@ -19,14 +19,14 @@ const App = () => {
       {/* navigation */}
       <Routes>
         {/* customer navigation bar */}
-        {["Home", "Medicines"].map((path) => (
+        {["", "Medicines"].map((path) => (
           <Route path={path} element={<Navigation_bar />} />
         ))}
       </Routes>
       {/* pages */}
       {/* customer pages */}
       <Routes>
-        <Route path="/Home" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/Medicines" element={<Medicines />} />
       </Routes>
       <Footer />

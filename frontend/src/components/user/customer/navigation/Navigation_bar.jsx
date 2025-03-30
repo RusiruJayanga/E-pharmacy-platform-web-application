@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import "./navigation_bar.css";
 //animation
 import { motion } from "framer-motion";
@@ -32,7 +32,7 @@ const Navigation_bar = () => {
             ☰
           </h4>
           <ul className={`nav-left nav-responsive ${menuOpen ? "open" : ""}`}>
-            <Link to="/Home">
+            <NavLink to="/">
               <p
                 onClick={() => set_manue("Home")}
                 className={`nav-list-left nav-responsive-left ${
@@ -41,8 +41,8 @@ const Navigation_bar = () => {
               >
                 Home
               </p>
-            </Link>
-            <Link to="/Medicines">
+            </NavLink>
+            <NavLink to="/Medicines">
               <p
                 onClick={() => set_manue("Medicines")}
                 className={`nav-list-left nav-responsive-left ${
@@ -51,8 +51,8 @@ const Navigation_bar = () => {
               >
                 Medicines
               </p>
-            </Link>
-            <Link to="/Pharmacies">
+            </NavLink>
+            <NavLink to="/Pharmacies">
               <p
                 onClick={() => set_manue("Pharmacies")}
                 className={`nav-list-left nav-responsive-left ${
@@ -61,8 +61,8 @@ const Navigation_bar = () => {
               >
                 Pharmacies
               </p>
-            </Link>
-            <Link to="/Doctors">
+            </NavLink>
+            <NavLink to="/Doctors">
               <p
                 onClick={() => set_manue("Doctors")}
                 className={`nav-list-left nav-responsive-left ${
@@ -71,8 +71,8 @@ const Navigation_bar = () => {
               >
                 Doctors
               </p>
-            </Link>
-            <Link to="/Lab_Tests">
+            </NavLink>
+            <NavLink to="/Lab_Tests">
               <p
                 onClick={() => set_manue("Lab-Tests")}
                 className={`nav-list-left nav-responsive-left ${
@@ -81,8 +81,8 @@ const Navigation_bar = () => {
               >
                 Lab Tests
               </p>
-            </Link>
-            <Link to="/Accessories">
+            </NavLink>
+            <NavLink to="/Accessories">
               <p
                 onClick={() => set_manue("Accessories")}
                 className={`nav-list-left nav-responsive-left ${
@@ -91,7 +91,7 @@ const Navigation_bar = () => {
               >
                 Accessories
               </p>
-            </Link>
+            </NavLink>
           </ul>
           <ul className="nav-right">
             <h4 className="nav-list-right">
