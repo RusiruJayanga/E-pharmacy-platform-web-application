@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./medicines.css";
 //margin css
 import "../../../../components/user/customer/margin/margin.css";
 //filter css
@@ -9,7 +8,7 @@ import Select from "react-select";
 //product card css
 import "../../../../components/user/customer/card/card.css";
 
-const Medicines = () => {
+const Pharmacies = () => {
   //filter checkbox
   const [selectedcategoryCheckbox, setSelectedcategoryCheckbox] =
     useState("All");
@@ -103,15 +102,26 @@ const Medicines = () => {
       options: NorthWestern,
     },
   ];
-  //product fatch
-  const products = ["1", "2", "3", "4", "5", "6"];
-
+  //advertisement fatch
+  const advertisements = [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "11",
+  ];
   return (
     <div>
       {/* margin section 1 */}
-      <div className="margin-section-container Medicines-section1">
+      <div className="margin-section-container Pharmacies-section1">
         <div className="margin-section-content">
-          <h1>Medicines</h1>
+          <h1>Pharmacies</h1>
         </div>
       </div>
       {}
@@ -119,46 +129,10 @@ const Medicines = () => {
       <div id="product-section"></div>
       <div className="product-filter-container">
         <h3>
-          Filter Medicine By <i class="bi bi-arrow-down"></i>
+          Filter Pharmacies By <i class="bi bi-arrow-down"></i>
         </h3>
       </div>
       <div className="product-filter-content">
-        <div className="product-filter-category">
-          <h4>Categorys</h4>
-          <div className="product-filter-category-box">
-            {/* repeat */}
-            {[
-              "All",
-              "Asthma",
-              "Anti-Histamine",
-              "Antibiotics",
-              "Cardiovascular",
-              "Oncology Drugs",
-              "Constipation Reliever",
-              "Diabetics",
-              "Eye Drops & Ear Drops",
-              "Gastrointestinal",
-              "Hormones",
-              "Neurological",
-              "Pain Killers",
-              "Antivirals",
-              "Urinary",
-              "Veterinary",
-              "Vitamins",
-              "Worm Treatments",
-            ].map((id) => (
-              <div className="product-filter-category-item">
-                <input
-                  type="checkbox"
-                  checked={selectedcategoryCheckbox === id}
-                  onChange={() => handlectedcategoryCheckboxChange(id)}
-                />
-                <label key={id}>{id}</label>
-              </div>
-            ))}
-            {}
-          </div>
-        </div>
         {}
         <div className="product-filter-location">
           <h4>Location</h4>
@@ -170,46 +144,44 @@ const Medicines = () => {
             />
           </div>
         </div>
+        <div className="product-filter-instructions">
+          <h4>Attention !</h4>
+          <p>
+            When selecting a pharmacy, enter the district you live in. Stores
+            are rated up to 5 stars based on customer feedback on the quality of
+            service.
+          </p>
+        </div>
       </div>
       {}
-      {/* product card section */}
-      <div className="product-container">
+      {/* pharmacies advertisement section */}
+      <div className="advertisement-container">
         {/* repeat */}
-        {products.map((product, idx) => (
-          <div className="product-card" id={idx}>
-            <div className="product-card-discription">
+        {advertisements.map((advertisement, idx) => (
+          <div className="advertisement-card" id={idx}>
+            <img src="product.png" alt="advertisement" />
+            <div className="advertisement-card-content">
+              <h5>Lorem ipsum dolor{advertisement}</h5>
               <span>
-                <p>Name</p>
-                <h5>Lorem ipsum dolor{product}</h5>
-              </span>
-              <div className="product-card-offers hot">
+                <h5>Location</h5>{" "}
                 <p>
-                  <i class="bi bi-prescription2"></i>
+                  4.5 <i class="bi bi-star-fill"></i>
                 </p>
-              </div>
-            </div>
-            <div className="product-card-image">
-              <img src="product.png" alt="product" />
-            </div>
-            <div className="product-card-price">
-              <span>
-                <p>Price -</p>
-                <h5>Rs/ 89855.00</h5>
               </span>
-            </div>
-            <div className="product-card-see-more">
-              <p>See More</p>
+              <div className="advertisement-card-see-more">
+                <p>See More</p>
+              </div>
             </div>
           </div>
         ))}
         {/* repeat */}
       </div>
-      <div className="product-card-show-more-products">
+      <div className="advertisement-card-show-more-products">
         Show more <i class="bi bi-arrow-down"></i>
       </div>
-      {/* product section end */}
+      {/*advertisement section end */}
     </div>
   );
 };
 
-export default Medicines;
+export default Pharmacies;

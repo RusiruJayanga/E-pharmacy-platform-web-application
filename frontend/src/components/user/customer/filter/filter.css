@@ -24,7 +24,8 @@
   flex-wrap: wrap;
   gap: 20px;
 }
-.product-filter-content .product-filter-category {
+.product-filter-content .product-filter-category,
+.product-filter-instructions {
   width: 750px;
   height: auto;
   padding: 10px;
@@ -77,6 +78,12 @@ label {
   .product-filter-location-dropbox {
   margin-top: 0px;
 }
+.product-filter-content .product-filter-instructions h4 {
+  color: #ff4e4e;
+}
+.product-filter-content .product-filter-instructions p {
+  margin-top: 10px;
+}
 /* responsive filter */
 @media (max-width: 1230px) {
   .product-filter-content {
@@ -88,7 +95,8 @@ label {
     flex-direction: column;
     justify-content: center;
   }
-  .product-filter-content .product-filter-category {
+  .product-filter-content .product-filter-category,
+  .product-filter-instructions {
     width: 90%;
     margin-inline: auto;
   }
