@@ -32,65 +32,38 @@ const Navigation_bar = () => {
             ☰
           </h4>
           <ul className={`nav-left nav-responsive ${menuOpen ? "open" : ""}`}>
-            <NavLink to="/">
-              <p
-                onClick={() => set_manue("Home")}
-                className={`nav-list-left nav-responsive-left ${
-                  manu === "Home" ? "active" : ""
-                }`}
-              >
-                Home
-              </p>
+            <NavLink className="nav-list-left nav-responsive-left" to="/">
+              Home
             </NavLink>
-            <NavLink to="/Medicines">
-              <p
-                onClick={() => set_manue("Medicines")}
-                className={`nav-list-left nav-responsive-left ${
-                  manu === "Medicines" ? "active" : ""
-                }`}
-              >
-                Medicines
-              </p>
+            <NavLink
+              className="nav-list-left nav-responsive-left"
+              to="/Medicines"
+            >
+              Medicines
             </NavLink>
-            <NavLink to="/Pharmacies">
-              <p
-                onClick={() => set_manue("Pharmacies")}
-                className={`nav-list-left nav-responsive-left ${
-                  manu === "Pharmacies" ? "active" : ""
-                }`}
-              >
-                Pharmacies
-              </p>
+            <NavLink
+              className="nav-list-left nav-responsive-left"
+              to="/Pharmacies"
+            >
+              Pharmacies
             </NavLink>
-            <NavLink to="/Doctors">
-              <p
-                onClick={() => set_manue("Doctors")}
-                className={`nav-list-left nav-responsive-left ${
-                  manu === "Doctors" ? "active" : ""
-                }`}
-              >
-                Doctors
-              </p>
+            <NavLink
+              className="nav-list-left nav-responsive-left"
+              to="/Doctors"
+            >
+              Doctors
             </NavLink>
-            <NavLink to="/Lab_Tests">
-              <p
-                onClick={() => set_manue("Lab-Tests")}
-                className={`nav-list-left nav-responsive-left ${
-                  manu === "Lab-Tests" ? "active" : ""
-                }`}
-              >
-                Lab Tests
-              </p>
+            <NavLink
+              className="nav-list-left nav-responsive-left"
+              to="/Lab_Tests"
+            >
+              Lab Tests
             </NavLink>
-            <NavLink to="/Accessories">
-              <p
-                onClick={() => set_manue("Accessories")}
-                className={`nav-list-left nav-responsive-left ${
-                  manu === "Accessories" ? "active" : ""
-                }`}
-              >
-                Accessories
-              </p>
+            <NavLink
+              className="nav-list-left nav-responsive-left"
+              to="/Accessories"
+            >
+              Accessories
             </NavLink>
           </ul>
           <ul className="nav-right">

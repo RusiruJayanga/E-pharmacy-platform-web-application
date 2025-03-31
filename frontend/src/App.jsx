@@ -10,6 +10,8 @@ import Navigation_bar from "./components/user/customer/navigation/Navigation_bar
 //customer pages
 import Home from "./pages/user/customer/home/Home";
 import Medicines from "./pages/user/customer/medicines/Medicines";
+import Pharmacies from "./pages/user/customer/pharmacies/Pharmacies";
+import Doctors from "./pages/user/customer/doctors/Doctors";
 
 const App = () => {
   return (
@@ -19,7 +21,7 @@ const App = () => {
       {/* navigation */}
       <Routes>
         {/* customer navigation bar */}
-        {["", "Medicines"].map((path) => (
+        {["", "Medicines", "Pharmacies", "Doctors"].map((path) => (
           <Route path={path} element={<Navigation_bar />} />
         ))}
       </Routes>
@@ -28,6 +30,8 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/Medicines" element={<Medicines />} />
+        <Route path="/Pharmacies" element={<Pharmacies />} />
+        <Route path="/Doctors" element={<Doctors />} />
       </Routes>
       <Footer />
     </div>

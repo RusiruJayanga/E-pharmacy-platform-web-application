@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import "./home.css";
 //auto count
 import CountUp from "react-countup";
@@ -63,20 +64,6 @@ const Home = () => {
 
   //product fatch
   const products = ["1", "2", "3", "4", "5", "6"];
-  //advertisement fatch
-  const advertisement = [
-    "1",
-    "2",
-    "3",
-    "4",
-    "5",
-    "6",
-    "7",
-    "8",
-    "9",
-    "10",
-    "11",
-  ];
 
   return (
     <div>
@@ -146,7 +133,9 @@ const Home = () => {
               Find a wide range of prescription and over-the-counter medicines
               for various health needs, delivered to your doorstep.
             </p>
-            <button>See More</button>
+            <NavLink to="/Medicines">
+              <button>See More</button>
+            </NavLink>
           </div>
         </div>
         <div className="direction-box box-doctors">
@@ -157,7 +146,9 @@ const Home = () => {
               Book online consultations with certified doctors for expert
               medical advice, prescriptions, and health guidance.
             </p>
-            <button>See More</button>
+            <NavLink to="/Doctors">
+              <button>See More</button>
+            </NavLink>
           </div>
         </div>
         <div className="direction-box box-lab">
@@ -168,7 +159,9 @@ const Home = () => {
               Schedule diagnostic tests from trusted labs with home sample
               collection and get accurate reports online.
             </p>
-            <button>See More</button>
+            <NavLink to="/Lab_Tests">
+              <button>See More</button>
+            </NavLink>
           </div>
         </div>
         <div className="direction-box box-pharmacies">
@@ -181,7 +174,9 @@ const Home = () => {
               Browse trusted pharmacies, check product availability, compare
               prices, and place orders for doorstep delivery or in-store pickup.
             </p>
-            <button>See More</button>
+            <NavLink to="/Pharmacies">
+              <button>See More</button>
+            </NavLink>
           </div>
         </div>
       </div>
