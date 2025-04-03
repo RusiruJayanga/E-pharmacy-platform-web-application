@@ -239,9 +239,11 @@ const Home = () => {
         ))}
         {/* repeat */}
       </div>
-      <div className="product-card-show-more-products">
-        Show more <i class="bi bi-arrow-right"></i>
-      </div>
+      <NavLink to="/Accessories">
+        <div className="product-card-show-more-products">
+          Show more <i class="bi bi-arrow-right"></i>
+        </div>
+      </NavLink>
       {/* product section 1 end */}
       {}
       {/* margin section 1 */}
@@ -289,9 +291,11 @@ const Home = () => {
         ))}
         {/* repeat */}
       </div>
-      <div className="product-card-show-more-products">
-        Show more <i class="bi bi-arrow-right"></i>
-      </div>
+      <NavLink to="/Accessories">
+        <div className="product-card-show-more-products">
+          Show more <i class="bi bi-arrow-right"></i>
+        </div>
+      </NavLink>
       {/* product section 3 end */}
       {}
       {/* services section */}

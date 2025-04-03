@@ -217,6 +217,43 @@
   background-color: #fff3e0;
   color: #ff9800;
 }
+/* direction filter */
+@media (max-width: 1440px) {
+  .direction-container {
+    max-width: 90%;
+  }
+}
+@media (max-width: 1184px) {
+  .direction-container {
+    grid-template-areas:
+      "one two"
+      "one three"
+      "four four";
+  }
+}
+@media (max-width: 648px) {
+  .direction-container {
+    grid-template-areas:
+      "one"
+      "two"
+      "three"
+      "four";
+  }
+  .direction-container .direction-box {
+    height: auto;
+  }
+  .direction-container .box-medicines {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+  .direction-container .box-medicines .direction-box-content {
+    text-align: left;
+  }
+}
+
 /* head section */
 .section-head {
   max-width: 500px;
@@ -353,6 +390,7 @@ textarea {
   background-color: var(--bg_color_4);
   color: var(--text_color_1);
 }
+/* contact filter */
 @media (max-width: 425px) {
   .contact-container .contact-left img {
     width: 300px;

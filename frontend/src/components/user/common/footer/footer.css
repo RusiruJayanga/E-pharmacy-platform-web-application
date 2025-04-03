@@ -71,6 +71,13 @@
 .footer-col ul li a:hover {
   color: var(--text_color_highlight_1);
 }
+/* footer responsive */
+@media (max-width: 768px) {
+  .footer-row {
+    flex-direction: column;
+    text-align: center;
+  }
+}
 /* footer bottem */
 .footer-bottom {
   margin-top: 20px;
@@ -84,12 +91,4 @@
   height: 140px;
   background-repeat: no-repeat;
   background-size: cover;
-}
-
-/* footer responsive */
-@media (max-width: 768px) {
-  .footer-row {
-    flex-direction: column;
-    text-align: center;
-  }
 }

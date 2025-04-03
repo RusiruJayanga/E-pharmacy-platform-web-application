@@ -1,0 +1,12 @@
+/* details styles */
+/* details box */
+.details-box-container {
+  max-width: 1000px;
+  height: 500px;
+  margin-inline: auto;
+  background-color: #ff0080;
+  margin-top: 60px;
+  clip-path: path(
+    "M 0,10 A 10,10 0,0,1 10,0 L 900,0 A 10,10 0,0,1 910,10 L 910,100 A 10,10 0,0,0 920,110 L 990,110 A 10,10 0,0,1 1000,120 L 1000,490 A 10,10 0,0,1 990,500 L 10,500 A 10,10 0,0,1 0,490"
+  );
+}
