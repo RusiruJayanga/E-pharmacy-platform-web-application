@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
-import "./medicines.css";
 //margin css
 import "../../../../components/user/customer/margin/margin.css";
 //filter css
@@ -10,7 +8,7 @@ import Select from "react-select";
 //product card css
 import "../../../../components/user/customer/card/card.css";
 
-const Medicines = () => {
+const Accessories = () => {
   //filter checkbox
   const [selectedcategoryCheckbox, setSelectedcategoryCheckbox] =
     useState("All");
@@ -110,9 +108,9 @@ const Medicines = () => {
   return (
     <div>
       {/* margin section 1 */}
-      <div className="margin-section-container Medicines-section1">
+      <div className="margin-section-container Accessories-section1">
         <div className="margin-section-content">
-          <h1>Medicines</h1>
+          <h1>Accessories</h1>
         </div>
       </div>
       {}
@@ -120,33 +118,33 @@ const Medicines = () => {
       <div id="product-section"></div>
       <div className="product-filter-container">
         <h3>
-          Filter Medicine By <i class="bi bi-arrow-down"></i>
+          Filter Accessories By <i class="bi bi-arrow-down"></i>
         </h3>
       </div>
       <div className="product-filter-content">
         <div className="product-filter-category">
-          <h4>Categorys</h4>
+          <h4>Category</h4>
           <div className="product-filter-category-box">
             {/* repeat */}
             {[
               "All",
-              "Asthma",
-              "Anti-Histamine",
-              "Antibiotics",
-              "Cardiovascular",
-              "Oncology Drugs",
-              "Constipation Reliever",
-              "Diabetics",
-              "Eye Drops & Ear Drops",
-              "Gastrointestinal",
-              "Hormones",
-              "Neurological",
-              "Pain Killers",
-              "Antivirals",
-              "Urinary",
-              "Veterinary",
+              "Adult Care",
+              "Ayurveda",
+              "Beverages",
+              "Cosmetics",
+              "Dairy Products",
+              "Diabetic Care",
+              "Food Items",
+              "Hair Care",
+              "Household Remedies",
+              "Kids",
+              "Mother & Baby Care",
+              "Personal Care",
+              "Pet Care",
+              "Skin Care",
+              "Surgical Items",
               "Vitamins",
-              "Worm Treatments",
+              "Medical Devices",
             ].map((id) => (
               <div className="product-filter-category-item">
                 <input
@@ -198,11 +196,9 @@ const Medicines = () => {
                 <h5>Rs/ 89855.00</h5>
               </span>
             </div>
-            <Link to="/Medicines_details">
-              <div className="product-card-see-more">
-                <p>See More</p>
-              </div>
-            </Link>
+            <div className="product-card-see-more">
+              <p>See More</p>
+            </div>
           </div>
         ))}
         {/* repeat */}
@@ -216,4 +212,4 @@ const Medicines = () => {
   );
 };
 
-export default Medicines;
+export default Accessories;

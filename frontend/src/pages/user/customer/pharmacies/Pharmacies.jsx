@@ -9,12 +9,6 @@ import Select from "react-select";
 import "../../../../components/user/customer/card/card.css";
 
 const Pharmacies = () => {
-  //filter checkbox
-  const [selectedcategoryCheckbox, setSelectedcategoryCheckbox] =
-    useState("All");
-  const handlectedcategoryCheckboxChange = (id) => {
-    setSelectedcategoryCheckbox(id);
-  };
   //filter select
   const All = [{ value: "Island Wide", label: "Island Wide" }];
   const Southern = [
@@ -154,7 +148,7 @@ const Pharmacies = () => {
         </div>
       </div>
       {}
-      {/* pharmacies advertisement section */}
+      {/* advertisement card section */}
       <div className="advertisement-container">
         {/* repeat */}
         {advertisements.map((advertisement, idx) => (
@@ -180,6 +174,7 @@ const Pharmacies = () => {
         Show more <i class="bi bi-arrow-down"></i>
       </div>
       {/*advertisement section end */}
+      {}
     </div>
   );
 };
