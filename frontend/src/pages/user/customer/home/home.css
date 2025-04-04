@@ -388,7 +388,7 @@ textarea {
 }
 .contact-container .contact-right .contact-form .contact-button:hover {
   background-color: var(--bg_color_4);
-  color: var(--text_color_1);
+  color: var(--text_color_highlight_1);
 }
 /* contact filter */
 @media (max-width: 425px) {

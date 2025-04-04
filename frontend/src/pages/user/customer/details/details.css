@@ -2,11 +2,262 @@
 /* details box */
 .details-box-container {
   max-width: 1000px;
-  height: 500px;
+  height: auto;
   margin-inline: auto;
-  background-color: #ff0080;
   margin-top: 60px;
-  clip-path: path(
-    "M 0,10 A 10,10 0,0,1 10,0 L 900,0 A 10,10 0,0,1 910,10 L 910,100 A 10,10 0,0,0 920,110 L 990,110 A 10,10 0,0,1 1000,120 L 1000,490 A 10,10 0,0,1 990,500 L 10,500 A 10,10 0,0,1 0,490"
-  );
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  flex-wrap: wrap;
+  cursor: default;
+}
+.details-box-container .details-box-image {
+  height: 100%;
+  width: 400px;
+}
+.details-box-container .details-box-image .product-main-image {
+  height: 400px;
+  width: 400px;
+  object-fit: cover;
+  border-radius: var(--border_radius_2);
+  background-color: var(--bg_color_5);
+  border: 1px solid var(--primary_color);
+}
+.details-box-container .details-box-image .thumbnail-row {
+  height: 100px;
+  width: 100%;
+  display: flex;
+  gap: 5px;
+  margin-top: 5px;
+}
+.details-box-container .details-box-image .thumbnail-row .thumbnail-image {
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
+  border-radius: var(--border_radius_2);
+  cursor: pointer;
+  background-color: var(--bg_color_5);
+  border: 1px solid transparent;
+  transition: 300ms ease-out;
+}
+.details-box-container .details-box-image .thumbnail-row .active-product {
+  border: 1px solid var(--primary_color);
+}
+.details-box-container .details-box-content {
+  height: 100%;
+  width: 500px;
+}
+.details-box-container .details-box-content h3 {
+  color: var(--text_color_highlight_2);
+  margin-top: 20px;
+}
+.details-box-container .details-box-content h5 {
+  margin-top: 10px;
+}
+.details-box-container .details-box-content h5 i {
+  color: #c4c400;
+  margin-left: 5px;
+}
+.details-box-container .details-box-content .details-box-description {
+  margin-top: 40px;
+}
+.details-box-container
+  .details-box-content
+  .details-box-description
+  p:nth-child(1) {
+  opacity: 0.7;
+  font-size: 14px;
+}
+.details-box-container
+  .details-box-content
+  .details-box-description
+  p:nth-child(2) {
+  margin-top: 6px;
+}
+.details-box-container .details-box-content span {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 30px;
+}
+.details-box-container .details-box-content .details-box-span {
+  margin-top: 20px;
+}
+.details-box-container .details-box-content span p {
+  opacity: 0.7;
+  font-size: 14px;
+}
+.details-box-container .details-box-content .details-box-options {
+  margin-top: 10px;
+  height: auto;
+}
+.details-box-container .details-box-content .details-box-options p {
+  opacity: 0.7;
+  font-size: 14px;
+}
+.details-box-container
+  .details-box-content
+  .details-box-options
+  .details-box-options-button-container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.details-box-container
+  .details-box-content
+  .details-box-options
+  .details-box-options-button-container
+  h5 {
+  height: 30px;
+  width: auto;
+  display: flex;
+  align-items: center;
+  padding: 6px;
+  border-radius: var(--border_radius_2);
+  border: 1px solid var(--secondary_color);
+  color: var(--text_color_highlight_2);
+  cursor: pointer;
+}
+.details-box-container
+  .details-box-content
+  .details-box-options
+  .details-box-options-button-container
+  .selected-option {
+  background-color: #2196f3;
+  border: 1px solid #2196f3;
+  color: var(--bg_color_4);
+}
+.details-box-container .details-box-content .details-box-button-container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+.details-box-container
+  .details-box-content
+  .details-box-button-container
+  button {
+  width: 200px;
+  background-color: #2196f3;
+  border: 1px solid #2196f3;
+  color: var(--text_color_lite);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.details-box-container
+  .details-box-content
+  .details-box-button-container
+  button:hover {
+  background-color: var(--bg_color_4);
+  color: #2196f3;
+}
+.details-box-container
+  .details-box-content
+  .details-box-button-container
+  button:nth-child(2) {
+  width: 100px;
+  background-color: #4caf50;
+  border: 1px solid #4caf50;
+  color: var(--text_color_lite);
+}
+.details-box-container
+  .details-box-content
+  .details-box-button-container
+  button:nth-child(2):hover {
+  background-color: var(--bg_color_4);
+  color: #4caf50;
+}
+.details-box-container .details-box-content .details-box-paywith {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  margin-top: 30px;
+}
+.details-box-container .details-box-content .details-box-paywith img {
+  height: 40px;
+  width: auto;
+}
+@media (max-width: 942px) {
+  .details-box-container {
+    justify-content: center;
+    gap: 10px;
+  }
+}
+/* reviews section */
+.review-container {
+  max-width: 70%;
+  height: auto;
+  margin-top: 150px;
+  margin-inline: auto;
+  cursor: default;
+}
+.review-container .review-head {
+  width: 500px;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.review-container .review-head h2 {
+  color: var(--text_color_highlight_1);
+  margin-right: 30px;
+}
+.review-container .review-head h4 i {
+  color: #c4c400;
+  margin-left: 5px;
+}
+.review-container .review-head h4 h5 {
+  font-size: 16px;
+}
+.review-container .review-head p {
+  font-size: 14px;
+  opacity: 0.7;
+}
+.review-container .review-box {
+  width: 800px;
+  margin-top: 40px;
+  margin-inline: auto;
+}
+.review-container .review-box .review-box-review {
+  width: 100%;
+  height: auto;
+  display: flex;
+  padding: 10px;
+  gap: 20px;
+  border: 1px solid #d6d6d6;
+  border-radius: var(--border_radius_2);
+  margin-top: 10px;
+}
+.review-container .review-box .review-box-review img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+}
+.review-container .review-box .review-box-review .review-box-content h5 i {
+  color: #c4c400;
+  margin-left: 5px;
+}
+.review-container .review-box .review-box-review .review-box-content h5 {
+  margin-top: 10px;
+}
+.review-container .review-box .review-box-review .review-box-content p {
+  font-size: 15px;
+}
+@media (max-width: 1000px) {
+  .review-container {
+    max-width: 95%;
+  }
+  .review-container .review-head {
+    width: 100%;
+  }
+  .review-container .review-box {
+    width: 100%;
+  }
 }

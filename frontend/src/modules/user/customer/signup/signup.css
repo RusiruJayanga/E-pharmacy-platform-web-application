@@ -88,7 +88,7 @@
   .customer-signup-right
   button:hover {
   background-color: var(--bg_color_4);
-  color: var(--text_color_1);
+  color: var(--text_color_highlight_3);
 }
 /* responsive signup */
 @media (max-width: 541px) {
