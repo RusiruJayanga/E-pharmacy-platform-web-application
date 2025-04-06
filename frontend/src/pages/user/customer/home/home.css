@@ -24,22 +24,23 @@
   color: var(--text_color_lite);
   text-transform: uppercase;
 }
-.home-slide.home-lider-active {
+.home-slide.home-slider-active {
   opacity: 1;
 }
 .home-slider-container .home-slider-content {
   padding: 10px;
 }
 .home-slider-container .home-slider-content p {
-  text-transform: lowercase;
+  text-transform: none;
   font-weight: 500;
 }
 .home-slider-button-container {
+  width: 100%;
+  margin-top: 10px;
   display: flex;
   align-items: center;
   justify-content: space-around;
-  width: 310px;
-  margin-top: 10px;
+  flex-wrap: wrap;
 }
 .home-slider-button-container .home-slider-left-button,
 .home-slider-right-button {
@@ -54,6 +55,45 @@
   background-color: transparent;
   color: var(--text_color_lite);
   border: 2px solid var(--bg_color_4);
+}
+.home-slider-container .home-slider-content .home-slider-search {
+  height: 48px;
+  width: 400px;
+  background-color: #e3f2fd;
+  margin-left: auto;
+  border-radius: 24px;
+  color: var(--text_color_1);
+  border: 1px solid var(--primary_color);
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  cursor: pointer;
+  text-transform: none;
+}
+.home-slider-container
+  .home-slider-content
+  .home-slider-search
+  .home-slider-search-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text_color_lite);
+  background-color: var(--bg_color_strong_2);
+  margin-left: auto;
+}
+@media (max-width: 426px) {
+  .home-slider-button-container {
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  .home-slider-container .home-slider-content .home-slider-search {
+    width: 340px;
+    margin-inline: auto;
+  }
 }
 /* count section */
 .count-container {
@@ -369,6 +409,12 @@ textarea {
 .contact-container .contact-right .contact-form textarea {
   height: 100px;
   padding-top: 10px;
+  border-radius: var(--border_radius_2);
+  border: 1px solid var(--primary_color);
+  padding-right: 16px;
+  padding-left: 16px;
+  font-size: 16px;
+  font-weight: 300;
 }
 .contact-container .contact-right .contact-form p {
   font-size: 13px;

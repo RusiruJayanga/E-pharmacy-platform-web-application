@@ -78,7 +78,7 @@ nav ul {
   animation-range-end: 101vh;
 }
 .nav-container .nav-right {
-  width: 280px;
+  width: 320px;
   height: 100%;
   display: flex;
   justify-content: space-around;
@@ -171,7 +171,7 @@ nav ul {
   }
 }
 /* responsive navbar */
-@media (max-width: 1022px) {
+@media (max-width: 1045px) {
   .nav-container .nav-left {
     display: none;
     color: var(--text_color_1);

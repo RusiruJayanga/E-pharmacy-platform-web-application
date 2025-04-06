@@ -2,49 +2,29 @@ import React, { useState } from "react";
 import "./details.css";
 //ribben css
 import "../../../../components/user/customer/margin/margin.css";
+//google map config
+import LocationMap from "../../../../config/LocationMap";
 //prescription upload
-import PrescriptionModel from "../../../../modules/user/customer/details/Medicines_prescription";
+import PrescriptionModel from "../../../../modules/user/customer/details/Pharmacies_prescription";
 
-const Medicines_details = () => {
+const Pharmacies_details = () => {
   //product fatch
-  const product = {
+  const advertisement = {
     name: "Pain Relief Tablets",
     description:
       "Fast-acting relief from body aches and pains.Fast-acting relief from body aches and pains.Fast-acting relief from body aches and pains.Fast-acting relief from body aches and pains.",
-    law: "illegal",
-    offers: 44,
+    phonenumber: "0776679711",
+    email: "achesandpainFastacting@gmail.com",
+    districts: "Matara",
   };
   //image fatch
   const images = {
-    images: [
-      "/details/1.jpeg",
-      "/details/2.jpeg",
-      "/details/3.jpeg",
-      "/details/4.jpeg",
-    ],
+    images: ["/details/1.jpeg"],
   };
-  //option fatch
-  const options = {
-    option: ["Tablets1", "Tablets2", "Tablets3", "Tablets4", "Tablets5"],
-    prices: {
-      Tablets1: 1000,
-      Tablets2: 1500,
-      Tablets3: 2000,
-      Tablets4: 2009,
-      Tablets5: 2005,
-    },
-  };
-  //product image select
-  const [selectedImage, setSelectedImage] = useState(images.images[0]);
-  //product option select
-  const [selectedSize, setSelectedSize] = useState(options.option[0]);
-  const [currentPrice, setCurrentPrice] = useState(
-    options.prices[options.option[0]]
-  );
-
-  const handleOptionClick = (option) => {
-    setSelectedSize(option);
-    setCurrentPrice(options.prices[option]);
+  //google map location fatch
+  const pharmacyLocation = {
+    lat: 6.9271,
+    lng: 79.8612,
   };
   //prescription upload
   const [isPrescriptionOpen, setIsPrescriptionOpen] = useState(false);
@@ -59,73 +39,35 @@ const Medicines_details = () => {
         <div className="details-box-image">
           <img
             className="product-main-image"
-            src={selectedImage}
+            src={images.images}
             alt="product"
           />
-          <div className="thumbnail-row">
-            {images.images.map((img, index) => (
-              <img
-                key={index}
-                src={img}
-                alt="thumb"
-                className={`thumbnail-image ${
-                  selectedImage === img ? "active-product" : ""
-                }`}
-                onClick={() => setSelectedImage(img)}
-              />
-            ))}
-          </div>
         </div>
         <div className="details-box-content">
-          <h3>{product.name}</h3>
+          <h3>{advertisement.name}</h3>
           <div className="details-box-description">
             <p>Description -</p>
-            <p>{product.description}</p>
+            <p>{advertisement.description}</p>
           </div>
-          {product.offers > 0 && (
-            <span className="details-box-span">
-              <p>Offer - </p>
-              <p>{product.offers}% off</p>
-            </span>
-          )}
-          <span className={`${product.offers === 0 ? "details-box-span" : ""}`}>
-            <p>Price - </p>
-            <h4>Rs/ {currentPrice}</h4>
+          <span className="details-box-span">
+            <p>Contact Number - </p>
+            <h5>{advertisement.phonenumber}</h5>
           </span>
-          <div className="details-box-options">
-            <p>Options -</p>
-            <div className="details-box-options-button-container">
-              {options.option.map((option, index) => (
-                <h5
-                  key={index}
-                  className={`option-btn ${
-                    selectedSize === option ? "selected-option" : ""
-                  }`}
-                  onClick={() => handleOptionClick(option)}
-                >
-                  {option}
-                </h5>
-              ))}
-            </div>
-          </div>
+          <span>
+            <p>E mail - </p>
+            <h5>{advertisement.email}</h5>
+          </span>
+          <span>
+            <p>District - </p>
+            <h5>{advertisement.districts}</h5>
+          </span>
           <div className="details-box-button-container">
-            {product.law === "illegal" && (
-              <button onClick={() => setIsPrescriptionOpen(true)}>
-                <h4>
-                  <i class="bi bi-list-columns-reverse"></i>
-                </h4>
-                Upload Prescription
-              </button>
-            )}
-
-            {product.law === "legal" && (
-              <button>
-                <h4>
-                  <i class="bi bi-cart2"></i>
-                </h4>
-                Add To Cart
-              </button>
-            )}
+            <button onClick={() => setIsPrescriptionOpen(true)}>
+              <h4>
+                <i class="bi bi-list-columns-reverse"></i>
+              </h4>
+              Upload Prescription
+            </button>
             <button>
               <h4>
                 <i class="bi bi-bookmark"></i>
@@ -136,6 +78,25 @@ const Medicines_details = () => {
             <img src="paypal.png" alt="paywith" />
             <img src="cardpay.png" alt="paywith" />
           </div>
+        </div>
+      </div>
+      {}
+      {/* map location section */}
+      <div className="location-container">
+        <div className="location-content">
+          <h3>Location</h3>
+          <h4>Find Pharmacy Location</h4>
+          <div className="location-instructions">
+            <h5>Attention !</h5>
+            <p>
+              When selecting a pharmacy, enter the district you live in. Stores
+              are rated up to 5 stars based on customer feedback on the quality
+              of service.
+            </p>
+          </div>
+        </div>
+        <div className="location-map">
+          <LocationMap location={pharmacyLocation} />
         </div>
       </div>
       {}
@@ -192,4 +153,4 @@ const Medicines_details = () => {
   );
 };
 
-export default Medicines_details;
+export default Pharmacies_details;

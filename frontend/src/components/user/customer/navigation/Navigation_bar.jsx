@@ -71,6 +71,9 @@ const Navigation_bar = () => {
               <i class="bi bi-search"></i>
             </h4>
             <h4 className="nav-list-right">
+              <i class="bi bi-bell"></i>
+            </h4>
+            <h4 className="nav-list-right">
               <i class="bi bi-cart2"></i>
             </h4>
             <h4 className="nav-list-right">
