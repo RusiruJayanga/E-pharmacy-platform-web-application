@@ -180,7 +180,7 @@ const Medicines = () => {
           <div className="product-card" id={idx}>
             <div className="product-card-discription">
               <span>
-                <p>Name</p>
+                <p>Name -</p>
                 <h5>Lorem ipsum dolor{product}</h5>
               </span>
               <div className="product-card-offers hot">

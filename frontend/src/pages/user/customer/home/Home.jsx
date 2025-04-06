@@ -73,7 +73,7 @@ const Home = () => {
           <div
             key={index}
             className={`home-slide ${
-              index === currentIndex ? "home-lider-active" : ""
+              index === currentIndex ? "home-slider-active" : ""
             }`}
             style={{
               backgroundImage: `linear-gradient(0deg, rgba(20,150,127,0.741946436777836) 0%, rgba(44,62,80,0.6106092095041141) 100%), url(${image})`,
@@ -92,6 +92,18 @@ const Home = () => {
                 <a href="#product-section">
                   <button className="home-slider-right-button">SHOP</button>
                 </a>
+                <div className="home-slider-search">
+                  <h5
+                    style={{
+                      marginLeft: "10px",
+                    }}
+                  >
+                    Search With Prescription !
+                  </h5>
+                  <h5 className="home-slider-search-icon">
+                    <i class="bi bi-search"></i>
+                  </h5>
+                </div>
               </div>
             </div>
           </div>
@@ -214,7 +226,7 @@ const Home = () => {
           <div className="product-card" id={idx}>
             <div className="product-card-discription">
               <span>
-                <p>Name</p>
+                <p>Name -</p>
                 <h5>Lorem ipsum dolor{product}</h5>
               </span>
               <div className="product-card-offers hot">
@@ -266,7 +278,7 @@ const Home = () => {
           <div className="product-card" id={idx}>
             <div className="product-card-discription">
               <span>
-                <p>Name</p>
+                <p>Name -</p>
                 <h5>Lorem ipsum dolor{product}</h5>
               </span>
               <div className="product-card-offers hot">

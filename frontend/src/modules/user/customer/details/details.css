@@ -1,0 +1,99 @@
+/* prescription upload */
+.prescription-popup-content {
+  max-width: 440px;
+  width: 100%;
+  height: 500px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg_color_4);
+  color: var(--text_color_1);
+  border-radius: var(--border_radius_1);
+  cursor: default;
+}
+.prescription-popup-content .prescription-popup-close {
+  width: 410px;
+  margin-top: -40px;
+}
+.prescription-popup-content .prescription-popup-close h3 {
+  width: 20px;
+  cursor: pointer;
+  margin-left: auto;
+  margin-top: 10px;
+}
+.prescription-popup-content h3 {
+  color: var(--text_color_highlight_3);
+  text-transform: uppercase;
+}
+.prescription-popup-content .prescription-popup-upload-form {
+  width: 410px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: var(--border_radius_2);
+  border: 2px dashed var(--primary_color);
+  margin-top: 30px;
+  cursor: pointer;
+}
+.prescription-popup-content .prescription-popup-error {
+  width: 410px;
+}
+.prescription-popup-content .prescription-popup-error p {
+  font-size: 13px;
+  height: 15px;
+  opacity: 0.7;
+  color: red;
+}
+.prescription-popup-content .prescription-popup-upload-form h2 {
+  font-size: 50px;
+  color: var(--text_color_highlight_3);
+}
+.prescription-popup-content .prescription-popup-upload-form p {
+  font-size: 14px;
+  opacity: 0.7;
+}
+.prescription-popup-content textarea {
+  width: 410px;
+  height: 100px;
+  padding-top: 10px;
+  border-radius: var(--border_radius_2);
+  border: 1px solid var(--primary_color);
+  padding-right: 16px;
+  padding-left: 16px;
+  font-size: 16px;
+  font-weight: 300;
+  margin-top: 20px;
+}
+.prescription-popup-content button {
+  width: 150px;
+  margin-top: 20px;
+  background-color: var(--bg_color_strong_2);
+  color: var(--text_color_lite);
+  border: 2px solid var(--bg_color_strong_2);
+}
+.prescription-popup-content button:hover {
+  background-color: var(--bg_color_4);
+  color: var(--text_color_highlight_3);
+}
+@media (max-width: 495px) {
+  .prescription-popup-content {
+    max-width: 360px;
+    width: 100%;
+  }
+  .prescription-popup-content .prescription-popup-close {
+    display: none;
+  }
+  .prescription-popup-content .prescription-popup-upload-form {
+    width: 96%;
+  }
+  .prescription-popup-content .prescription-popup-error {
+    width: 96%;
+  }
+  .prescription-popup-content textarea {
+    width: 96%;
+  }
+}

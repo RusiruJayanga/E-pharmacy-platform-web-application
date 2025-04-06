@@ -12,6 +12,7 @@
 .product-filter-container h3 {
   border-radius: 20px;
   color: var(--text_color_highlight_2);
+  text-transform: uppercase;
 }
 .product-filter-content {
   max-width: 1200px;

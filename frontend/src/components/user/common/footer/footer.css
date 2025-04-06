@@ -6,6 +6,7 @@
   text-align: center;
   border-top-left-radius: 50px;
   margin-top: 300px;
+  cursor: default;
 }
 .footer-container {
   width: 90%;

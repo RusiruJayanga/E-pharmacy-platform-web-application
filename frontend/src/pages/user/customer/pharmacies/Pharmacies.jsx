@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 //margin css
 import "../../../../components/user/customer/margin/margin.css";
 //filter css
@@ -162,9 +163,11 @@ const Pharmacies = () => {
                   4.5 <i class="bi bi-star-fill"></i>
                 </p>
               </span>
-              <div className="advertisement-card-see-more">
-                <p>See More</p>
-              </div>
+              <Link to="/Pharmacies_details">
+                <div className="advertisement-card-see-more">
+                  <p>See More</p>
+                </div>
+              </Link>
             </div>
           </div>
         ))}
