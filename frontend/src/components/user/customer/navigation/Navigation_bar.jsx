@@ -76,9 +76,11 @@ const Navigation_bar = () => {
             <h4 className="nav-list-right">
               <i class="bi bi-cart2"></i>
             </h4>
-            <h4 className="nav-list-right">
-              <i class="bi bi-bookmark"></i>
-            </h4>
+            <Link to="/Save">
+              <h4 className="nav-list-right">
+                <i class="bi bi-bookmark"></i>
+              </h4>
+            </Link>
             {/* translate dropdown */}
             <h4
               className="nav-list-right translate-drop"

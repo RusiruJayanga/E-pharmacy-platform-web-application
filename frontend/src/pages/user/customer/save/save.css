@@ -1,0 +1,100 @@
+/* save styles */
+.save-container {
+  max-width: 1200px;
+  height: auto;
+  margin-inline: auto;
+  margin-top: 100px;
+  cursor: default;
+}
+.save-container .save-option-box {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.save-container .save-option-box h4 {
+  width: 150px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--border_radius_2);
+  border: 1px solid var(--secondary_color);
+  color: var(--text_color_highlight_2);
+  cursor: pointer;
+}
+.save-container .save-option-box .active-category {
+  background-color: var(--secondary_color);
+  color: var(--text_color_lite);
+}
+.save-container .save-item-container {
+  width: 1000px;
+  height: auto;
+  margin-inline: auto;
+  margin-top: 20px;
+}
+.save-container .save-item-container .save-item {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 10px;
+  border-radius: var(--border_radius_1);
+  background-color: var(--bg_color_5);
+  margin-top: 10px;
+  border: 1px solid #c7c7c7;
+}
+.save-container .save-item-container .save-item img {
+  height: 80px;
+  width: 80px;
+  object-fit: cover;
+  border-radius: var(--border_radius_2);
+  border: 1px solid var(--primary_color);
+}
+.save-container .save-item-container .save-item .save-action {
+  width: 200px;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.save-container .save-item-container .save-item .save-action h4:nth-child(1) {
+  width: 100px;
+  height: 40px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #5858ff;
+  color: var(--text_color_lite);
+  cursor: pointer;
+  transition: 300ms ease-out;
+}
+.save-container
+  .save-item-container
+  .save-item
+  .save-action
+  h4:nth-child(1):hover {
+  background-color: #0000ff;
+}
+.save-container .save-item-container .save-item .save-action h4:nth-child(2) {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ff6a6a;
+  color: var(--text_color_lite);
+  cursor: pointer;
+  transition: 300ms ease-out;
+}
+.save-container
+  .save-item-container
+  .save-item
+  .save-action
+  h4:nth-child(2):hover {
+  background-color: #ff0000;
+}

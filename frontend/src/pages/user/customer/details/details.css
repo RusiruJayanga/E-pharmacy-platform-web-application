@@ -23,6 +23,14 @@
   background-color: var(--bg_color_5);
   border: 1px solid var(--primary_color);
 }
+.details-box-container .details-box-image .product-main-image-dif {
+  height: 470px;
+  width: 400px;
+  object-fit: cover;
+  border-radius: var(--border_radius_2);
+  background-color: var(--bg_color_5);
+  border: 1px solid var(--primary_color);
+}
 .details-box-container .details-box-image .thumbnail-row {
   height: 100px;
   width: 100%;
@@ -50,6 +58,18 @@
 .details-box-container .details-box-content h3 {
   color: var(--text_color_highlight_2);
   margin-top: 20px;
+}
+.details-box-container .details-box-content .details-box-seller-info {
+  width: auto;
+  height: 30px;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  border-radius: var(--border_radius_2);
+  border: 1px solid var(--primary_color);
+  color: var(--text_color_highlight_1);
+  margin-top: 8px;
+  cursor: pointer;
 }
 .details-box-container .details-box-content .details-box-description {
   margin-top: 40px;
@@ -121,8 +141,8 @@
   .details-box-options
   .details-box-options-button-container
   .selected-option {
-  background-color: #2196f3;
-  border: 1px solid #2196f3;
+  background-color: var(--secondary_color);
+  border: 1px solid var(--secondary_color);
   color: var(--bg_color_4);
 }
 .details-box-container .details-box-content .details-box-button-container {
@@ -198,7 +218,7 @@
 .review-container {
   max-width: 70%;
   height: auto;
-  margin-top: 150px;
+  margin-top: 100px;
   margin-inline: auto;
   cursor: default;
 }
@@ -236,8 +256,9 @@
   display: flex;
   padding: 10px;
   gap: 20px;
-  border: 1px solid #d6d6d6;
+  border: 1px solid #c7c7c7;
   border-radius: var(--border_radius_2);
+  background-color: var(--bg_color_5);
   margin-top: 10px;
 }
 .review-container .review-box .review-box-review img {
@@ -281,7 +302,7 @@
 .location-container {
   max-width: 1200px;
   height: auto;
-  margin-top: 150px;
+  margin-top: 100px;
   margin-inline: auto;
   display: flex;
   justify-content: space-between;
@@ -294,18 +315,14 @@
   width: 400px;
 }
 .location-container .location-content h3 {
-  color: var(--text_color_highlight_1);
-  text-transform: uppercase;
-}
-.location-container .location-content h4 {
   color: var(--text_color_highlight_2);
+}
+.location-container .location-content h5 {
+  color: var(--text_color_highlight_1);
   margin-top: 5px;
 }
 .location-container .location-content .location-instructions {
   margin-top: 20px;
-}
-.location-container .location-content .location-instructions h5 {
-  color: #ff4e4e;
 }
 .location-container .location-content .location-instructions p {
   margin-top: 10px;

@@ -80,6 +80,18 @@ const Home = () => {
             }}
           >
             <div className="home-slider-content">
+              <div className="home-slider-search">
+                <h5
+                  style={{
+                    marginLeft: "10px",
+                  }}
+                >
+                  Search Prescription With AI !
+                </h5>
+                <h5 className="home-slider-search-icon">
+                  <i class="bi bi-search"></i>
+                </h5>
+              </div>
               <h1>Health&nbsp; Plus&nbsp; Pharmacy</h1>
               <p>
                 Health Plus Pharmacy, we make healthcare easy and accessible.
@@ -88,22 +100,12 @@ const Home = () => {
                 home.
               </p>
               <div className="home-slider-button-container">
-                <button className="home-slider-left-button">SEARCH</button>
+                <a href="#contact">
+                  <button className="home-slider-left-button">CONTACT</button>
+                </a>
                 <a href="#product-section">
                   <button className="home-slider-right-button">SHOP</button>
                 </a>
-                <div className="home-slider-search">
-                  <h5
-                    style={{
-                      marginLeft: "10px",
-                    }}
-                  >
-                    Search With Prescription !
-                  </h5>
-                  <h5 className="home-slider-search-icon">
-                    <i class="bi bi-search"></i>
-                  </h5>
-                </div>
               </div>
             </div>
           </div>
@@ -244,9 +246,11 @@ const Home = () => {
                 <h5>Rs/ 89855.00</h5>
               </span>
             </div>
-            <div className="product-card-see-more">
-              <p>See More</p>
-            </div>
+            <Link to="/Accessories_details">
+              <div className="product-card-see-more">
+                <p>See More</p>
+              </div>
+            </Link>
           </div>
         ))}
         {/* repeat */}
@@ -296,9 +300,11 @@ const Home = () => {
                 <h5>Rs/ 89855.00</h5>
               </span>
             </div>
-            <div className="product-card-see-more">
-              <p>See More</p>
-            </div>
+            <Link to="/Accessories_details">
+              <div className="product-card-see-more">
+                <p>See More</p>
+              </div>
+            </Link>
           </div>
         ))}
         {/* repeat */}

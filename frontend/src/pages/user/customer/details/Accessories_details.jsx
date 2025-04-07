@@ -2,18 +2,14 @@ import React, { useState } from "react";
 import "./details.css";
 //ribben css
 import "../../../../components/user/customer/margin/margin.css";
-//prescription upload
-import PrescriptionModel from "../../../../modules/user/customer/details/Medicines_prescription";
 
-const Medicines_details = () => {
+const Accessories_details = () => {
   //product fatch
   const product = {
     name: "Pain Relief Tablets",
     description:
       "Fast-acting relief from body aches and pains.Fast-acting relief from body aches and pains.Fast-acting relief from body aches and pains.Fast-acting relief from body aches and pains.",
-    law: "illegal",
     offers: 44,
-    seller: "hh group.ltd",
   };
   //image fatch
   const images = {
@@ -47,8 +43,6 @@ const Medicines_details = () => {
     setSelectedSize(option);
     setCurrentPrice(options.prices[option]);
   };
-  //prescription upload
-  const [isPrescriptionOpen, setIsPrescriptionOpen] = useState(false);
 
   return (
     <div>
@@ -113,23 +107,12 @@ const Medicines_details = () => {
             </div>
           </div>
           <div className="details-box-button-container">
-            {product.law === "illegal" && (
-              <button onClick={() => setIsPrescriptionOpen(true)}>
-                <h4>
-                  <i class="bi bi-list-columns-reverse"></i>
-                </h4>
-                Upload Prescription
-              </button>
-            )}
-
-            {product.law === "legal" && (
-              <button>
-                <h4>
-                  <i class="bi bi-cart2"></i>
-                </h4>
-                Add To Cart
-              </button>
-            )}
+            <button>
+              <h4>
+                <i class="bi bi-cart2"></i>
+              </h4>
+              Add To Cart
+            </button>
             <button>
               <h4>
                 <i class="bi bi-bookmark"></i>
@@ -186,14 +169,8 @@ const Medicines_details = () => {
         </div>
       </div>
       {}
-      {/* prescription model */}
-      <PrescriptionModel
-        isOpen={isPrescriptionOpen}
-        onClose={() => setIsPrescriptionOpen(false)}
-      />
-      {}
     </div>
   );
 };
 
-export default Medicines_details;
+export default Accessories_details;

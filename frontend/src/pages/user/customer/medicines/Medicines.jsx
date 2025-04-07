@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import "./medicines.css";
 //margin css
 import "../../../../components/user/customer/margin/margin.css";
 //filter css
@@ -157,7 +156,7 @@ const Medicines = () => {
                 <label key={id}>{id}</label>
               </div>
             ))}
-            {}
+            {/* repeat */}
           </div>
         </div>
         {}

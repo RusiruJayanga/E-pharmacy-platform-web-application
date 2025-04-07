@@ -5,9 +5,9 @@ import "../../../../components/user/customer/margin/margin.css";
 //google map config
 import LocationMap from "../../../../config/LocationMap";
 //prescription upload
-import PrescriptionModel from "../../../../modules/user/customer/details/Pharmacies_prescription";
+import PrescriptionModel from "../../../../modules/user/customer/details/Lab_prescription";
 
-const Pharmacies_details = () => {
+const Lab_details = () => {
   //advertisement fatch
   const advertisement = {
     name: "Pain Relief Tablets",
@@ -20,7 +20,7 @@ const Pharmacies_details = () => {
     time: "10Am to 10Pm",
   };
   //google map location fatch
-  const pharmacyLocation = {
+  const labLocation = {
     lat: 6.9271,
     lng: 79.8612,
   };
@@ -87,18 +87,19 @@ const Pharmacies_details = () => {
       <div className="location-container">
         <div className="location-content">
           <h3>Location</h3>
-          <h5>Find Pharmacy Location</h5>
+          <h5>Find Laboratory Location</h5>
           <div className="location-instructions">
             <p>
-              Easily discover nearby pharmacies with our interactive location
-              feature. Whether you need to refill prescriptions or explore
-              over-the-counter products, our system helps you find the most
-              convenient pharmacy based on your location.
+              Quickly locate certified laboratories for your medical tests and
+              checkups. Our platform allows you to browse labs by area, compare
+              services, and access essential details like directions, contact
+              information. It’s never been easier to book your next lab visit
+              with confidence and clarity.
             </p>
           </div>
         </div>
         <div className="location-map">
-          <LocationMap location={pharmacyLocation} />
+          <LocationMap location={labLocation} />
         </div>
       </div>
       {}
@@ -155,4 +156,4 @@ const Pharmacies_details = () => {
   );
 };
 
-export default Pharmacies_details;
+export default Lab_details;
