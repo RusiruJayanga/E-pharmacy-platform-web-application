@@ -167,7 +167,7 @@ const Doctors = () => {
                 <label key={id}>{id}</label>
               </div>
             ))}
-            {}
+            {/* repeat */}
           </div>
         </div>
         {}

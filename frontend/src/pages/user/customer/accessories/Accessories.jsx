@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 //margin css
 import "../../../../components/user/customer/margin/margin.css";
 //filter css
@@ -155,7 +156,7 @@ const Accessories = () => {
                 <label key={id}>{id}</label>
               </div>
             ))}
-            {}
+            {/* repeat */}
           </div>
         </div>
         {}
@@ -196,9 +197,11 @@ const Accessories = () => {
                 <h5>Rs/ 89855.00</h5>
               </span>
             </div>
-            <div className="product-card-see-more">
-              <p>See More</p>
-            </div>
+            <Link to="/Accessories_details">
+              <div className="product-card-see-more">
+                <p>See More</p>
+              </div>
+            </Link>
           </div>
         ))}
         {/* repeat */}

@@ -17,6 +17,9 @@ import Accessories from "./pages/user/customer/accessories/Accessories";
 import Medicines_details from "./pages/user/customer/details/Medicines_details";
 import Pharmacies_details from "./pages/user/customer/details/Pharmacies_details";
 import Doctors_details from "./pages/user/customer/details/Doctors_details";
+import Lab_details from "./pages/user/customer/details/Lab_details";
+import Accessories_details from "./pages/user/customer/details/Accessories_details";
+import Save from "./pages/user/customer/save/Save";
 
 const App = () => {
   return (
@@ -36,6 +39,9 @@ const App = () => {
           "Medicines_details",
           "Pharmacies_details",
           "Doctors_details",
+          "Lab_details",
+          "Accessories_details",
+          "Save",
         ].map((path) => (
           <Route path={path} element={<Navigation_bar />} />
         ))}
@@ -52,6 +58,9 @@ const App = () => {
         <Route path="/Medicines_details" element={<Medicines_details />} />
         <Route path="/Pharmacies_details" element={<Pharmacies_details />} />
         <Route path="/Doctors_details" element={<Doctors_details />} />
+        <Route path="/Lab_details" element={<Lab_details />} />
+        <Route path="/Accessories_details" element={<Accessories_details />} />
+        <Route path="/Save" element={<Save />} />
       </Routes>
       <Footer />
     </div>

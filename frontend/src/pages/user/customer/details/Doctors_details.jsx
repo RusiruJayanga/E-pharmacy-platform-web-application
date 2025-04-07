@@ -4,7 +4,7 @@ import "./details.css";
 import "../../../../components/user/customer/margin/margin.css";
 
 const Doctors_details = () => {
-  //product fatch
+  //advertisement fatch
   const advertisementid = {
     name: "Pain Relief Tablets",
     description:
@@ -12,10 +12,8 @@ const Doctors_details = () => {
     specialistin: "Cardiologist",
     phonenumber: "0776679711",
     email: "achesandpainFastacting@gmail.com",
-    districts: "Matara",
-  };
-  //image fatch
-  const images = {
+    location: "Matara asiri hospital",
+    price: 2500,
     images: ["/details/1.jpeg"],
   };
 
@@ -28,8 +26,8 @@ const Doctors_details = () => {
       <div className="details-box-container">
         <div className="details-box-image">
           <img
-            className="product-main-image"
-            src={images.images}
+            className="product-main-image-dif"
+            src={advertisementid.images}
             alt="product"
           />
         </div>
@@ -52,10 +50,26 @@ const Doctors_details = () => {
             <h5>{advertisementid.email}</h5>
           </span>
           <span>
-            <p>District - </p>
-            <h5>{advertisementid.districts}</h5>
+            <p>Location - </p>
+            <h5>{advertisementid.location}</h5>
           </span>
-
+          <span>
+            <p>Price - </p>
+            <h4>Rs/ {advertisementid.price}</h4>
+          </span>
+          <div className="details-box-button-container">
+            <button>
+              <h4>
+                <i class="bi bi-chat-dots"></i>
+              </h4>
+              Channel Doctor
+            </button>
+            <button>
+              <h4>
+                <i class="bi bi-bookmark"></i>
+              </h4>
+            </button>
+          </div>
           <div className="details-box-paywith">
             <img src="paypal.png" alt="paywith" />
             <img src="cardpay.png" alt="paywith" />

@@ -39,7 +39,7 @@ const Signup = ({ isOpen, onClose }) => {
             <input name="Password" placeholder="Password"></input>
             <p>console.error</p>
           </div>
-          <button>Send</button>
+          <button>Signup</button>
         </div>
       </motion.div>
     </div>
