@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import "./details.css";
 //ribben css
 import "../../../../components/user/customer/margin/margin.css";
@@ -14,7 +15,7 @@ const Accessories_details = () => {
   //image fatch
   const images = {
     images: [
-      "/details/1.jpeg",
+      "/details/1.png",
       "/details/2.jpeg",
       "/details/3.jpeg",
       "/details/4.jpeg",
@@ -74,7 +75,9 @@ const Accessories_details = () => {
         <div className="details-box-content">
           <h3>{product.name}</h3>
           <span>
-            <h5 className="details-box-seller-info">Seller Info</h5>
+            <Link to="/Seller_info">
+              <h5 className="details-box-seller-info">Seller Info</h5>
+            </Link>
           </span>
           <div className="details-box-description">
             <p>Description -</p>

@@ -14,7 +14,7 @@ const Doctors_details = () => {
     email: "achesandpainFastacting@gmail.com",
     location: "Matara asiri hospital",
     price: 2500,
-    images: ["/details/1.jpeg"],
+    images: ["/details/1.png"],
   };
 
   return (

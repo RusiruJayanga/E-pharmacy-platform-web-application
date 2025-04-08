@@ -20,6 +20,7 @@ import Doctors_details from "./pages/user/customer/details/Doctors_details";
 import Lab_details from "./pages/user/customer/details/Lab_details";
 import Accessories_details from "./pages/user/customer/details/Accessories_details";
 import Save from "./pages/user/customer/save/Save";
+import Seller_info from "./pages/user/customer/info/Seller_info";
 
 const App = () => {
   return (
@@ -42,6 +43,7 @@ const App = () => {
           "Lab_details",
           "Accessories_details",
           "Save",
+          "Seller_info",
         ].map((path) => (
           <Route path={path} element={<Navigation_bar />} />
         ))}
@@ -61,6 +63,7 @@ const App = () => {
         <Route path="/Lab_details" element={<Lab_details />} />
         <Route path="/Accessories_details" element={<Accessories_details />} />
         <Route path="/Save" element={<Save />} />
+        <Route path="/Seller_info" element={<Seller_info />} />
       </Routes>
       <Footer />
     </div>

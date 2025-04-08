@@ -20,7 +20,12 @@ const Save = () => {
       {/* ribben */}
       <div className="ribben"></div>
       {}
-      {/* ribben */}
+      {/* head section */}
+      <div className="save-section-head">
+        <h2>My Save</h2>
+      </div>
+      {}
+      {/* save section */}
       <div className="save-container">
         <div className="save-option-box">
           {categories.map((category, index) => (
@@ -36,8 +41,9 @@ const Save = () => {
         <div className="save-item-container">
           {/* repeat */}
           <div className="save-item">
-            <img src="/details/1.jpeg" alt="product" />
-            <h4>Pain Relief Tablets</h4>
+            <img src="/details/1.png" alt="product" />
+            <h4>Pain Relief Tablets Pain Relief Tablets</h4>
+            <h5>202 Left</h5>
             <h5>2025/2/1</h5>
             <div className="save-action">
               <h4>Show</h4>
@@ -48,8 +54,9 @@ const Save = () => {
           </div>
           {/* repeat */}
           <div className="save-item">
-            <img src="/details/1.jpeg" alt="product" />
+            <img src="/details/1.png" alt="product" />
             <h4>Pain Relief Tablets</h4>
+            <h5>202 Left</h5>
             <h5>2025/2/1</h5>
             <div className="save-action">
               <h4>Show</h4>

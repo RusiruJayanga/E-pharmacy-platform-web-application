@@ -65,8 +65,6 @@
   padding: 6px;
   display: flex;
   align-items: center;
-  border-radius: var(--border_radius_2);
-  border: 1px solid var(--primary_color);
   color: var(--text_color_highlight_1);
   margin-top: 8px;
   cursor: pointer;
@@ -120,6 +118,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 5px;
+  margin-top: 10px;
 }
 .details-box-container
   .details-box-content
@@ -132,8 +131,8 @@
   align-items: center;
   padding: 6px;
   border-radius: var(--border_radius_2);
-  border: 1px solid var(--secondary_color);
-  color: var(--text_color_highlight_2);
+  border: 1px solid var(--bg_color_strong_2);
+  color: var(--text_color_highlight_3);
   cursor: pointer;
 }
 .details-box-container
@@ -141,16 +140,15 @@
   .details-box-options
   .details-box-options-button-container
   .selected-option {
-  background-color: var(--secondary_color);
-  border: 1px solid var(--secondary_color);
-  color: var(--bg_color_4);
+  background-color: var(--bg_color_strong_2);
+  color: var(--text_color_lite);
 }
 .details-box-container .details-box-content .details-box-button-container {
   width: 100%;
   height: auto;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: left;
   gap: 10px;
   margin-top: 20px;
 }
@@ -159,8 +157,8 @@
   .details-box-button-container
   button {
   width: 200px;
-  background-color: #2196f3;
-  border: 1px solid #2196f3;
+  background-color: #178bcd;
+  border: 1px solid #178bcd;
   color: var(--text_color_lite);
   display: flex;
   align-items: center;
@@ -171,15 +169,15 @@
   .details-box-button-container
   button:hover {
   background-color: var(--bg_color_4);
-  color: #2196f3;
+  color: #178bcd;
 }
 .details-box-container
   .details-box-content
   .details-box-button-container
   button:nth-child(2) {
   width: 100px;
-  background-color: #4caf50;
-  border: 1px solid #4caf50;
+  background-color: #ff0080;
+  border: 1px solid #ff0080;
   color: var(--text_color_lite);
 }
 .details-box-container
@@ -187,7 +185,7 @@
   .details-box-button-container
   button:nth-child(2):hover {
   background-color: var(--bg_color_4);
-  color: #4caf50;
+  color: #ff0080;
 }
 .details-box-container .details-box-content .details-box-paywith {
   width: 100%;
@@ -218,7 +216,7 @@
 .review-container {
   max-width: 70%;
   height: auto;
-  margin-top: 100px;
+  margin-top: 150px;
   margin-inline: auto;
   cursor: default;
 }
@@ -256,7 +254,7 @@
   display: flex;
   padding: 10px;
   gap: 20px;
-  border: 1px solid #c7c7c7;
+  border: 1px solid var(--bg_color_2);
   border-radius: var(--border_radius_2);
   background-color: var(--bg_color_5);
   margin-top: 10px;
@@ -275,6 +273,7 @@
 }
 .review-container .review-box .review-box-review .review-box-content p {
   font-size: 15px;
+  opacity: 0.7;
 }
 .review-container .review-box-show-more-products {
   width: 200px;

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import "./details.css";
 //ribben css
 import "../../../../components/user/customer/margin/margin.css";
@@ -16,7 +17,7 @@ const Pharmacies_details = () => {
     phonenumber: "0776679711",
     email: "achesandpainFastacting@gmail.com",
     districts: "Matara",
-    images: ["/details/1.jpeg"],
+    images: ["/details/1.png"],
     time: "10Am to 10Pm",
   };
   //google map location fatch
@@ -43,6 +44,11 @@ const Pharmacies_details = () => {
         </div>
         <div className="details-box-content">
           <h3>{advertisement.name}</h3>
+          <span>
+            <Link to="/Seller_info">
+              <h5 className="details-box-seller-info">Contact Shop</h5>
+            </Link>
+          </span>
           <div className="details-box-description">
             <p>Description -</p>
             <p>{advertisement.description}</p>

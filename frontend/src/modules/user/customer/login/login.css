@@ -27,7 +27,7 @@
   height: auto;
 }
 .customer-login-popup-content h2 {
-  color: var(--text_color_highlight_3);
+  color: var(--text_color_highlight_1);
 }
 .customer-login-popup-content .customer-login-form {
   width: 350px;
@@ -45,11 +45,11 @@
 .customer-login-popup-content button {
   width: 150px;
   margin-top: 20px;
-  background-color: var(--bg_color_strong_2);
+  background-color: var(--primary_color);
   color: var(--text_color_lite);
-  border: 2px solid var(--bg_color_strong_2);
+  border: 2px solid var(--primary_color);
 }
 .customer-login-popup-content button:hover {
   background-color: var(--bg_color_4);
-  color: var(--text_color_highlight_3);
+  color: var(--text_color_highlight_1);
 }
