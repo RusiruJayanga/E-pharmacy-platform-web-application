@@ -17,7 +17,7 @@
   max-width: 1200px;
   height: auto;
   margin-inline: auto;
-  border: 1px solid var(--bg_color_3);
+  border: 1px solid var(--bg_color_2);
   margin-top: 20px;
   border-radius: var(--border_radius_1);
   display: flex;
@@ -38,7 +38,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, 240px);
   margin-top: 10px;
-  border-right: 1px solid var(--bg_color_3);
+  border-right: 1px solid var(--bg_color_2);
 }
 .product-filter-content .product-filter-category .product-filter-category-item {
   width: 240px;

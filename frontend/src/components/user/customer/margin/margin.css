@@ -34,7 +34,7 @@
   padding: 10px;
   line-height: 1.3;
   text-align: justify;
-  text-transform: lowercase;
+  text-transform: none;
   border-bottom: 2px solid var(--bg_color_5);
 }
 /* home page margin section */

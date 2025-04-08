@@ -26,7 +26,7 @@
   height: auto;
 }
 .customer-signup-popup-content .customer-signup-left h2 {
-  color: var(--text_color_highlight_3);
+  color: var(--text_color_highlight_1);
 }
 .customer-signup-popup-content .customer-signup-right {
   width: 400px;
@@ -72,14 +72,14 @@
 .customer-signup-popup-content .customer-signup-right button {
   width: 150px;
   margin-top: 20px;
-  background-color: var(--bg_color_strong_2);
+  background-color: var(--primary_color);
   color: var(--text_color_lite);
-  border: 2px solid var(--bg_color_strong_2);
+  border: 2px solid var(--primary_color);
 }
 
 .customer-signup-popup-content .customer-signup-right button:hover {
   background-color: var(--bg_color_4);
-  color: var(--text_color_highlight_3);
+  color: var(--text_color_highlight_1);
 }
 /* responsive signup */
 @media (max-width: 541px) {

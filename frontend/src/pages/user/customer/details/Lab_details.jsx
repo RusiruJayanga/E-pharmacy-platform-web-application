@@ -16,7 +16,7 @@ const Lab_details = () => {
     phonenumber: "0776679711",
     email: "achesandpainFastacting@gmail.com",
     districts: "Matara",
-    images: ["/details/1.jpeg"],
+    images: ["/details/1.png"],
     time: "10Am to 10Pm",
   };
   //google map location fatch

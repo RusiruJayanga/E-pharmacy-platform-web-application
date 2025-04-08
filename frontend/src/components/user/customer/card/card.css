@@ -44,7 +44,7 @@
   justify-content: center;
 }
 .product-card .hot {
-  background-color: #c53535;
+  background-color: #cf5353;
   color: var(--text_color_lite);
 }
 .product-card .offer {
