@@ -1,0 +1,67 @@
+/* info styles */
+/* head section */
+.info-section-head {
+  max-width: 500px;
+  margin-inline: auto;
+  cursor: default;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 60px;
+}
+.info-section-head h2 {
+  color: var(--text_color_highlight_1);
+  text-transform: uppercase;
+}
+/* account section */
+.account-info-container {
+  max-width: 1200px;
+  height: auto;
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 40px;
+  margin-inline: auto;
+  cursor: default;
+  border-radius: var(--border_radius_1);
+}
+.account-info-container img {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.account-info-container .account-info-content {
+  width: 400px;
+  height: auto;
+  padding: 10px;
+}
+.account-info-container .account-info-content span {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 30px;
+  margin-top: 20px;
+}
+.account-info-container .account-info-content span p {
+  opacity: 0.7;
+  font-size: 14px;
+}
+.account-info-container .account-info-content .account-info-span {
+  height: auto;
+}
+.account-info-container .account-info-content span .account-info-h5 {
+  width: 250px;
+}
+.account-info-container .account-info-content button {
+  width: 150px;
+  margin-top: 20px;
+  background-color: var(--secondary_color);
+  color: var(--text_color_lite);
+  border: 2px solid var(--secondary_color);
+}
+.account-info-container .account-info-content button:hover {
+  background-color: var(--bg_color_4);
+  color: var(--text_color_highlight_2);
+}
