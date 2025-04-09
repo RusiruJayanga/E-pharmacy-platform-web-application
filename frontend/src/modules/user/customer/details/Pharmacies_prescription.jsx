@@ -29,7 +29,7 @@ const Pharmacies_prescription = ({ isOpen, onClose }) => {
         <div className="prescription-popup-error">
           <p>console.error</p>
         </div>
-        <textarea placeholder="Note"></textarea>
+        <textarea placeholder="Note (optional)"></textarea>
         <button>Request</button>
       </motion.div>
     </div>

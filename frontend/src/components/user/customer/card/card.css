@@ -58,12 +58,14 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  background-color: var(--bg_color_5);
 }
 .product-container .product-card .product-card-image img {
   width: auto;
   height: 200px;
   object-fit: cover;
   transition: 300ms ease-out;
+  mix-blend-mode: darken;
 }
 .product-container .product-card .product-card-image img:hover {
   transform: scale(1.1);
