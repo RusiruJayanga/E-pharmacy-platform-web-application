@@ -37,10 +37,8 @@ const Seller_info = () => {
       <div className="account-info-container">
         <img src="user-icon.png" alt="seller" />
         <div className="account-info-content">
-          <h3></h3>
           <span>
-            <p>Name - </p>
-            <h5> {seller.name}</h5>
+            <h3> {seller.name}</h3>
           </span>
           <span>
             <p>Phone Number - </p>

@@ -21,7 +21,7 @@ const Save = () => {
       <div className="ribben"></div>
       {}
       {/* head section */}
-      <div className="save-section-head">
+      <div className="save-head">
         <h2>My Save</h2>
       </div>
       {}

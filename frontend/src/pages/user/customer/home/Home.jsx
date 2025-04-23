@@ -80,18 +80,6 @@ const Home = () => {
             }}
           >
             <div className="home-slider-content">
-              <div className="home-slider-search">
-                <h5
-                  style={{
-                    marginLeft: "10px",
-                  }}
-                >
-                  Search Prescription With AI !
-                </h5>
-                <h5 className="home-slider-search-icon">
-                  <i class="bi bi-search"></i>
-                </h5>
-              </div>
               <h1>Health&nbsp; Plus&nbsp; Pharmacy</h1>
               <p>
                 Health Plus Pharmacy, we make healthcare easy and accessible.

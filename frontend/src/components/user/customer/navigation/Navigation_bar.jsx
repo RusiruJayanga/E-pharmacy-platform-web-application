@@ -67,15 +67,22 @@ const Navigation_bar = () => {
             </NavLink>
           </ul>
           <ul className="nav-right">
-            <h4 className="nav-list-right">
-              <i class="bi bi-search"></i>
-            </h4>
-            <h4 className="nav-list-right">
-              <i class="bi bi-bell"></i>
-            </h4>
-            <h4 className="nav-list-right">
-              <i class="bi bi-cart2"></i>
-            </h4>
+            <Link to="/Search">
+              <span>
+                Search Prescription With AI !
+                <h4 className="nav-list-right">
+                  <i class="bi bi-search"></i>
+                </h4>
+              </span>
+              <h4 className="nav-list-right search-bar">
+                <i class="bi bi-search"></i>
+              </h4>
+            </Link>
+            <Link to="/Cart">
+              <h4 className="nav-list-right">
+                <i class="bi bi-cart2"></i>
+              </h4>
+            </Link>
             <Link to="/Save">
               <h4 className="nav-list-right">
                 <i class="bi bi-bookmark"></i>
