@@ -30,34 +30,6 @@
 .home-slider-container .home-slider-content {
   padding: 10px;
 }
-.home-slider-container .home-slider-content .home-slider-search {
-  height: 48px;
-  width: 400px;
-  background-color: var(--bg_color_4);
-  margin-left: auto;
-  color: var(--text_color_1);
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  border-radius: var(--border_radius_2);
-  text-transform: none;
-  margin-bottom: 10px;
-}
-.home-slider-container
-  .home-slider-content
-  .home-slider-search
-  .home-slider-search-icon {
-  width: 50px;
-  height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text_color_lite);
-  background-color: var(--secondary_color);
-  border-top-right-radius: var(--border_radius_2);
-  border-bottom-right-radius: var(--border_radius_2);
-  margin-left: auto;
-}
 .home-slider-container .home-slider-content p {
   text-transform: none;
   font-weight: 500;
@@ -89,10 +61,6 @@
     justify-content: center;
     gap: 10px;
     margin-top: 20px;
-  }
-  .home-slider-container .home-slider-content .home-slider-search {
-    width: 340px;
-    margin-inline: auto;
   }
 }
 /* count section */

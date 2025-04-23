@@ -117,11 +117,6 @@ const Medicines = () => {
       {}
       {/* product filter section */}
       <div id="product-section"></div>
-      <div className="product-filter-container">
-        <h3>
-          Filter Medicine By <i class="bi bi-arrow-down"></i>
-        </h3>
-      </div>
       <div className="product-filter-content">
         <div className="product-filter-category">
           <h4>Categorys</h4>

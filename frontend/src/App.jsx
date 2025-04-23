@@ -21,6 +21,8 @@ import Lab_details from "./pages/user/customer/details/Lab_details";
 import Accessories_details from "./pages/user/customer/details/Accessories_details";
 import Save from "./pages/user/customer/save/Save";
 import Seller_info from "./pages/user/customer/info/Seller_info";
+import Cart from "./pages/user/customer/cart/Cart";
+import Search from "./pages/user/customer/search/Search";
 
 const App = () => {
   return (
@@ -44,6 +46,8 @@ const App = () => {
           "Accessories_details",
           "Save",
           "Seller_info",
+          "Cart",
+          "Search",
         ].map((path) => (
           <Route path={path} element={<Navigation_bar />} />
         ))}
@@ -64,6 +68,8 @@ const App = () => {
         <Route path="/Accessories_details" element={<Accessories_details />} />
         <Route path="/Save" element={<Save />} />
         <Route path="/Seller_info" element={<Seller_info />} />
+        <Route path="/Cart" element={<Cart />} />
+        <Route path="/Search" element={<Search />} />
       </Routes>
       <Footer />
     </div>
