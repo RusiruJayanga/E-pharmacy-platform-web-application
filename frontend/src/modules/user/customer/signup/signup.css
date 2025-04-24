@@ -40,6 +40,7 @@
 .customer-signup-popup-content .customer-signup-right .customer-signup-close {
   width: 370px;
   margin-top: -10px;
+  color: var(--text_color_highlight_1);
 }
 
 .customer-signup-popup-content

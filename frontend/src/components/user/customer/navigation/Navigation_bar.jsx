@@ -23,6 +23,8 @@ const Navigation_bar = () => {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   //signup
   const [isSignupOpen, setIsSignupOpen] = useState(false);
+  //imulated login status
+  const token = "dummyToken123";
 
   return (
     <div className="nav-position" onClick={closeDropdowns}>
@@ -113,46 +115,54 @@ const Navigation_bar = () => {
               )}
             </h4>
             {/* Account Dropdown */}
-            <h4
-              className="nav-list-right account-drop"
-              onClick={(e) => {
-                e.stopPropagation();
-                accountsetShowDropdown(!accountshowDropdown);
-                translatesetShowDropdown(false);
-              }}
-            >
-              <i className="bi bi-person"></i>
-              {accountshowDropdown && (
-                <motion.div
-                  initial={{ opacity: 0, y: -5 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.4 }}
-                  className="dropdown-menu dropdown-menu-account"
-                >
-                  <p
-                    className="dropdown-item"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      accountsetShowDropdown(false);
-                      setIsLoginOpen(true);
-                    }}
+            {token ? (
+              <Link to="/Account">
+                <h4 className="nav-list-right account-drop">
+                  <i className="bi bi-person"></i>
+                </h4>
+              </Link>
+            ) : (
+              <h4
+                className="nav-list-right account-drop"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  accountsetShowDropdown(!accountshowDropdown);
+                  translatesetShowDropdown(false);
+                }}
+              >
+                <i className="bi bi-person"></i>
+                {accountshowDropdown && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -5 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.4 }}
+                    className="dropdown-menu dropdown-menu-account"
                   >
-                    Login
-                  </p>
-                  <p
-                    className="dropdown-item"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      accountsetShowDropdown(false);
-                      setIsSignupOpen(true);
-                    }}
-                  >
-                    Signup
-                  </p>
-                </motion.div>
-              )}
-            </h4>
+                    <p
+                      className="dropdown-item"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        accountsetShowDropdown(false);
+                        setIsLoginOpen(true);
+                      }}
+                    >
+                      Login
+                    </p>
+                    <p
+                      className="dropdown-item"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        accountsetShowDropdown(false);
+                        setIsSignupOpen(true);
+                      }}
+                    >
+                      Signup
+                    </p>
+                  </motion.div>
+                )}
+              </h4>
+            )}
             {/* login module */}
             <LoginModel
               isOpen={isLoginOpen}

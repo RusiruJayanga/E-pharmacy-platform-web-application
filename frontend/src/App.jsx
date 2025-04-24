@@ -23,6 +23,7 @@ import Save from "./pages/user/customer/save/Save";
 import Seller_info from "./pages/user/customer/info/Seller_info";
 import Cart from "./pages/user/customer/cart/Cart";
 import Search from "./pages/user/customer/search/Search";
+import Account from "./pages/user/customer/account/Account";
 
 const App = () => {
   return (
@@ -48,6 +49,7 @@ const App = () => {
           "Seller_info",
           "Cart",
           "Search",
+          "Account",
         ].map((path) => (
           <Route path={path} element={<Navigation_bar />} />
         ))}
@@ -70,6 +72,7 @@ const App = () => {
         <Route path="/Seller_info" element={<Seller_info />} />
         <Route path="/Cart" element={<Cart />} />
         <Route path="/Search" element={<Search />} />
+        <Route path="/Account" element={<Account />} />
       </Routes>
       <Footer />
     </div>
