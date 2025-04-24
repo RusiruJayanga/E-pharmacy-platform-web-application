@@ -4,6 +4,8 @@ import "./search.css";
 import "../../../../components/user/customer/margin/margin.css";
 //react select
 import Select from "react-select";
+//product card css
+import "../../../../components/user/customer/card/card.css";
 
 const Search = () => {
   //filter select
@@ -104,6 +106,8 @@ const Search = () => {
       height: "60px",
     }),
   };
+  //product fatch
+  const products = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
 
   return (
     <div>
@@ -125,6 +129,43 @@ const Search = () => {
       {}
       {/* upload section */}
       <div className="upload-container"></div>
+      {}
+      {/* product card section */}
+      <div className="product-container">
+        {/* repeat */}
+        {products.map((product, idx) => (
+          <div className="product-card" id={idx}>
+            <div className="product-card-discription">
+              <span>
+                <p>Name -</p>
+                <h5>Lorem ipsum dolor{product}</h5>
+              </span>
+              <div className="product-card-offers hot">
+                <p>
+                  <i class="bi bi-prescription2"></i>
+                </p>
+              </div>
+            </div>
+            <div className="product-card-image">
+              <img src="product.png" alt="product" />
+            </div>
+            <div className="product-card-price">
+              <span>
+                <p>Price -</p>
+                <h5>Rs/ 89855.00</h5>
+              </span>
+            </div>
+            <div className="product-card-see-more">
+              <p>See More</p>
+            </div>
+          </div>
+        ))}
+        {/* repeat */}
+      </div>
+      <div className="product-card-show-more-products">
+        Show more <i class="bi bi-arrow-down"></i>
+      </div>
+      {/* product section end */}
       {}
     </div>
   );

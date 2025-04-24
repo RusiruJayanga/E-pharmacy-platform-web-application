@@ -28,41 +28,37 @@ const Seller_info = () => {
       {/* ribben */}
       <div className="ribben"></div>
       {}
-      {/* head section */}
-      <div className="info-section-head">
-        <h2>Seller info</h2>
-      </div>
-      {}
       {/* account section */}
+      <div className="account-info-margin"></div>
       <div className="account-info-container">
         <img src="user-icon.png" alt="seller" />
-        <div className="account-info-content">
-          <span>
-            <h3> {seller.name}</h3>
-          </span>
-          <span>
-            <p>Phone Number - </p>
-            <h5> {seller.phone}</h5>
-          </span>
-          <span>
-            <p>Email - </p>
-            <h5> {seller.email}</h5>
-          </span>
-          <span>
-            <p>District - </p>
-            <h5> {seller.district}</h5>
-          </span>
-        </div>
-        <div className="account-info-content">
-          <span>
-            <p>working Hours - </p>
-            <h5> {seller.workingHours}</h5>
-          </span>
-          <span className="account-info-span">
-            <p>Address - </p>
-            <h5 className="account-info-h5">{seller.address}</h5>
-          </span>
-          <button>Message</button>
+        <h3> {seller.name}</h3>
+        <div className="account-info-box">
+          <div className="account-info-content">
+            <span>
+              <p>Phone Number - </p>
+              <h5> {seller.phone}</h5>
+            </span>
+            <span>
+              <p>Email - </p>
+              <h5> {seller.email}</h5>
+            </span>
+            <span>
+              <p>District - </p>
+              <h5> {seller.district}</h5>
+            </span>
+          </div>
+          <div className="account-info-content">
+            <span>
+              <p>working Hours - </p>
+              <h5> {seller.workingHours}</h5>
+            </span>
+            <span className="account-info-span">
+              <p>Address - </p>
+              <h5 className="account-info-h5">{seller.address}</h5>
+            </span>
+            <button>Message</button>
+          </div>
         </div>
       </div>
       {}

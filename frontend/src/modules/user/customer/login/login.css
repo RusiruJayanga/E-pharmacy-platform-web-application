@@ -16,6 +16,7 @@
 .customer-login-popup-content .customer-login-close {
   width: 370px;
   margin-top: -25px;
+  color: var(--text_color_highlight_1);
 }
 .customer-login-popup-content .customer-login-close h3 {
   width: 20px;

@@ -21,14 +21,21 @@
 }
 .search-bar-container .search-bar-filter-location-dropbox {
   width: 320px;
-  border-radius: 3px;
+}
+.css-19bb58m {
+  height: 60px;
+}
+.css-5clf4x {
+  height: 60px;
 }
 .search-bar-container button {
-  width: 200px;
+  width: 170px;
   height: 60px;
   background-color: #178bcd;
   color: var(--text_color_lite);
+  border: 1px solid #178bcd;
 }
 .search-bar-container button:hover {
-  background-color: #009af3;
+  background-color: var(--bg_color_4);
+  color: #178bcd;
 }

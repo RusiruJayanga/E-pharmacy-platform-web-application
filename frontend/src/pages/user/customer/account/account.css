@@ -1,0 +1,87 @@
+/* account styles */
+/* account section */
+.user-account-info-margin {
+  width: 100%;
+  height: 200px;
+  background-image: linear-gradient(
+      270deg,
+      rgba(0, 95, 78, 0.642) 0%,
+      rgba(45, 68, 92, 0.711) 100%
+    ),
+    url(user-bg.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+/* head section */
+.activity-head {
+  max-width: 500px;
+  margin-inline: auto;
+  cursor: default;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 100px;
+}
+.activity-head h2 {
+  color: var(--text_color_highlight_1);
+  text-transform: uppercase;
+}
+/* account activity section */
+.account-activity-container {
+  max-width: 1200px;
+  height: auto;
+  margin-inline: auto;
+  margin-top: 60px;
+  display: flex;
+  gap: 20px;
+}
+.account-activity-container .activity-category {
+  width: 200px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+}
+.account-activity-container .activity-category h4 {
+  width: 100%;
+  height: 40px;
+  border: 1px solid var(--bg_color_strong_2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text_color_highlight_3);
+  border-radius: var(--border_radius_2);
+  cursor: pointer;
+}
+.account-activity-container .activity-category .active-category {
+  color: var(--text_color_lite);
+  background-color: var(--bg_color_strong_2);
+}
+.account-activity-container .activity-container {
+  width: 950px;
+  height: auto;
+}
+.account-activity-container .activity-container .pending-order-item {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+}
+.account-activity-container .activity-container .pending-order-item img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: var(--border_radius_2);
+  border: 1px solid var(--bg_color_2);
+}
+.account-activity-container
+  .activity-container
+  .pending-order-item
+  .pending-order-item-content
+  span {
+  width: auto;
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
