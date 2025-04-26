@@ -34,14 +34,19 @@
   margin-top: 60px;
   display: flex;
   gap: 20px;
+  padding: 10px;
+  cursor: default;
 }
 .account-activity-container .activity-category {
   width: 200px;
-  height: auto;
+  height: 230px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: start;
   gap: 6px;
+  position: sticky;
+  top: 200px;
 }
 .account-activity-container .activity-category h4 {
   width: 100%;
@@ -62,11 +67,92 @@
   width: 950px;
   height: auto;
 }
-.account-activity-container .activity-container .pending-order-item {
+/* settings section */
+.account-activity-container .activity-container .setting-container {
+  width: auto;
+  height: auto;
+  padding: 10px;
+  border-radius: var(--border_radius_1);
+  background-color: var(--bg_color_5);
+  border: 1px solid var(--bg_color_3);
+}
+.account-activity-container .activity-container .setting-container h4 {
+  color: var(--text_color_highlight_1);
+  margin-top: 20px;
+}
+.account-activity-container
+  .activity-container
+  .setting-container
+  .setting-content {
   width: 100%;
   height: auto;
   display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 30px;
+}
+.account-activity-container
+  .activity-container
+  .setting-container
+  .setting-content
+  span {
+  width: 300px;
+  height: 40px;
+  display: flex;
   align-items: center;
+  gap: 10px;
+}
+.account-activity-container
+  .activity-container
+  .setting-container
+  .setting-content
+  span
+  p {
+  opacity: 0.7;
+}
+.account-activity-container
+  .activity-container
+  .setting-container
+  .setting-content
+  span
+  h6 {
+  font-size: 16px;
+  cursor: pointer;
+  transition: 300ms ease-out;
+}
+.account-activity-container
+  .activity-container
+  .setting-container
+  .setting-content
+  span
+  h6:hover {
+  color: #0000ff;
+}
+.account-activity-container
+  .activity-container
+  .setting-container
+  .setting-content
+  span
+  .setting-delete:hover {
+  color: #ff0000;
+}
+/* pending order section */
+.account-activity-container .activity-container .pending-order-item {
+  width: 80%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 40px;
+  padding: 10px;
+  border-radius: var(--border_radius_1);
+  background-color: var(--bg_color_5);
+  margin-bottom: 10px;
+  border: 1px solid var(--bg_color_2);
+  transition: 300ms ease-out;
+}
+.account-activity-container .activity-container .pending-order-item:hover {
+  border: 1px solid var(--bg_color_3);
 }
 .account-activity-container .activity-container .pending-order-item img {
   width: 150px;
@@ -78,10 +164,121 @@
 .account-activity-container
   .activity-container
   .pending-order-item
+  .pending-order-item-content {
+  width: 250px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+.account-activity-container
+  .activity-container
+  .pending-order-item
+  .pending-order-item-content
+  h3 {
+  color: var(--text_color_highlight_1);
+}
+.account-activity-container
+  .activity-container
+  .pending-order-item
   .pending-order-item-content
   span {
   width: auto;
   height: 40px;
   display: flex;
   align-items: center;
+  gap: 10px;
+}
+.account-activity-container
+  .activity-container
+  .pending-order-item
+  .pending-order-item-content
+  span
+  p {
+  opacity: 0.7;
+}
+.account-activity-container
+  .activity-container
+  .pending-order-item
+  .pending-order-item-content
+  span
+  h6 {
+  font-size: 16px;
+}
+.account-activity-container
+  .activity-container
+  .pending-order-item
+  .pending-order-item-content
+  span
+  h5 {
+  width: 130px;
+  height: 40px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text_color_lite);
+}
+
+/* appointment section */
+.appointments-container {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 10px;
+  border-radius: var(--border_radius_1);
+  background-color: var(--bg_color_5);
+  margin-top: 10px;
+  border: 1px solid var(--bg_color_2);
+  gap: 20px;
+  transition: 300ms ease-out;
+}
+.appointments-container:hover {
+  border: 1px solid var(--bg_color_3);
+}
+.appointments-container img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: var(--border_radius_2);
+  border: 1px solid var(--bg_color_2);
+}
+.appointments-container .appointments-content h3 {
+  color: var(--text_color_highlight_1);
+}
+.appointments-container .appointments-content span {
+  width: auto;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.appointments-container .appointments-content span p {
+  opacity: 0.7;
+}
+.appointments-container .appointments-content span h6 {
+  font-size: 16px;
+}
+.appointments-content-right {
+  display: flex;
+  align-items: end;
+  margin-left: auto;
+}
+.appointments-content-right h4 {
+  width: 100px;
+  height: 40px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #178bcd;
+  color: var(--text_color_lite);
+  border: 1px solid #178bcd;
+  cursor: pointer;
+  transition: 300ms ease-out;
+}
+.appointments-content-right h4:hover {
+  background-color: var(--bg_color_5);
+  color: #178bcd;
 }

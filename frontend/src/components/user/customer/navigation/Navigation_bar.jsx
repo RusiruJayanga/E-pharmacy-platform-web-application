@@ -16,9 +16,8 @@ const Navigation_bar = () => {
     translatesetShowDropdown(false);
     accountsetShowDropdown(false);
   };
+  //responsive menu
   const [menuOpen, set_menu_open] = useState(false);
-  //active menu
-  const [manu, set_manue] = useState("Home");
   //login
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   //signup
@@ -71,7 +70,8 @@ const Navigation_bar = () => {
           <ul className="nav-right">
             <Link to="/Search">
               <span>
-                Search Prescription With AI !
+                <p>Search Prescription With AI !</p>
+
                 <h4 className="nav-list-right">
                   <i class="bi bi-search"></i>
                 </h4>

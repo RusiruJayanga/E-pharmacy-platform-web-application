@@ -91,12 +91,14 @@ nav ul {
   align-items: center;
   background-color: var(--bg_color_4);
   color: var(--text_color_1);
+  border: 1px solid var(--bg_color_2);
   height: 40px;
   border-radius: 20px;
-  font-size: 17px;
-  font-weight: 400;
   padding-left: 20px;
   cursor: pointer;
+}
+.nav-container .nav-right span p {
+  opacity: 0.8;
 }
 .nav-container .nav-right span h4 {
   width: 40px;

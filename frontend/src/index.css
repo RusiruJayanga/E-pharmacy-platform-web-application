@@ -128,3 +128,13 @@ input {
 ::-webkit-scrollbar-thumb {
   background-color: var(--bg_color_strong_2);
 }
+/* order status styles */
+.shipped {
+  background-color: #00bd00;
+}
+.processing {
+  background-color: #d36600;
+}
+.delivering {
+  background-color: #bfc200;
+}

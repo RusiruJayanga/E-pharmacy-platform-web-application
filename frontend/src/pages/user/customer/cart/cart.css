@@ -40,7 +40,6 @@
   background-color: var(--bg_color_5);
   margin-top: 10px;
   border: 1px solid var(--bg_color_2);
-  margin-bottom: 15px;
   gap: 20px;
   transition: 300ms ease-out;
 }

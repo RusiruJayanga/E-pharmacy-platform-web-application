@@ -6,6 +6,7 @@ import ScrollToTop from "../src/config/ScrollToTop";
 import Footer from "./components/user/common/footer/Footer";
 import Navigation_bar_head from "./components/user/customer/navigation/Navigation_bar_head";
 import Navigation_bar from "./components/user/customer/navigation/Navigation_bar";
+import Navigation_bar_seller from "./components/user/seller/navigation/Navigation_bar";
 //pages
 //customer pages
 import Home from "./pages/user/customer/home/Home";
@@ -24,6 +25,7 @@ import Seller_info from "./pages/user/customer/info/Seller_info";
 import Cart from "./pages/user/customer/cart/Cart";
 import Search from "./pages/user/customer/search/Search";
 import Account from "./pages/user/customer/account/Account";
+//seller pages
 
 const App = () => {
   return (
@@ -53,6 +55,10 @@ const App = () => {
         ].map((path) => (
           <Route path={path} element={<Navigation_bar />} />
         ))}
+        {/* seller navigation bar */}
+        {["Seller"].map((path) => (
+          <Route path={path} element={<Navigation_bar_seller />} />
+        ))}
       </Routes>
       {/* pages */}
       {/* customer pages */}
@@ -74,6 +80,8 @@ const App = () => {
         <Route path="/Search" element={<Search />} />
         <Route path="/Account" element={<Account />} />
       </Routes>
+      {/* seller pages */}
+      <Routes></Routes>
       <Footer />
     </div>
   );
