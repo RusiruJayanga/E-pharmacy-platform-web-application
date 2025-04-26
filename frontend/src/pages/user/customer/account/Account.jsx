@@ -16,13 +16,13 @@ const Account = () => {
     address: "123, Main Street, Colombo 03",
   };
   //category select
-  const [selectedCategory, setSelectedCategory] = useState("Pending Orders");
+  const [selectedCategory, setSelectedCategory] = useState("Settings");
   const categories = [
+    "Settings",
     "Pending Orders",
     "Completed Orders",
     "Appointments",
     "Notifications",
-    "Settings",
   ];
 
   return (
@@ -83,36 +83,139 @@ const Account = () => {
           ))}
         </div>
         <div className="activity-container">
-          <div className="pending-order-item">
-            <img src="/details/1.png" alt="product" />
-            <div className="pending-order-item-content">
-              <h3>Vitamin C Capsules</h3>
-              <span>
-                <p>Price: </p>
-                <h6>Rs/ 250</h6>
-              </span>
-              <span>
-                <p>Quantity: </p>
-                <h6>2</h6>
-              </span>
-              <span>
-                <p>Order ID: </p>
-                <h6>123456</h6>
-              </span>
-              <span>
-                <p>Order Date: </p>
-                <h6>2023-10-01</h6>
-              </span>
-              <span>
-                <p>Delivery Date: </p>
-                <h6>2023-10-05</h6>
-              </span>
-              <span>
-                <p>Status: </p>
-                <h6>Pending</h6>
-              </span>
+          {/* settings */}
+          {selectedCategory === "Settings" && (
+            <div className="setting-container">
+              <h4>Personal Information</h4>
+              <div className="setting-content">
+                <span>
+                  <p>Change Phone Number -</p>
+                  <h6>Change</h6>
+                </span>
+                <span>
+                  <p>Change District -</p>
+                  <h6>Change</h6>
+                </span>
+                <span>
+                  <p>Change Postal Code -</p>
+                  <h6>Change</h6>
+                </span>
+                <span>
+                  <p>Change Address -</p>
+                  <h6>Change</h6>
+                </span>
+              </div>
+              <h4>Security Information -</h4>
+              <div className="setting-content">
+                <span>
+                  <p>Change Password -</p>
+                  <h6>Change</h6>
+                </span>
+                <span>
+                  <p>Request To Be Seller -</p>
+                  <h6>Request</h6>
+                </span>
+                <span>
+                  <p>Delete Account -</p>
+                  <h6 className="setting-delete">Delete</h6>
+                </span>
+              </div>
             </div>
-          </div>
+          )}
+          {/* pending orders */}
+          {selectedCategory === "Pending Orders" && (
+            <div className="pending-order-item">
+              <img src="/details/1.png" alt="product" />
+              <div className="pending-order-item-content">
+                <h3>Vitamin C Capsules</h3>
+                <span>
+                  <p>Price - </p>
+                  <h6>Rs/ 250</h6>
+                </span>
+                <span>
+                  <p>Quantity - </p>
+                  <h6>2</h6>
+                </span>
+                <span>
+                  <p>Order ID - </p>
+                  <h6>123456</h6>
+                </span>
+              </div>
+              <div className="pending-order-item-content">
+                <span>
+                  <p>Order Date - </p>
+                  <h6>2023-10-01</h6>
+                </span>
+                <span>
+                  <p>Delivery Date - </p>
+                  <h6>2023-10-05</h6>
+                </span>
+                <span>
+                  <p>Status - </p>
+                  <h5 className="shipped">Processing</h5>
+                </span>
+              </div>
+            </div>
+          )}
+          {/* completed orders */}
+          {selectedCategory === "Completed Orders" && (
+            <div className="pending-order-item">
+              <img src="/details/1.png" alt="product" />
+              <div className="pending-order-item-content">
+                <h3>Vitamin C Capsules</h3>
+                <span>
+                  <p>Price - </p>
+                  <h6>Rs/ 250</h6>
+                </span>
+                <span>
+                  <p>Quantity - </p>
+                  <h6>2</h6>
+                </span>
+                <span>
+                  <p>Order ID - </p>
+                  <h6>123456</h6>
+                </span>
+              </div>
+              <div className="pending-order-item-content">
+                <span>
+                  <p>Order Date - </p>
+                  <h6>2023-10-01</h6>
+                </span>
+                <span>
+                  <p>Delivery Date - </p>
+                  <h6>2023-10-05</h6>
+                </span>
+                <span>
+                  <p>Status - </p>
+                  <h5 className="shipped">Processing</h5>
+                </span>
+              </div>
+            </div>
+          )}
+          {/* appointments */}
+          {selectedCategory === "Appointments" && (
+            <div className="appointments-container">
+              <img src="/details/1.png" alt="appointment" />
+              <div className="appointments-content">
+                <h3>Appointment with Dr. Smith</h3>
+                <span>
+                  <p>Appointment ID - </p>
+                  <h6>123456</h6>
+                </span>
+                <span>
+                  <p>Date - </p>
+                  <h6>2023-10-01</h6>
+                </span>
+                <span>
+                  <p>Status - </p>
+                  <h5>Confirmed</h5>
+                </span>
+              </div>
+              <div className="appointments-content-right">
+                <h4>Show</h4>
+              </div>
+            </div>
+          )}
         </div>
       </div>
       {}

@@ -28,7 +28,7 @@ const Doctors_details = () => {
           <img
             className="product-main-image-dif"
             src={advertisementid.images}
-            alt="product"
+            alt="doctor"
           />
         </div>
         <div className="details-box-content">

@@ -38,7 +38,7 @@ const Lab_details = () => {
           <img
             className="product-main-image-dif"
             src={advertisement.images}
-            alt="product"
+            alt="lab"
           />
         </div>
         <div className="details-box-content">

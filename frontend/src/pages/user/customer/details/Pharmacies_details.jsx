@@ -39,7 +39,7 @@ const Pharmacies_details = () => {
           <img
             className="product-main-image-dif"
             src={advertisement.images}
-            alt="product"
+            alt="pharmacy"
           />
         </div>
         <div className="details-box-content">

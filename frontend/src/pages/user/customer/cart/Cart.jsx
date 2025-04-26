@@ -109,19 +109,19 @@ const Cart = () => {
             <div className="cart-summary">
               <h3>Summary</h3>
               <span>
-                <p>Total Items: </p>
+                <p>Total Items - </p>
                 <h6>{cartItems.length}</h6>
               </span>
               <span>
-                <p>Discount: </p>
+                <p>Discount - </p>
                 <h6>{discount}%</h6>
               </span>
               <span>
-                <p>Shipping: </p>
+                <p>Shipping - </p>
                 <h6>Rs/ 250</h6>
               </span>
               <span>
-                <h4>Total Price: </h4>
+                <h4>Total Price - </h4>
                 <h4>Rs/ {totalPrice.toFixed(2)}</h4>
               </span>
               <h5>
