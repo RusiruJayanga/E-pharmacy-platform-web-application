@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import "./account.css";
 //ribben css
-import "../../../../components/user/customer/margin/margin.css";
+import "../../../../components/user/common/margin/margin.css";
 //account section css
 import "../info/seller_info.css";
 
@@ -113,7 +114,9 @@ const Account = () => {
                 </span>
                 <span>
                   <p>Request To Be Seller -</p>
-                  <h6>Request</h6>
+                  <Link to="/Request">
+                    <h6>Request</h6>
+                  </Link>
                 </span>
                 <span>
                   <p>Delete Account -</p>

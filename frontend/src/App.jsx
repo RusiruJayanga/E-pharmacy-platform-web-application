@@ -25,7 +25,9 @@ import Seller_info from "./pages/user/customer/info/Seller_info";
 import Cart from "./pages/user/customer/cart/Cart";
 import Search from "./pages/user/customer/search/Search";
 import Account from "./pages/user/customer/account/Account";
+import Request from "./pages/user/customer/request/Request";
 //seller pages
+import Home_seller from "./pages/user/seller/home/Home";
 
 const App = () => {
   return (
@@ -52,11 +54,12 @@ const App = () => {
           "Cart",
           "Search",
           "Account",
+          "Request",
         ].map((path) => (
           <Route path={path} element={<Navigation_bar />} />
         ))}
         {/* seller navigation bar */}
-        {["Seller"].map((path) => (
+        {["Home_seller"].map((path) => (
           <Route path={path} element={<Navigation_bar_seller />} />
         ))}
       </Routes>
@@ -79,9 +82,12 @@ const App = () => {
         <Route path="/Cart" element={<Cart />} />
         <Route path="/Search" element={<Search />} />
         <Route path="/Account" element={<Account />} />
+        <Route path="/Request" element={<Request />} />
       </Routes>
       {/* seller pages */}
-      <Routes></Routes>
+      <Routes>
+        <Route path="/Home_seller" element={<Home_seller />} />
+      </Routes>
       <Footer />
     </div>
   );

@@ -17,41 +17,44 @@ const Navigation_bar = () => {
             ☰
           </h4>
           <ul className={`nav-left nav-responsive ${menuOpen ? "open" : ""}`}>
-            <NavLink className="nav-list-left nav-responsive-left" to="/">
+            <NavLink
+              className="nav-list-left nav-responsive-left"
+              to="/Home_seller"
+            >
               Home
             </NavLink>
             <NavLink
               className="nav-list-left nav-responsive-left"
               to="/Medicines"
             >
-              Product
+              My Store
             </NavLink>
             <NavLink
               className="nav-list-left nav-responsive-left"
               to="/Pharmacies"
             >
-              Advertistment
+              Product
             </NavLink>
             <NavLink
               className="nav-list-left nav-responsive-left"
               to="/Doctors"
             >
-              Doctors
+              Ads
             </NavLink>
             <NavLink
               className="nav-list-left nav-responsive-left"
               to="/Lab_Tests"
             >
-              Lab Tests
+              Orders
             </NavLink>
             <NavLink
               className="nav-list-left nav-responsive-left"
-              to="/Accessories"
+              to="/Lab_Tests"
             >
-              Accessories
+              Appointments
             </NavLink>
           </ul>
-          <ul className="nav-right">
+          <ul className="nav-right nav-far-right">
             <Link to="/Account">
               <h4 className="nav-list-right account-drop">
                 <i className="bi bi-person"></i>

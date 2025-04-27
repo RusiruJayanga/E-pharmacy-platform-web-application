@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 //margin css
-import "../../../../components/user/customer/margin/margin.css";
+import "../../../../components/user/common/margin/margin.css";
 //filter css
 import "../../../../components/user/customer/filter/filter.css";
 //react select

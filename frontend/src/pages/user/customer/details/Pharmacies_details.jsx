@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import "./details.css";
 //ribben css
-import "../../../../components/user/customer/margin/margin.css";
+import "../../../../components/user/common/margin/margin.css";
 //google map config
 import LocationMap from "../../../../config/LocationMap";
 //prescription upload

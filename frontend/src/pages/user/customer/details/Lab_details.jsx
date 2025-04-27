@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./details.css";
 //ribben css
-import "../../../../components/user/customer/margin/margin.css";
+import "../../../../components/user/common/margin/margin.css";
 //google map config
 import LocationMap from "../../../../config/LocationMap";
 //prescription upload
@@ -99,7 +99,7 @@ const Lab_details = () => {
           </div>
         </div>
         <div className="location-map">
-          <LocationMap location={labLocation} />
+          <LocationMap location={labLocation} editable={false} />
         </div>
       </div>
       {}

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./search.css";
 //ribben css
-import "../../../../components/user/customer/margin/margin.css";
+import "../../../../components/user/common/margin/margin.css";
 //react select
 import Select from "react-select";
 //product card css
