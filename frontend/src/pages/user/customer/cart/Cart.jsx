@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./cart.css";
 //ribben css
-import "../../../../components/user/customer/margin/margin.css";
+import "../../../../components/user/common/margin/margin.css";
 
 const Cart = () => {
   //cart items fatch

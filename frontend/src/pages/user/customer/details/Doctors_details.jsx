@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./details.css";
 //ribben css
-import "../../../../components/user/customer/margin/margin.css";
+import "../../../../components/user/common/margin/margin.css";
 
 const Doctors_details = () => {
   //advertisement fatch

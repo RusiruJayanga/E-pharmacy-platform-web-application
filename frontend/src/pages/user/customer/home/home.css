@@ -368,9 +368,6 @@ textarea {
   width: 100%;
   margin-top: 15px;
 }
-.contact-container .contact-right .contact-form input {
-  height: 50px;
-}
 .contact-container .contact-right .contact-form textarea {
   height: 100px;
   padding-top: 10px;
@@ -390,14 +387,14 @@ textarea {
 .contact-container .contact-right .contact-form p span {
   color: var(--text_color_1);
 }
-.contact-container .contact-right .contact-form .contact-button {
+.contact-container .contact-right .contact-form button {
   width: 150px;
   margin-top: 20px;
   background-color: var(--primary_color);
   color: var(--text_color_lite);
-  border: 2px solid var(--primary_color);
+  border: 1px solid var(--primary_color);
 }
-.contact-container .contact-right .contact-form .contact-button:hover {
+.contact-container .contact-right .contact-form button:hover {
   background-color: var(--bg_color_4);
   color: var(--text_color_highlight_1);
 }

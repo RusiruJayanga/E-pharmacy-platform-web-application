@@ -1,7 +1,7 @@
 import React from "react";
 import "./seller_info.css";
 //ribben css
-import "../../../../components/user/customer/margin/margin.css";
+import "../../../../components/user/common/margin/margin.css";
 //location and reviews css
 import "../details/details.css";
 //google map config

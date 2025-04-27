@@ -12,7 +12,7 @@ import "../../../../components/user/customer/slider/slider.css";
 //product card css
 import "../../../../components/user/customer/card/card.css";
 //margin css
-import "../../../../components/user/customer/margin/margin.css";
+import "../../../../components/user/common/margin/margin.css";
 
 //images for home slider
 const images = ["slider1.jpg", "slider2.jpg", "slider3.jpg", "slider4.jpg"];
@@ -459,7 +459,7 @@ const Home = () => {
             <p>
               console.error <span> 100/100</span>
             </p>
-            <button className="contact-button">Send</button>
+            <button>Send</button>
           </div>
         </div>
       </div>

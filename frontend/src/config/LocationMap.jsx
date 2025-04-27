@@ -1,26 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 //google map
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 const containerStyle = {
   width: "100%",
   height: "350px",
 };
+
 const center = {
   lat: 6.9271,
   lng: 79.8612,
 };
 
-const LocationMap = ({ location }) => {
+const LocationMap = ({ location, onLocationChange, editable = false }) => {
+  //input location
+  const handleMapClick = (e) => {
+    if (!editable) return;
+    const lat = e.latLng.lat();
+    const lng = e.latLng.lng();
+    if (onLocationChange) {
+      onLocationChange({ lat, lng });
+    }
+  };
+
   return (
-    <LoadScript googleMapsApiKey="API">
-      <GoogleMap
-        mapContainerStyle={containerStyle}
-        center={location || center}
-        zoom={15}
-      >
-        <Marker position={location || center} />
-      </GoogleMap>
-    </LoadScript>
+    <GoogleMap
+      mapContainerStyle={containerStyle}
+      center={location || center}
+      zoom={15}
+      onClick={handleMapClick}
+      options={{
+        clickableIcons: false,
+        draggableCursor: editable ? "crosshair" : "default",
+      }}
+    >
+      <Marker position={location || center} />
+    </GoogleMap>
   );
 };
 
