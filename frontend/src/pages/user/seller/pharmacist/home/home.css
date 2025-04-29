@@ -1,0 +1,46 @@
+/* seller home styles */
+/* count section */
+.count-container .count-box h2 i {
+  color: #c4c400;
+  margin-right: 10px;
+}
+/* chart section */
+.chart-container {
+  max-width: 1300px;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-inline: auto;
+  margin-top: 100px;
+  padding: 10px;
+  background-color: var(--bg_color_5);
+  border-radius: var(--border_radius_2);
+  cursor: default;
+}
+.chart-container .chart-mounthly-sell {
+  width: 600px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.chart-container .chart-mounthly-sell h3 {
+  color: var(--text_color_highlight_1);
+  margin-bottom: 20px;
+}
+
+.chart-container .chart-inventory {
+  width: 600px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+}
+.chart-container .chart-inventory h3 {
+  color: var(--text_color_highlight_1);
+  margin-bottom: 40px;
+}

@@ -40,11 +40,12 @@ nav ul {
   margin: 0;
 }
 .nav-container .nav-left {
-  width: 700px;
+  width: auto;
   height: 100%;
   display: flex;
   justify-content: space-around;
   align-items: center;
+  gap: 10px;
   margin-left: 20px;
 }
 .nav-container .nav-left .nav-list-left {

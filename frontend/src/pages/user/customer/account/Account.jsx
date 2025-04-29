@@ -115,7 +115,7 @@ const Account = () => {
                 <span>
                   <p>Request To Be Seller -</p>
                   <Link to="/Request">
-                    <h6>Request</h6>
+                    <button>Request</button>
                   </Link>
                 </span>
                 <span>

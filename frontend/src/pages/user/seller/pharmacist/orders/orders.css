@@ -1,0 +1,98 @@
+/* order page styles */
+/* head section */
+.order-head {
+  max-width: 500px;
+  margin-inline: auto;
+  cursor: default;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 60px;
+}
+.order-head h2 {
+  color: var(--text_color_highlight_1);
+  text-transform: uppercase;
+}
+/* order section */
+.order-container {
+  max-width: 90%;
+  height: auto;
+  margin-inline: auto;
+  margin-top: 40px;
+  gap: 20px;
+  padding: 10px;
+  cursor: default;
+}
+.order-item-container {
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 10px;
+  border-radius: var(--border_radius_1);
+  background-color: var(--bg_color_5);
+  margin-top: 10px;
+  border: 1px solid var(--bg_color_2);
+  gap: 30px;
+  transition: 300ms ease-out;
+}
+.order-option-box {
+  width: auto;
+  display: flex;
+  align-items: center;
+}
+.order-option-box h4 {
+  width: 200px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg_color_5);
+  color: var(--text_color_highlight_3);
+  border-left: 3px solid transparent;
+  cursor: pointer;
+}
+.order-option-box .active-category {
+  background-color: var(--bg_color_2);
+  border-left: 3px solid var(--bg_color_strong_2);
+}
+.order-item-container:hover {
+  border: 1px solid var(--bg_color_3);
+}
+.order-item-container img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: var(--border_radius_2);
+  border: 1px solid var(--bg_color_2);
+}
+.order-item-container .order-item-content h3 {
+  color: var(--text_color_highlight_1);
+}
+.order-item-container .order-item-content span {
+  width: auto;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.order-item-container .order-item-content span p {
+  opacity: 0.7;
+}
+.order-item-container .order-item-content span h5 {
+  width: 130px;
+  height: 40px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text_color_lite);
+  cursor: pointer;
+}
+.order-item-container .order-item-content span h6 {
+  font-size: 16px;
+}
+.order-item-content-last {
+  margin-left: auto;
+}

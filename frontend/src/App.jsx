@@ -6,7 +6,8 @@ import ScrollToTop from "../src/config/ScrollToTop";
 import Footer from "./components/user/common/footer/Footer";
 import Navigation_bar_head from "./components/user/customer/navigation/Navigation_bar_head";
 import Navigation_bar from "./components/user/customer/navigation/Navigation_bar";
-import Navigation_bar_seller from "./components/user/seller/navigation/Navigation_bar";
+import Navigation_bar_pharmacist from "./components/user/seller/pharmacist/navigation/Navigation_bar";
+import Navigation_bar_doctor from "./components/user/seller/doctor/navigation/Navigation_bar";
 //pages
 //customer pages
 import Home from "./pages/user/customer/home/Home";
@@ -26,8 +27,17 @@ import Cart from "./pages/user/customer/cart/Cart";
 import Search from "./pages/user/customer/search/Search";
 import Account from "./pages/user/customer/account/Account";
 import Request from "./pages/user/customer/request/Request";
-//seller pages
-import Home_seller from "./pages/user/seller/home/Home";
+//seller pharmacist pages
+import Home_pharmacist_seller from "./pages/user/seller/pharmacist/home/Home";
+import Store_pharmacist_seller from "./pages/user/seller/pharmacist/store/Store";
+import Product_pharmacist_seller from "./pages/user/seller/pharmacist/product/Product";
+import Orders_pharmacist_seller from "./pages/user/seller/pharmacist/orders/Orders";
+import Account_pharmacist_seller from "./pages/user/seller/pharmacist/account/Account";
+//seller doctor pages
+import Home_doctor_seller from "./pages/user/seller/doctor/home/Home";
+import Ads_doctor_seller from "./pages/user/seller/doctor/ads/Ads";
+import Appointments_doctor_seller from "./pages/user/seller/doctor/appointments/Appointments";
+import Account_doctor_seller from "./pages/user/seller/doctor/account/Account";
 
 const App = () => {
   return (
@@ -58,9 +68,24 @@ const App = () => {
         ].map((path) => (
           <Route path={path} element={<Navigation_bar />} />
         ))}
-        {/* seller navigation bar */}
-        {["Home_seller"].map((path) => (
-          <Route path={path} element={<Navigation_bar_seller />} />
+        {/* seller pharmacist navigation bar */}
+        {[
+          "Home_pharmacist",
+          "Store_pharmacist",
+          "Product_pharmacist",
+          "Orders_pharmacist",
+          "Account_pharmacist",
+        ].map((path) => (
+          <Route path={path} element={<Navigation_bar_pharmacist />} />
+        ))}
+        {/* seller doctor navigation bar */}
+        {[
+          "Home_doctor",
+          "Ads_doctor",
+          "Appointments_doctor",
+          "Account_doctor",
+        ].map((path) => (
+          <Route path={path} element={<Navigation_bar_doctor />} />
         ))}
       </Routes>
       {/* pages */}
@@ -84,9 +109,32 @@ const App = () => {
         <Route path="/Account" element={<Account />} />
         <Route path="/Request" element={<Request />} />
       </Routes>
-      {/* seller pages */}
+      {/* seller pharmacist pages */}
       <Routes>
-        <Route path="/Home_seller" element={<Home_seller />} />
+        <Route path="/Home_pharmacist" element={<Home_pharmacist_seller />} />
+        <Route path="/Store_pharmacist" element={<Store_pharmacist_seller />} />
+        <Route
+          path="/Product_pharmacist"
+          element={<Product_pharmacist_seller />}
+        />
+        <Route
+          path="/Orders_pharmacist"
+          element={<Orders_pharmacist_seller />}
+        />
+        <Route
+          path="/Account_pharmacist"
+          element={<Account_pharmacist_seller />}
+        />
+      </Routes>
+      {/* seller doctor pages */}
+      <Routes>
+        <Route path="/Home_doctor" element={<Home_doctor_seller />} />
+        <Route path="/Ads_doctor" element={<Ads_doctor_seller />} />
+        <Route
+          path="/Appointments_doctor"
+          element={<Appointments_doctor_seller />}
+        />
+        <Route path="/Account_doctor" element={<Account_doctor_seller />} />
       </Routes>
       <Footer />
     </div>

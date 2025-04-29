@@ -24,23 +24,24 @@
 .save-container .save-option-box {
   width: 100%;
   display: flex;
+  align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
-  gap: 6px;
 }
 .save-container .save-option-box h4 {
-  width: 150px;
+  width: 167px;
   height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: var(--border_radius_2);
-  border: 1px solid var(--bg_color_strong_2);
+  background-color: var(--bg_color_5);
   color: var(--text_color_highlight_3);
+  border-left: 3px solid transparent;
   cursor: pointer;
 }
 .save-container .save-option-box .active-category {
-  background-color: var(--bg_color_strong_2);
-  color: var(--text_color_lite);
+  background-color: var(--bg_color_2);
+  border-left: 3px solid var(--bg_color_strong_2);
 }
 .save-container .save-item-container {
   width: 1000px;

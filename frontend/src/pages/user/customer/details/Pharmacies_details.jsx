@@ -66,7 +66,7 @@ const Pharmacies_details = () => {
             <h5>{advertisement.districts}</h5>
           </span>
           <span>
-            <p>working Hours - </p>
+            <p>Working Hours - </p>
             <h5>{advertisement.time}</h5>
           </span>
           <div className="details-box-button-container">
