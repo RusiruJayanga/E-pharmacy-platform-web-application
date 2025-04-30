@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import "../../../customer/navigation/Navigation_bar.css";
-import "./navigation_bar.css";
+import "../../doctor/navigation/navigation_bar.css";
 
 const Navigation_bar = () => {
   //responsive menu
@@ -19,37 +19,25 @@ const Navigation_bar = () => {
           <ul className={`nav-left nav-responsive ${menuOpen ? "open" : ""}`}>
             <NavLink
               className="nav-list-left nav-responsive-left"
-              to="/Home_pharmacist"
+              to="/Home_lab"
             >
               Home
             </NavLink>
             <NavLink
               className="nav-list-left nav-responsive-left"
-              to="/Store_pharmacist"
+              to="/Ads_lab"
             >
-              My Store
+              Add Ads
             </NavLink>
             <NavLink
               className="nav-list-left nav-responsive-left"
-              to="/Product_pharmacist"
+              to="/Appointments_lab"
             >
-              Product
-            </NavLink>
-            <NavLink
-              className="nav-list-left nav-responsive-left"
-              to="/request_pharmacist"
-            >
-              Request
-            </NavLink>
-            <NavLink
-              className="nav-list-left nav-responsive-left"
-              to="/Orders_pharmacist"
-            >
-              Orders
+              Appointments
             </NavLink>
           </ul>
           <ul className="nav-right nav-far-right">
-            <Link to="/Account_pharmacist">
+            <Link to="/Account_lab">
               <h4 className="nav-list-right account-drop">
                 <i className="bi bi-person"></i>
               </h4>

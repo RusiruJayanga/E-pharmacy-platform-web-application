@@ -74,7 +74,7 @@ const Home = () => {
             </span>
           </div>
           <div className="appointment-item-action">
-            <h4>Action</h4>
+            <button>Action</button>
           </div>
         </div>
         {/* repeat */}

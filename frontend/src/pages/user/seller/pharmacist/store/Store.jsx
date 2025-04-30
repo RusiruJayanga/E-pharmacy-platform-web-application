@@ -41,14 +41,14 @@ const Store = () => {
             </span>
             <span>
               <p>Status - </p>
-              <h5 className="instock">In Stock</h5>
+              <h4 className="instock">In Stock</h4>
             </span>
           </div>
           <div className="store-item-action">
-            <h4>Edit</h4>
-            <h4>
+            <button>Show</button>
+            <button>
               <i class="bi bi-trash3"></i>
-            </h4>
+            </button>
           </div>
         </div>
         {/* repeat */}

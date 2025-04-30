@@ -26,17 +26,32 @@
 .prescription-popup-content h3 {
   color: var(--text_color_highlight_1);
 }
-.prescription-popup-content .prescription-popup-upload-form {
+.prescription-popup-content
+  .prescription-popup-upload-form
+  .prescription-file-upload {
   width: 410px;
-  height: 150px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  border-radius: var(--border_radius_2);
+  height: 160px;
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 20px;
+  color: var(--text_color_highlight_1);
   border: 2px dashed var(--primary_color);
-  margin-top: 30px;
+  border-radius: var(--border_radius_2);
   cursor: pointer;
+  font-size: 14px;
+  transition: 300ms ease-out;
+  text-align: center;
+}
+.prescription-popup-content
+  .prescription-popup-upload-form
+  .prescription-file-upload:hover {
+  background-color: var(--bg_color_5);
+}
+.prescription-popup-content
+  .prescription-popup-upload-form
+  .prescription-file-upload
+  input[type="file"] {
+  display: none;
 }
 .prescription-popup-content .prescription-popup-error {
   width: 410px;

@@ -21,16 +21,22 @@ const Lab_prescription = ({ isOpen, onClose }) => {
         </div>
         <h3>Channel Lab Test</h3>
         <div className="prescription-popup-upload-form">
-          <input className="file-input" type="file" name="file" hidden></input>
-          <h2>
-            <i class="bi bi-cloud-arrow-up-fill"></i>
-          </h2>
-          <p>Browse Prescription File to Upload</p>
+          <label className="prescription-file-upload">
+            <input
+              type="file"
+              name="registrationCertificate"
+              accept=".pdf,.jpg,.jpeg,.png"
+            />
+            <h2>
+              <i class="bi bi-cloud-arrow-up-fill"></i>
+            </h2>
+            Browse Prescription File to Upload
+          </label>
+          <div className="prescription-popup-error">
+            <p>console.error</p>
+          </div>
+          <textarea placeholder="Note (optional)"></textarea>
         </div>
-        <div className="prescription-popup-error">
-          <p>console.error</p>
-        </div>
-        <textarea placeholder="Note (optional)"></textarea>
         <button>Request</button>
       </motion.div>
     </div>

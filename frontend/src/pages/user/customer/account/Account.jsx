@@ -155,7 +155,7 @@ const Account = () => {
                 </span>
                 <span>
                   <p>Status - </p>
-                  <h5 className="shipped">Processing</h5>
+                  <h4 className="shipped">Processing</h4>
                 </span>
               </div>
             </div>
@@ -190,7 +190,7 @@ const Account = () => {
                 </span>
                 <span>
                   <p>Status - </p>
-                  <h5 className="shipped">Processing</h5>
+                  <h4 className="shipped">Processing</h4>
                 </span>
               </div>
             </div>
@@ -215,7 +215,7 @@ const Account = () => {
                 </span>
               </div>
               <div className="appointments-content-right">
-                <h4>Show</h4>
+                <button>Show</button>
               </div>
             </div>
           )}

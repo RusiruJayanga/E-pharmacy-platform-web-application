@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./appointments.css";
+import "../../doctor/appointments/appointments.css";
 //ribben css
 import "../../../../../components/user/common/margin/margin.css";
 

@@ -225,21 +225,6 @@
   h6 {
   font-size: 16px;
 }
-.account-activity-container
-  .activity-container
-  .pending-order-item
-  .pending-order-item-content
-  span
-  h5 {
-  width: 130px;
-  height: 40px;
-  border-radius: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text_color_lite);
-}
-
 /* appointment section */
 .appointments-container {
   display: flex;
@@ -285,20 +270,13 @@
   align-items: end;
   margin-left: auto;
 }
-.appointments-content-right h4 {
+.appointments-content-right button {
   width: 100px;
-  height: 40px;
-  border-radius: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   background-color: #178bcd;
   color: var(--text_color_lite);
   border: 1px solid #178bcd;
-  cursor: pointer;
-  transition: 300ms ease-out;
 }
-.appointments-content-right h4:hover {
+.appointments-content-right button:hover {
   background-color: var(--bg_color_5);
   color: #178bcd;
 }

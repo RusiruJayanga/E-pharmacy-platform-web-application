@@ -18,7 +18,7 @@ const Orders = () => {
         <h2>My Orders</h2>
       </div>
       {}
-      {/* product section */}
+      {/* order section */}
       <div className="order-container">
         <div className="order-option-box">
           {categories.map((category, index) => (
@@ -85,7 +85,7 @@ const Orders = () => {
                 </span>
                 <span>
                   <p>Status - </p>
-                  <h5 className="processing">Processing</h5>
+                  <h4 className="processing">Processing</h4>
                 </span>
               </div>
             </div>
@@ -145,7 +145,7 @@ const Orders = () => {
                 </span>
                 <span>
                   <p>Status - </p>
-                  <h5 className="processing">Processing</h5>
+                  <h4 className="processing">Processing</h4>
                 </span>
               </div>
             </div>
@@ -205,7 +205,7 @@ const Orders = () => {
                 </span>
                 <span>
                   <p>Status - </p>
-                  <h5 className="processing">Processing</h5>
+                  <h4 className="processing">Processing</h4>
                 </span>
               </div>
             </div>
