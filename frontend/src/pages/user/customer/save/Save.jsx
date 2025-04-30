@@ -46,10 +46,10 @@ const Save = () => {
             <h5>202 Left</h5>
             <h5>2025/2/1</h5>
             <div className="save-action">
-              <h4>Show</h4>
-              <h4>
+              <button>Show</button>
+              <button>
                 <i class="bi bi-trash3"></i>
-              </h4>
+              </button>
             </div>
           </div>
           {/* repeat */}
@@ -59,10 +59,10 @@ const Save = () => {
             <h5>202 Left</h5>
             <h5>2025/2/1</h5>
             <div className="save-action">
-              <h4>Show</h4>
-              <h4>
+              <button>Show</button>
+              <button>
                 <i class="bi bi-trash3"></i>
-              </h4>
+              </button>
             </div>
           </div>
           {/* repeat */}

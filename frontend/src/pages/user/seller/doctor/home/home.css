@@ -72,20 +72,13 @@
   margin-left: auto;
   gap: 10px;
 }
-.appointment-item-container .appointment-item-action h4:nth-child(1) {
+.appointment-item-container .appointment-item-action button:nth-child(1) {
   width: 100px;
-  height: 40px;
-  border-radius: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   background-color: #178bcd;
   color: var(--text_color_lite);
-  cursor: pointer;
   border: 1px solid #178bcd;
-  transition: 300ms ease-out;
 }
-.appointment-item-container .appointment-item-action h4:nth-child(1):hover {
+.appointment-item-container .appointment-item-action button:nth-child(1):hover {
   background-color: var(--bg_color_5);
   color: #178bcd;
 }

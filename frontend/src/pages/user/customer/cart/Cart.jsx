@@ -96,10 +96,10 @@ const Cart = () => {
                     </div>
                     <div className="cart-info-right">
                       <div className="cart-action">
-                        <h4>Show</h4>
-                        <h4 onClick={() => removeItem(item.id)}>
+                        <button>Show</button>
+                        <button onClick={() => removeItem(item.id)}>
                           <i class="bi bi-trash3"></i>
-                        </h4>
+                        </button>
                       </div>
                     </div>
                   </div>

@@ -124,3 +124,13 @@
     url(doctor-home-section-bg.jpg);
   margin-top: -60px;
 }
+/* lab home page margin styles */
+.lab-home-section1 {
+  background-image: linear-gradient(
+      270deg,
+      rgba(0, 95, 78, 0.442) 0%,
+      rgba(45, 68, 92, 0.611) 100%
+    ),
+    url(lab-home-section-bg.jpg);
+  margin-top: -60px;
+}

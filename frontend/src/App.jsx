@@ -8,6 +8,7 @@ import Navigation_bar_head from "./components/user/customer/navigation/Navigatio
 import Navigation_bar from "./components/user/customer/navigation/Navigation_bar";
 import Navigation_bar_pharmacist from "./components/user/seller/pharmacist/navigation/Navigation_bar";
 import Navigation_bar_doctor from "./components/user/seller/doctor/navigation/Navigation_bar";
+import Navigation_bar_lab from "./components/user/seller/lab/navigation/Navigation_bar";
 //pages
 //customer pages
 import Home from "./pages/user/customer/home/Home";
@@ -31,6 +32,7 @@ import Request from "./pages/user/customer/request/Request";
 import Home_pharmacist_seller from "./pages/user/seller/pharmacist/home/Home";
 import Store_pharmacist_seller from "./pages/user/seller/pharmacist/store/Store";
 import Product_pharmacist_seller from "./pages/user/seller/pharmacist/product/Product";
+import Request_pharmacist_seller from "./pages/user/seller/pharmacist/request/Request";
 import Orders_pharmacist_seller from "./pages/user/seller/pharmacist/orders/Orders";
 import Account_pharmacist_seller from "./pages/user/seller/pharmacist/account/Account";
 //seller doctor pages
@@ -38,6 +40,11 @@ import Home_doctor_seller from "./pages/user/seller/doctor/home/Home";
 import Ads_doctor_seller from "./pages/user/seller/doctor/ads/Ads";
 import Appointments_doctor_seller from "./pages/user/seller/doctor/appointments/Appointments";
 import Account_doctor_seller from "./pages/user/seller/doctor/account/Account";
+//lab pages
+import Home_lab_seller from "./pages/user/seller/lab/home/Home";
+import Ads_lab_seller from "./pages/user/seller/lab/ads/Ads";
+import Appointments_lab_seller from "./pages/user/seller/lab/appointments/Appointments";
+import Account_lab_seller from "./pages/user/seller/lab/account/Account";
 
 const App = () => {
   return (
@@ -74,6 +81,7 @@ const App = () => {
           "Store_pharmacist",
           "Product_pharmacist",
           "Orders_pharmacist",
+          "Request_pharmacist",
           "Account_pharmacist",
         ].map((path) => (
           <Route path={path} element={<Navigation_bar_pharmacist />} />
@@ -87,6 +95,12 @@ const App = () => {
         ].map((path) => (
           <Route path={path} element={<Navigation_bar_doctor />} />
         ))}
+        {/* seller lab navigation bar */}
+        {["Home_lab", "Ads_lab", "Appointments_lab", "Account_lab"].map(
+          (path) => (
+            <Route path={path} element={<Navigation_bar_lab />} />
+          )
+        )}
       </Routes>
       {/* pages */}
       {/* customer pages */}
@@ -125,6 +139,10 @@ const App = () => {
           path="/Account_pharmacist"
           element={<Account_pharmacist_seller />}
         />
+        <Route
+          path="/Request_pharmacist"
+          element={<Request_pharmacist_seller />}
+        />
       </Routes>
       {/* seller doctor pages */}
       <Routes>
@@ -135,6 +153,13 @@ const App = () => {
           element={<Appointments_doctor_seller />}
         />
         <Route path="/Account_doctor" element={<Account_doctor_seller />} />
+      </Routes>
+      {/* seller lab pages */}
+      <Routes>
+        <Route path="/Home_lab" element={<Home_lab_seller />} />
+        <Route path="/Ads_lab" element={<Ads_lab_seller />} />
+        <Route path="/Appointments_lab" element={<Appointments_lab_seller />} />
+        <Route path="/Account_lab" element={<Account_lab_seller />} />
       </Routes>
       <Footer />
     </div>

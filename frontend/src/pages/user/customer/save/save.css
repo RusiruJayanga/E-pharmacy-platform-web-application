@@ -89,43 +89,38 @@
   justify-content: center;
   gap: 10px;
 }
-.save-container .save-item-container .save-item .save-action h4:nth-child(1) {
+.save-container
+  .save-item-container
+  .save-item
+  .save-action
+  button:nth-child(1) {
   width: 100px;
-  height: 40px;
-  border-radius: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   background-color: #178bcd;
   color: var(--text_color_lite);
-  cursor: pointer;
   border: 1px solid #178bcd;
-  transition: 300ms ease-out;
 }
 .save-container
   .save-item-container
   .save-item
   .save-action
-  h4:nth-child(1):hover {
+  button:nth-child(1):hover {
   background-color: var(--bg_color_5);
   color: #178bcd;
 }
-.save-container .save-item-container .save-item .save-action h4:nth-child(2) {
+.save-container
+  .save-item-container
+  .save-item
+  .save-action
+  button:nth-child(2) {
   width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: 300ms ease-out;
-  color: var(--text_color_1);
+  color: #cf5353;
+  border: 1px solid #cf5353;
 }
 .save-container
   .save-item-container
   .save-item
   .save-action
-  h4:nth-child(2):hover {
+  button:nth-child(2):hover {
   color: var(--text_color_lite);
   background-color: #cf5353;
 }
