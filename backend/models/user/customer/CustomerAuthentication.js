@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import bcrypt from "bcryptjs";
 
 const customerSchema = new mongoose.Schema({
   name: { type: String, required: true },
@@ -17,4 +18,12 @@ const customerSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("Customer", customerSchema);
+// Hash password before saving
+customerSchema.pre("save", async function (next) {
+  if (!this.isModified("password")) return next();
+  this.password = await bcrypt.hash(this.password, 10);
+  next();
+});
+
+const Customer = mongoose.model("Customer", customerSchema);
+export default Customer;

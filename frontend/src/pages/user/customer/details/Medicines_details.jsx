@@ -13,23 +13,18 @@ const Medicines_details = () => {
     description:
       "Fast-acting relief from body aches and pains.Fast-acting relief from body aches and pains.Fast-acting relief from body aches and pains.Fast-acting relief from body aches and pains.",
     law: "illegal",
-    offers: 44,
+    offers: 4,
     seller: "hh group.ltd",
   };
   //image fatch
   const images = {
-    images: [
-      "/details/1.png",
-      "/details/2.jpeg",
-      "/details/3.jpeg",
-      "/details/4.jpeg",
-    ],
+    images: ["/upload/cetirizine.png", "/upload/cetirizine1.png"],
   };
   //option fatch
   const options = {
     option: ["Tablets1", "Tablets2", "Tablets3", "Tablets4", "Tablets5"],
     prices: {
-      Tablets1: 1000,
+      Tablets1: 25,
       Tablets2: 1500,
       Tablets3: 2000,
       Tablets4: 2009,
@@ -119,7 +114,7 @@ const Medicines_details = () => {
             {product.law === "illegal" && (
               <button onClick={() => setIsPrescriptionOpen(true)}>
                 <h4>
-                  <i class="bi bi-list-columns-reverse"></i>
+                  <i className="bi bi-list-columns-reverse"></i>
                 </h4>
                 Upload Prescription
               </button>
@@ -128,14 +123,14 @@ const Medicines_details = () => {
             {product.law === "legal" && (
               <button>
                 <h4>
-                  <i class="bi bi-cart2"></i>
+                  <i className="bi bi-cart2"></i>
                 </h4>
                 Add To Cart
               </button>
             )}
             <button>
               <h4>
-                <i class="bi bi-bookmark"></i>
+                <i className="bi bi-bookmark"></i>
               </h4>
             </button>
           </div>
@@ -152,12 +147,12 @@ const Medicines_details = () => {
           <h2>Reviews</h2>
           <h4>
             5/5
-            <i class="bi bi-star-fill"></i>
-            <i class="bi bi-star-fill"></i>
-            <i class="bi bi-star-fill"></i>
-            <i class="bi bi-star-fill"></i>
-            <i class="bi bi-star-fill"></i>
-            <h5>684 ratings</h5>
+            <i className="bi bi-star-fill"></i>
+            <i className="bi bi-star-fill"></i>
+            <i className="bi bi-star-fill"></i>
+            <i className="bi bi-star-fill"></i>
+            <i className="bi bi-star-fill"></i>
+            <h5>1 ratings</h5>
           </h4>
           <p>All from verified purchases</p>
         </div>
@@ -168,11 +163,11 @@ const Medicines_details = () => {
             <div className="review-box-content">
               <h5>
                 5/5
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
+                <i className="bi bi-star-fill"></i>
+                <i className="bi bi-star-fill"></i>
+                <i className="bi bi-star-fill"></i>
+                <i className="bi bi-star-fill"></i>
+                <i className="bi bi-star-fill"></i>
               </h5>
               <h5>Rusiru</h5>
               <p>
@@ -184,7 +179,7 @@ const Medicines_details = () => {
           </div>
           {/* repeat */}
           <div className="review-box-show-more-products">
-            Show more <i class="bi bi-arrow-down"></i>
+            Show more <i className="bi bi-arrow-down"></i>
           </div>
         </div>
       </div>

@@ -65,14 +65,14 @@ const Home = () => {
         <div className="count-box">
           <img src="seller-count1.png" alt="count" />
           <div className="count-content">
-            <h2>{inView && <CountUp start={0} end={300} duration={2} />}+</h2>
+            <h2>{inView && <CountUp start={0} end={30} duration={2} />}+</h2>
             <h4>Orders Delivered</h4>
           </div>
         </div>
         <div className="count-box">
           <img src="seller-count2.png" alt="count" />
           <div className="count-content">
-            <h2>{inView && <CountUp start={0} end={69669} duration={2} />}</h2>
+            <h2>{inView && <CountUp start={0} end={24} duration={2} />}</h2>
             <h4>Products</h4>
           </div>
         </div>

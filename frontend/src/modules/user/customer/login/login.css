@@ -32,6 +32,13 @@
 }
 .customer-login-popup-content .customer-login-form {
   width: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.customer-login-popup-content .customer-login-form div {
+  width: 100%;
+  height: auto;
 }
 .customer-login-popup-content .customer-login-form input {
   width: 100%;

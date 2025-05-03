@@ -4,9 +4,9 @@ import "./navigation_bar.css";
 //animation
 import { motion } from "framer-motion";
 //login
-import LoginModel from "../../../../modules/user/customer/login/login";
+import LoginModel from "../../../../modules/user/customer/login/Login";
 //signup
-import SignupModel from "../../../../modules/user/customer/signup/signup";
+import SignupModel from "../../../../modules/user/customer/signup/Signup";
 
 const Navigation_bar = () => {
   //drop down menu
@@ -23,7 +23,7 @@ const Navigation_bar = () => {
   //signup
   const [isSignupOpen, setIsSignupOpen] = useState(false);
   //imulated login status
-  const token = "dummyToken123";
+  const token = localStorage.getItem("customerToken");
 
   return (
     <div className="nav-position" onClick={closeDropdowns}>

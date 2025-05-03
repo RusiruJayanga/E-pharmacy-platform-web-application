@@ -71,6 +71,10 @@ textarea {
   opacity: 0.7;
   color: #ff0000;
 }
+.product-form p span {
+  color: var(--text_color_1);
+  margin-right: 10px;
+}
 .product-form h6 {
   font-size: 16px;
   color: var(--text_color_highlight_1);

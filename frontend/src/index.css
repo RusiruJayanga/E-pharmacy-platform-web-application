@@ -155,7 +155,7 @@ input {
   padding: 10px 20px;
   background-color: var(--bg_color_5);
   color: var(--text_color_highlight_3);
-  border: 1px solid var(--bg_color_2);
+  border: 1px solid var(--primary_color);
   border-radius: var(--border_radius_2);
   cursor: pointer;
   font-size: 14px;

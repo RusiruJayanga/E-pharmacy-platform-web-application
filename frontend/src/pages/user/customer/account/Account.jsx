@@ -11,7 +11,7 @@ const Account = () => {
   const user = {
     name: "Health Plus Pharmacy",
     phone: "0771234567",
-    email: "healthplus@example.com",
+    email: "rusirujayanga@gmail.com",
     district: "Colombo",
     postalCode: "81000",
     address: "123, Main Street, Colombo 03",

@@ -1,6 +1,8 @@
 import express from "express";
 import cors from "cors";
 import { connectDB } from "./config/db.js";
+//customer
+import customerLoginRoutes from "./routes/user/customer/Login.js";
 
 //app config
 const app = express();
@@ -21,4 +23,6 @@ app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
 
-//
+//API routes
+//customer
+app.use("/api/auth", customerLoginRoutes);

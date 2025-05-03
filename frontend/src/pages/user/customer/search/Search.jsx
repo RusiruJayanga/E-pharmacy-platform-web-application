@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import "./search.css";
 //ribben css
 import "../../../../components/user/common/margin/margin.css";
@@ -107,7 +108,38 @@ const Search = () => {
     }),
   };
   //product fatch
-  const products = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
+  const medicineProducts = [
+    {
+      id: 16,
+      name: "Paracetamol",
+      price: "Rs. 25.00",
+      image: "paracetamol.png",
+    },
+    {
+      id: 17,
+      name: "Cetirizine",
+      price: "Rs. 18.00",
+      image: "cetirizine.png",
+    },
+    {
+      id: 18,
+      name: "Antacid Syrup",
+      price: "Rs. 85.00",
+      image: "antacid-syrup.png",
+    },
+    {
+      id: 19,
+      name: "Cough Syrup",
+      price: "Rs. 120.00",
+      image: "cough-syrup.png",
+    },
+    {
+      id: 20,
+      name: "Ibuprofen",
+      price: "Rs. 35.00",
+      image: "ibuprofen.png",
+    },
+  ];
 
   return (
     <div>
@@ -133,31 +165,33 @@ const Search = () => {
       {/* product card section */}
       <div className="product-container">
         {/* repeat */}
-        {products.map((product, idx) => (
-          <div className="product-card" id={idx}>
+        {medicineProducts.map((product) => (
+          <div className="product-card" key={product.id}>
             <div className="product-card-discription">
               <span>
                 <p>Name -</p>
-                <h5>Lorem ipsum dolor{product}</h5>
+                <h5>{product.name}</h5>
               </span>
               <div className="product-card-offers hot">
                 <p>
-                  <i class="bi bi-prescription2"></i>
+                  <i className="bi bi-prescription2"></i>
                 </p>
               </div>
             </div>
             <div className="product-card-image">
-              <img src="product.png" alt="product" />
+              <img src={`upload/${product.image}`} alt={product.name} />
             </div>
             <div className="product-card-price">
               <span>
                 <p>Price -</p>
-                <h5>Rs/ 89855.00</h5>
+                <h5>{product.price}</h5>
               </span>
             </div>
-            <div className="product-card-see-more">
-              <p>See More</p>
-            </div>
+            <Link to={`/Medicines_details`}>
+              <div className="product-card-see-more">
+                <p>See More</p>
+              </div>
+            </Link>
           </div>
         ))}
         {/* repeat */}

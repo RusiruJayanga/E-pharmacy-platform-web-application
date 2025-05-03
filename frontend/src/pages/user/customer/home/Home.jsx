@@ -13,6 +13,9 @@ import "../../../../components/user/customer/slider/slider.css";
 import "../../../../components/user/customer/card/card.css";
 //margin css
 import "../../../../components/user/common/margin/margin.css";
+//contact validation
+import { useFormik } from "formik";
+import * as Yup from "yup";
 
 //images for home slider
 const images = ["slider1.jpg", "slider2.jpg", "slider3.jpg", "slider4.jpg"];
@@ -63,7 +66,128 @@ const Home = () => {
   ];
 
   //product fatch
-  const products = ["1", "2", "3", "4", "5", "6"];
+  const products = [
+    {
+      id: 1,
+      name: "Baby Diapers",
+      price: "Rs. 999.00",
+      image: "baby-diapers.png",
+    },
+    {
+      id: 2,
+      name: "Thermometer - Digital",
+      price: "Rs. 599.00",
+      image: "thermometer.png",
+    },
+    {
+      id: 2,
+      name: "Blood Pressure Monitor",
+      price: "Rs. 2,499.00",
+      image: "bp-monitor.png",
+    },
+    {
+      id: 4,
+      name: "Adult Diapers",
+      price: "Rs. 699.00",
+      image: "adult-diapers.png",
+    },
+    {
+      id: 4,
+      name: "Nebulizer Machine",
+      price: "Rs. 3,899.00",
+      image: "nebulizer.png",
+    },
+    {
+      id: 3,
+      name: "Pulse Oximeter",
+      price: "Rs. 1,299.00",
+      image: "oximeter.png",
+    },
+    {
+      id: 7,
+      name: "Face Mask (Box of 50)",
+      price: "Rs. 299.00",
+      image: "face-mask.png",
+    },
+    {
+      id: 8,
+      name: "Hand Sanitizer - 500ml",
+      price: "Rs. 199.00",
+      image: "hand-sanitizer.png",
+    },
+    {
+      id: 9,
+      name: "Wheelchair",
+      price: "Rs. 12,999.00",
+      image: "wheelchair.png",
+    },
+    {
+      id: 10,
+      name: "Walking Cane",
+      price: "Rs. 799.00",
+      image: "cane.png",
+    },
+  ];
+  const beautyProducts = [
+    {
+      id: 11,
+      name: "Vitamin C Face Serum",
+      price: "Rs. 799.00",
+      image: "vitamin-c-serum.png",
+    },
+    {
+      id: 12,
+      name: "Sunscreen SPF 50",
+      price: "Rs. 599.00",
+      image: "sunscreen.png",
+    },
+    {
+      id: 13,
+      name: "Aloe Vera Gel",
+      price: "Rs. 299.00",
+      image: "aloe-vera-gel.png",
+    },
+    {
+      id: 14,
+      name: "Charcoal Face Wash",
+      price: "Rs. 349.00",
+      image: "charcoal-facewash.png",
+    },
+    {
+      id: 15,
+      name: "Lip Balm - Strawberry",
+      price: "Rs. 199.00",
+      image: "lip-balm.png",
+    },
+  ];
+
+  //contact validation
+  const formik = useFormik({
+    initialValues: {
+      name: "",
+      contactNumber: "",
+      email: "",
+      message: "",
+    },
+    validationSchema: Yup.object({
+      name: Yup.string()
+        .min(2, "Name must be at least 2 characters")
+        .required("Required"),
+      contactNumber: Yup.string()
+        .required("Required")
+        .matches(
+          /^[\+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4,6}$/,
+          "Invalid phone number format"
+        ),
+      email: Yup.string().required("Required").email("Invalid email address"),
+      message: Yup.string()
+        .required("Required")
+        .max(200, "Message must be 200 characters or less"),
+    }),
+    onSubmit: (values) => {
+      console.log("Submitting:", values);
+    },
+  });
 
   return (
     <div>
@@ -212,29 +336,29 @@ const Home = () => {
       {/* product card section 1 */}
       <div className="product-container">
         {/* repeat */}
-        {products.map((product, idx) => (
-          <div className="product-card" id={idx}>
+        {products.map((product) => (
+          <div className="product-card" key={product.id}>
             <div className="product-card-discription">
               <span>
                 <p>Name -</p>
-                <h5>Lorem ipsum dolor{product}</h5>
+                <h5>{product.name}</h5>
               </span>
               <div className="product-card-offers hot">
                 <p>
-                  <i class="bi bi-prescription2"></i>
+                  <i className="bi bi-prescription2"></i>
                 </p>
               </div>
             </div>
             <div className="product-card-image">
-              <img src="product.png" alt="product" />
+              <img src={`upload/${product.image}`} alt={product.name} />
             </div>
             <div className="product-card-price">
               <span>
                 <p>Price -</p>
-                <h5>Rs/ 89855.00</h5>
+                <h5>{product.price}</h5>
               </span>
             </div>
-            <Link to="/Accessories_details">
+            <Link to={`/Accessories_details/${product.id}`}>
               <div className="product-card-see-more">
                 <p>See More</p>
               </div>
@@ -253,42 +377,39 @@ const Home = () => {
       {/* margin section 1 */}
       <div className="margin-section-container section1">
         <div className="margin-section-content">
-          <h2>Beauty Care</h2>
-          <p>
-            Explore a wide selection of beauty care products tailored to
-            nourish, protect, and enhance your skin and hair. From skincare
-            essentials to haircare treatments and personal care items, find
-            everything you need for a glowing, healthy, and confident look.
-          </p>
+          <h1>Beauty Care</h1>
         </div>
       </div>
       {}
       {/* product card section 2 */}
       <div className="product-container">
         {/* repeat */}
-        {products.map((product, idx) => (
-          <div className="product-card" id={idx}>
+        {beautyProducts.map((beautyproduct) => (
+          <div className="product-card" key={beautyproduct.id}>
             <div className="product-card-discription">
               <span>
                 <p>Name -</p>
-                <h5>Lorem ipsum dolor{product}</h5>
+                <h5>{beautyproduct.name}</h5>
               </span>
               <div className="product-card-offers hot">
                 <p>
-                  <i class="bi bi-prescription2"></i>
+                  <i className="bi bi-prescription2"></i>
                 </p>
               </div>
             </div>
             <div className="product-card-image">
-              <img src="product.png" alt="product" />
+              <img
+                src={`upload/${beautyproduct.image}`}
+                alt={beautyproduct.name}
+              />
             </div>
             <div className="product-card-price">
               <span>
                 <p>Price -</p>
-                <h5>Rs/ 89855.00</h5>
+                <h5>{beautyproduct.price}</h5>
               </span>
             </div>
-            <Link to="/Accessories_details">
+            <Link to={`/Accessories_details/${beautyproduct.id}`}>
               <div className="product-card-see-more">
                 <p>See More</p>
               </div>
@@ -445,22 +566,65 @@ const Home = () => {
           <img src="contact.jpeg" alt="contact" />
         </div>
         <div className="contact-right">
-          <div className="contact-form">
-            <input name="Name" placeholder="Name"></input>
-            <p>console.error</p>
-            <input name="Contact Number" placeholder="Contact Number"></input>
-            <p>console.error</p>
-            <input name="Email" placeholder="Email"></input>
-            <p>console.error</p>
+          <form className="contact-form" onSubmit={formik.handleSubmit}>
+            <input
+              type="text"
+              name="name"
+              placeholder="Name"
+              onChange={formik.handleChange}
+              value={formik.values.name}
+            />
+            <p>
+              {formik.touched.name && formik.errors.name
+                ? formik.errors.name
+                : " "}
+            </p>
+
+            <input
+              type="text"
+              name="contactNumber"
+              placeholder="Contact number"
+              onChange={formik.handleChange}
+              value={formik.values.contactNumber}
+            />
+            <p>
+              {formik.touched.contactNumber && formik.errors.contactNumber
+                ? formik.errors.contactNumber
+                : " "}
+            </p>
+
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              onChange={formik.handleChange}
+              value={formik.values.email}
+            />
+            <p>
+              {formik.touched.email && formik.errors.email
+                ? formik.errors.email
+                : " "}
+            </p>
+
             <textarea
+              name="message"
               className="textinput input-element"
               placeholder="Message"
+              maxLength={200}
+              onChange={formik.handleChange}
+              value={formik.values.message}
             ></textarea>
             <p>
-              console.error <span> 100/100</span>
+              {formik.values.message.length > 0 && (
+                <span>{formik.values.message.length}/200</span>
+              )}
+              {formik.touched.message && formik.errors.message
+                ? formik.errors.message
+                : " "}
             </p>
-            <button>Send</button>
-          </div>
+
+            <button type="submit">Send</button>
+          </form>
         </div>
       </div>
       {}

@@ -36,13 +36,11 @@
   align-items: center;
   justify-content: center;
 }
-
 .customer-signup-popup-content .customer-signup-right .customer-signup-close {
   width: 370px;
   margin-top: -10px;
   color: var(--text_color_highlight_1);
 }
-
 .customer-signup-popup-content
   .customer-signup-right
   .customer-signup-close
@@ -51,11 +49,16 @@
   cursor: pointer;
   margin-left: auto;
 }
-
 .customer-signup-popup-content .customer-signup-right .customer-signup-form {
   width: 350px;
 }
-
+.customer-signup-popup-content
+  .customer-signup-right
+  .customer-signup-form
+  div {
+  width: 100%;
+  height: auto;
+}
 .customer-signup-popup-content
   .customer-signup-right
   .customer-signup-form
@@ -63,7 +66,6 @@
   width: 100%;
   margin-top: 15px;
 }
-
 .customer-signup-popup-content .customer-signup-right .customer-signup-form p {
   font-size: 13px;
   height: 15px;
@@ -77,7 +79,6 @@
   color: var(--text_color_lite);
   border: 1px solid var(--primary_color);
 }
-
 .customer-signup-popup-content .customer-signup-right button:hover {
   background-color: var(--bg_color_4);
   color: var(--text_color_highlight_1);
@@ -90,7 +91,6 @@
     width: 100%;
     height: 800px;
   }
-
   .customer-signup-popup-content .customer-signup-right .customer-signup-close {
     display: none;
   }

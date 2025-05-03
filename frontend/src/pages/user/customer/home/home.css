@@ -32,7 +32,7 @@
 }
 .home-slider-container .home-slider-content p {
   text-transform: none;
-  font-weight: 500;
+  font-weight: 300;
 }
 .home-slider-button-container {
   width: 100%;
@@ -386,6 +386,7 @@ textarea {
 }
 .contact-container .contact-right .contact-form p span {
   color: var(--text_color_1);
+  margin-right: 10px;
 }
 .contact-container .contact-right .contact-form button {
   width: 150px;

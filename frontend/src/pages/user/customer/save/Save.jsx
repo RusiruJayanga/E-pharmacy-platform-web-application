@@ -41,9 +41,9 @@ const Save = () => {
         <div className="save-item-container">
           {/* repeat */}
           <div className="save-item">
-            <img src="/details/1.png" alt="product" />
-            <h4>Pain Relief Tablets Pain Relief Tablets</h4>
-            <h5>202 Left</h5>
+            <img src="/upload/paracetamol.png" alt="product" />
+            <h4>Paracetamol</h4>
+            <h5>2021 Left</h5>
             <h5>2025/2/1</h5>
             <div className="save-action">
               <button>Show</button>
@@ -54,10 +54,10 @@ const Save = () => {
           </div>
           {/* repeat */}
           <div className="save-item">
-            <img src="/details/1.png" alt="product" />
-            <h4>Pain Relief Tablets</h4>
-            <h5>202 Left</h5>
-            <h5>2025/2/1</h5>
+            <img src="/upload/cetirizine.png" alt="product" />
+            <h4>Cetirizine</h4>
+            <h5>204 Left</h5>
+            <h5>2025/4/7</h5>
             <div className="save-action">
               <button>Show</button>
               <button>

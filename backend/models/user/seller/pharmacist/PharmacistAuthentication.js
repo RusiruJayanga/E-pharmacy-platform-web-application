@@ -13,8 +13,8 @@ const pharmacistSchema = new mongoose.Schema({
     open: String,
     close: String,
   },
-  registration_certificate: { type: String }, // file path
-  government_id: { type: String }, // file path
+  registration_certificate: { type: String },
+  government_id: { type: String },
   email: { type: String, required: true },
   password: { type: String, required: true },
   location: {
