@@ -8,7 +8,7 @@
   grid-template-columns: repeat(auto-fit, 260px);
   gap: 20px;
   justify-content: center;
-  margin-top: 60px;
+  margin-top: 100px;
 }
 .product-container .product-card {
   width: min(260px, 100%);
@@ -134,7 +134,7 @@
   height: 100px;
   object-fit: cover;
   border-radius: var(--border_radius_2);
-  border: 1px solid var(--bg_color_3);
+  border: 1px solid var(--bg_color_2);
 }
 .advertisement-container .advertisement-card .advertisement-card-content {
   width: 160px;
@@ -242,7 +242,7 @@
   border-bottom-right-radius: 75px;
   border-top-left-radius: var(--border_radius_2);
   border-bottom-left-radius: var(--border_radius_2);
-  border: 1px solid var(--bg_color_3);
+  border: 1px solid var(--bg_color_2);
 }
 .advertisement-id-container
   .advertisement-id-card

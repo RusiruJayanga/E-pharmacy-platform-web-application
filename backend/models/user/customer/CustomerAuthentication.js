@@ -10,12 +10,8 @@ const customerSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true,
-    minlength: 6,
-    validate: {
-      validator: (val) => /\d{3}/.test(val),
-      message: "Password must include at least 3 digits.",
-    },
   },
+  account_status: { type: String, default: "Approved", required: true },
 });
 
 // Hash password before saving

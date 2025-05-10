@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import bcrypt from "bcryptjs";
 
 const labSchema = new mongoose.Schema({
   pathologist_name: { type: String, required: true },
@@ -16,12 +17,22 @@ const labSchema = new mongoose.Schema({
   },
   nmra_cert: { type: String },
   diagnostic_license: { type: String },
+  profile_picture: { type: String },
   email: { type: String, required: true },
   password: { type: String, required: true },
   location: {
     lat: Number,
     lng: Number,
   },
+  account_status: { type: String, default: "Pending", required: true },
 });
 
-module.exports = mongoose.model("Lab", labSchema);
+// Hash password before saving
+labSchema.pre("save", async function (next) {
+  if (!this.isModified("password")) return next();
+  this.password = await bcrypt.hash(this.password, 10);
+  next();
+});
+
+const Lab = mongoose.model("Lab", labSchema);
+export default Lab;

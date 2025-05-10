@@ -80,7 +80,7 @@ const Home = () => {
       image: "thermometer.png",
     },
     {
-      id: 2,
+      id: 3,
       name: "Blood Pressure Monitor",
       price: "Rs. 2,499.00",
       image: "bp-monitor.png",
@@ -92,13 +92,13 @@ const Home = () => {
       image: "adult-diapers.png",
     },
     {
-      id: 4,
+      id: 5,
       name: "Nebulizer Machine",
       price: "Rs. 3,899.00",
       image: "nebulizer.png",
     },
     {
-      id: 3,
+      id: 6,
       name: "Pulse Oximeter",
       price: "Rs. 1,299.00",
       image: "oximeter.png",

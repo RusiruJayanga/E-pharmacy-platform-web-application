@@ -10,7 +10,6 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 //backend connection
-
 const Login = ({ isOpen, onClose }) => {
   //validation
   const { login } = useAuth();
@@ -18,6 +17,14 @@ const Login = ({ isOpen, onClose }) => {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({ email: "", password: "" });
 
+  //reset form
+  const resetForm = () => {
+    setEmail("");
+    setPassword("");
+    setErrors({ email: "", password: "" });
+  };
+
+  //submit form
   const handleSubmit = async (e) => {
     e.preventDefault();
     const emailError = !email ? "Required" : "";
@@ -27,21 +34,35 @@ const Login = ({ isOpen, onClose }) => {
 
     if (!emailError && !passwordError) {
       try {
-        const { token, user } = await loginUser(email, password);
-        login(token);
+        setIsLoading(true);
+        const response = await loginUser(email, password);
+        login(response.token, {
+          id: response.user.id,
+          name: response.user.name,
+          email: response.user.email,
+        });
         toast.success("Login successful!");
-        onClose();
+        setTimeout(() => {
+          onClose();
+          resetForm();
+        }, 1000);
       } catch (err) {
-        toast.error(err);
+        toast.error(err.message || "Login failed");
+      } finally {
+        setIsLoading(false);
       }
     }
   };
+
+  //loading
+  const [isLoading, setIsLoading] = useState(false);
 
   //popup close
   if (!isOpen) return null;
 
   return (
     <div className="popup-overlay" onClick={onClose}>
+      <ToastContainer position="top-center" autoClose={3500} theme="dark" />
       <motion.div
         className="customer-login-popup-content"
         onClick={(e) => e.stopPropagation()}
@@ -83,7 +104,9 @@ const Login = ({ isOpen, onClose }) => {
             />
             <p>{errors.password}</p>
           </div>
-          <button type="submit">Login</button>
+          <button type="submit" disabled={isLoading}>
+            {isLoading ? "Loading..." : "Login"}
+          </button>
         </form>
       </motion.div>
     </div>

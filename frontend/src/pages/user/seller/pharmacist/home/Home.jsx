@@ -54,11 +54,7 @@ const Home = () => {
   return (
     <div>
       {/* margin section 1 */}
-      <div className="margin-section-container seller-home-section1">
-        <div className="margin-section-content">
-          <h1>name</h1>
-        </div>
-      </div>
+      <div className="margin-section-container seller-home-section1"></div>
       {}
       {/* count section */}
       <div className="count-container" ref={ref}>

@@ -9,22 +9,21 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    if (authToken) {
-      // Fetch or decode user info if needed (optional)
-      // Or just set a dummy "logged in" user state
-      setUser({ token: authToken });
-    } else {
-      setUser(null);
+    const token = localStorage.getItem("customerToken");
+    if (token) {
+      setAuthToken(token);
+      // You might want to decode the token here to get user info
     }
-  }, [authToken]);
+  }, []);
 
-  const login = (token) => {
-    localStorage.setItem("token", token);
+  const login = (token, userData) => {
+    localStorage.setItem("customerToken", token);
     setAuthToken(token);
+    setUser(userData);
   };
 
   const logout = () => {
-    localStorage.removeItem("token");
+    localStorage.removeItem("customerToken");
     setAuthToken(null);
     setUser(null);
   };

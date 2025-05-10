@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import bcrypt from "bcryptjs";
 
 const pharmacistSchema = new mongoose.Schema({
   owner_name: { type: String, required: true },
@@ -21,6 +22,15 @@ const pharmacistSchema = new mongoose.Schema({
     lat: Number,
     lng: Number,
   },
+  account_status: { type: String, default: "Pending", required: true },
 });
 
-module.exports = mongoose.model("Pharmacist", pharmacistSchema);
+// Hash password before saving
+pharmacistSchema.pre("save", async function (next) {
+  if (!this.isModified("password")) return next();
+  this.password = await bcrypt.hash(this.password, 10);
+  next();
+});
+
+const Pharmacist = mongoose.model("Pharmacist", pharmacistSchema);
+export default Pharmacist;

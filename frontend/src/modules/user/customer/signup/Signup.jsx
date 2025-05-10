@@ -5,8 +5,15 @@ import { motion } from "framer-motion";
 //validation
 import { useFormik } from "formik";
 import * as Yup from "yup";
+//backend connection
+import { registerUser } from "../../../../services/AuthService.js";
+import { useAuth } from "../../../../config/AuthContext.jsx";
+//alert
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Signup = ({ isOpen, onClose }) => {
+  const { login } = useAuth();
   //validation
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const formik = useFormik({
@@ -34,20 +41,55 @@ const Signup = ({ isOpen, onClose }) => {
       password: Yup.string()
         .required("Required")
         .min(8, "Password must be at least 8 characters")
-        .matches(/[!@#$%^&*(),.?":{}|<>]/, "Must contain at least one symbol"),
+        .matches(
+          /[!@#$%^&*(),.?]/,
+          "Must contain at least one symbol (!@#$%^&*(),.?)"
+        ),
     }),
-    onSubmit: (values) => {
-      setHasSubmitted(true);
-      console.log("Form submitted:", values);
-      // Add your submission logic here
+
+    //submit form
+    onSubmit: async (values, { resetForm }) => {
+      setIsLoading(true);
+      try {
+        const response = await registerUser({
+          name: values.name,
+          address: values.address,
+          postal_code: values.postalCode,
+          phone_number: values.phoneNumber,
+          email: values.email,
+          password: values.password,
+        });
+
+        login(response.token, {
+          id: response.user.id,
+          name: response.user.name,
+          email: response.user.email,
+          phone_number: response.user.phone_number,
+        });
+
+        toast.success("Registration successful! Welcome!");
+        setTimeout(() => {
+          onClose();
+          resetForm();
+          setHasSubmitted(false);
+        }, 1000);
+      } catch (error) {
+        toast.error(error.message || "Registration failed. Please try again.");
+      } finally {
+        setIsLoading(false);
+      }
     },
   });
+
+  //loading
+  const [isLoading, setIsLoading] = useState(false);
 
   //popup close
   if (!isOpen) return null;
 
   return (
     <div className="popup-overlay" onClick={onClose}>
+      <ToastContainer position="top-center" autoClose={3500} theme="dark" />
       <motion.div
         className="customer-signup-popup-content"
         onClick={(e) => e.stopPropagation()}
@@ -136,7 +178,9 @@ const Signup = ({ isOpen, onClose }) => {
               {hasSubmitted && formik.errors.password && formik.errors.password}
             </p>
 
-            <button type="submit">Signup</button>
+            <button type="submit" disabled={isLoading || formik.isSubmitting}>
+              {isLoading ? "Loading..." : "Signup"}
+            </button>
           </form>
         </div>
       </motion.div>

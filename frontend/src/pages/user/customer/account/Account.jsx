@@ -5,6 +5,8 @@ import "./account.css";
 import "../../../../components/user/common/margin/margin.css";
 //account section css
 import "../info/seller_info.css";
+//log out
+import { useAuth } from "../../../../config/AuthContext";
 
 const Account = () => {
   //user info fatch
@@ -25,6 +27,14 @@ const Account = () => {
     "Appointments",
     "Notifications",
   ];
+
+  //log out
+  const { user: authUser, logout } = useAuth();
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    logout();
+    navigate("/");
+  };
 
   return (
     <div>
@@ -60,7 +70,7 @@ const Account = () => {
               <p>Address - </p>
               <h5 className="account-info-h5">{user.address}</h5>
             </span>
-            <button>Log Out</button>
+            <button onClick={handleLogout}>Log Out</button>
           </div>
         </div>
       </div>

@@ -7,22 +7,31 @@ export const loginCustomer = async (req, res) => {
 
   try {
     const customer = await Customer.findOne({ email });
-    if (!customer)
+    if (!customer) {
       return res.status(400).json({ message: "Invalid email or password" });
+    }
 
     const isMatch = await bcrypt.compare(password, customer.password);
-    if (!isMatch)
+    if (!isMatch) {
       return res.status(400).json({ message: "Invalid email or password" });
+    }
 
-    const token = jwt.sign({ customerId: customer._id }, "yourSecretKey", {
-      expiresIn: "1d",
-    });
-
+    //generate token
+    const token = jwt.sign(
+      { customerId: customer._id },
+      process.env.JWT_SECRET,
+      { expiresIn: "1d" }
+    );
     res.status(200).json({
       token,
-      user: { id: customer._id, name: customer.name, email: customer.email },
+      user: {
+        id: customer._id,
+        name: customer.name,
+        email: customer.email,
+        phone_number: customer.phone_number,
+      },
     });
   } catch (err) {
-    res.status(500).json({ message: "Server error", error: err.message });
+    res.status(500).json({ message: "Server error during login" });
   }
 };
