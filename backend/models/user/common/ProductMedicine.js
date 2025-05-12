@@ -16,8 +16,9 @@ const medicineSchema = new mongoose.Schema({
     enum: ["Need Prescription", "Don't Need Prescription"],
     required: true,
   },
-  discount: { type: String, required: true },
+  discount: { type: Number, required: false, default: 0 },
   images: [String],
 });
 
-module.exports = mongoose.model("Medicine", medicineSchema);
+const Medicine = mongoose.model("Medicine", medicineSchema);
+export default Medicine;

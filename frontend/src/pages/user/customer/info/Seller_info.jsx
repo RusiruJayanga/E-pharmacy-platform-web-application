@@ -26,7 +26,7 @@ const Seller_info = () => {
   return (
     <div>
       {/* ribben */}
-      <div className="ribben"></div>
+      <div className="ribben-image"></div>
       {}
       {/* account section */}
       <div className="account-info-margin"></div>

@@ -11,8 +11,9 @@ const accessorySchema = new mongoose.Schema({
   options: [{ name: String, price: { type: Number, min: 0 } }],
   description: { type: String, required: true },
   category: { type: String, required: true },
-  discount: { type: String, required: false },
+  discount: { type: Number, required: false, default: 0 },
   images: [String],
 });
 
-module.exports = mongoose.model("Accessory", accessorySchema);
+const Accessory = mongoose.model("Accessory", accessorySchema);
+export default Accessory;

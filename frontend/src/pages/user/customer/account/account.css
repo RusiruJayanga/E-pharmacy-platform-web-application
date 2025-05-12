@@ -2,15 +2,16 @@
 /* account section */
 .user-account-info-margin {
   width: 100%;
-  height: 200px;
+  height: 260px;
   background-image: linear-gradient(
       270deg,
-      rgba(0, 95, 78, 0.642) 0%,
-      rgba(45, 68, 92, 0.711) 100%
+      rgba(0, 95, 78, 0.52) 0%,
+      rgba(45, 68, 92, 0.611) 100%
     ),
-    url(user-bg.jpg);
+    url(customer-account-bg.jpg);
   background-size: cover;
   background-repeat: no-repeat;
+  margin-top: -60px;
 }
 /* head section */
 .activity-head {
@@ -155,6 +156,14 @@
   span
   .setting-delete:hover {
   color: #ff0000;
+}
+.account-activity-container
+  .activity-container
+  .setting-container
+  .setting-content
+  span
+  .setting-pending:hover {
+  color: #00bd00;
 }
 /* pending order section */
 .account-activity-container .activity-container .pending-order-item {

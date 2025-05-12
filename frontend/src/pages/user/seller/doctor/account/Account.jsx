@@ -32,7 +32,7 @@ const Account = () => {
       <div className="ribben"></div>
       {}
       {/* account section */}
-      <div className="user-account-info-margin"></div>
+      <div className="doctor-account-info-margin"></div>
       <div className="account-info-container">
         <img src="user-icon.png" alt="user" />
         <h3> {user.name}</h3>

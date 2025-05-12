@@ -7,6 +7,9 @@ import Select from "react-select";
 //validation
 import { useFormik } from "formik";
 import * as Yup from "yup";
+//alert
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Product = () => {
   //category select
@@ -54,47 +57,47 @@ const Product = () => {
   };
   //medicine select
   const medicineCategoryOptions = [
-    { label: "Asthma", value: "asthma" },
-    { label: "Anti-Histamine", value: "anti_histamine" },
-    { label: "Antibiotics", value: "antibiotics" },
-    { label: "Cardiovascular", value: "cardiovascular" },
-    { label: "Oncology Drugs", value: "oncology" },
-    { label: "Constipation Reliever", value: "constipation_reliever" },
-    { label: "Diabetics", value: "diabetics" },
-    { label: "Eye Drops & Ear Drops", value: "eye_ear_drops" },
-    { label: "Gastrointestinal", value: "gastrointestinal" },
-    { label: "Hormones", value: "hormones" },
-    { label: "Neurological", value: "neurological" },
-    { label: "Pain Killers", value: "pain_killers" },
-    { label: "Antivirals", value: "antivirals" },
-    { label: "Urinary", value: "urinary" },
-    { label: "Veterinary", value: "veterinary" },
-    { label: "Vitamins", value: "vitamins" },
-    { label: "Worm Treatments", value: "worm_treatments" },
+    { label: "Asthma", value: "Asthma" },
+    { label: "Anti-Histamine", value: "Anti-Histamine" },
+    { label: "Antibiotics", value: "Antibiotics" },
+    { label: "Cardiovascular", value: "Cardiovascular" },
+    { label: "Oncology Drugs", value: "Oncology Drugs" },
+    { label: "Constipation Reliever", value: "Constipation Reliever" },
+    { label: "Diabetics", value: "Diabetics" },
+    { label: "Eye Drops & Ear Drops", value: "Eye Drops & Ear Drops" },
+    { label: "Gastrointestinal", value: "Gastrointestinal" },
+    { label: "Hormones", value: "Hormones" },
+    { label: "Neurological", value: "Neurological" },
+    { label: "Pain Killers", value: "Pain Killers" },
+    { label: "Antivirals", value: "Antivirals" },
+    { label: "Urinary", value: "Urinary" },
+    { label: "Veterinary", value: "Veterinary" },
+    { label: "Vitamins", value: "Vitamins" },
+    { label: "Worm Treatments", value: "Worm Treatments" },
   ];
   const legalityOptions = [
-    { label: "Need Prescription", value: "Need_Prescription" },
-    { label: "Dont Need Prescription", value: "Dont_Need_Prescription" },
+    { label: "Need Prescription", value: "Need Prescription" },
+    { label: "Don't Need Prescription", value: "Don't Need Prescription" },
   ];
   //accessories select
   const healthProductOptions = [
-    { label: "Adult Care", value: "Adult_Care" },
+    { label: "Adult Care", value: "Adult Care" },
     { label: "Ayurveda", value: "Ayurveda" },
     { label: "Beverages", value: "Beverages" },
     { label: "Cosmetics", value: "Cosmetics" },
-    { label: "Dairy Products", value: "Dairy_Products" },
-    { label: "Diabetic Care", value: "Diabetic_Care" },
-    { label: "Food Items", value: "Food_Items" },
-    { label: "Hair Care", value: "Hair_Care" },
-    { label: "Household Remedies", value: "Household_Remedies" },
+    { label: "Dairy Products", value: "Dairy Products" },
+    { label: "Diabetic Care", value: "Diabetic Care" },
+    { label: "Food Items", value: "Food Items" },
+    { label: "Hair Care", value: "Hair Care" },
+    { label: "Household Remedies", value: "Household Remedies" },
     { label: "Kids", value: "Kids" },
-    { label: "Mother & Baby Care", value: "Mother_&_Baby_Care" },
-    { label: "Personal Care", value: "Personal_Care" },
-    { label: "Pet Care", value: "Pet_Care" },
-    { label: "Skin Care", value: "Skin_Care" },
-    { label: "Surgical Items", value: "Surgical_Items" },
+    { label: "Mother & Baby Care", value: "Mother & Baby_Care" },
+    { label: "Personal Care", value: "Personal Care" },
+    { label: "Pet Care", value: "Pet Care" },
+    { label: "Skin Care", value: "Skin Care" },
+    { label: "Surgical Items", value: "Surgical Items" },
     { label: "Vitamins", value: "Vitamins" },
-    { label: "Medical Devices", value: "Medical_Devices" },
+    { label: "Medical Devices", value: "Medical Devices" },
   ];
 
   //validation
@@ -130,7 +133,10 @@ const Product = () => {
         "Maximum 5 images allowed",
         (value) => value && value.length <= 5
       ),
-    Discount: Yup.string(),
+    Discount: Yup.number()
+      .min(0, "Discount cannot be negative")
+      .max(100, "Discount cannot exceed 100")
+      .nullable(),
   });
 
   const accessoryValidationSchema = Yup.object().shape({
@@ -158,7 +164,10 @@ const Product = () => {
         "Maximum 5 images allowed",
         (value) => value && value.length <= 5
       ),
-    Discount: Yup.string(),
+    Discount: Yup.number()
+      .min(0, "Discount cannot be negative")
+      .max(100, "Discount cannot exceed 100")
+      .nullable(),
   });
 
   const formik = useFormik({
@@ -186,8 +195,100 @@ const Product = () => {
       selectedCategory === "Medicines"
         ? medicineValidationSchema
         : accessoryValidationSchema,
-    onSubmit: (values) => {
-      console.log(values);
+
+    //form submit
+    onSubmit: async (values, { resetForm }) => {
+      try {
+        const raw = localStorage.getItem("pharmacistToken");
+        if (!raw) {
+          toast.error("You must be logged in");
+          return;
+        }
+
+        const parsed = JSON.parse(raw);
+        const token = parsed.token;
+
+        let seller_id;
+        try {
+          const payload = JSON.parse(atob(token.split(".")[1]));
+          seller_id = payload.pharmacistId;
+        } catch (err) {
+          toast.error("Invalid token format");
+          return;
+        }
+
+        const formData = new FormData();
+        if (values.registrationCertificate) {
+          for (let i = 0; i < values.registrationCertificate.length; i++) {
+            formData.append("files", values.registrationCertificate[i]);
+          }
+        }
+
+        const uploadResponse = await fetch(
+          "http://localhost:5000/api/files/upload",
+          {
+            method: "POST",
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+            body: formData,
+          }
+        );
+
+        if (!uploadResponse.ok) {
+          throw new Error("Image upload failed");
+        }
+
+        const { urls } = await uploadResponse.json();
+
+        const options = [];
+        for (let i = 1; i <= 5; i++) {
+          const name = values[`Option${i}`];
+          const price = values[`Price${i}`];
+          if (name && price) {
+            options.push({ name: name.trim(), price: parseFloat(price) });
+          }
+        }
+
+        const productPayload = {
+          seller_id,
+          name: values.Name.trim(),
+          quantity: parseInt(values.Quantity),
+          options,
+          description: values.description.trim(),
+          category:
+            selectedCategory === "Medicines"
+              ? values.medicineCategory?.value
+              : values.healthCategory?.value,
+          discount: parseFloat(values.Discount) || 0,
+          images: urls,
+          type: selectedCategory === "Medicines" ? "Medicine" : "Accessory",
+          ...(selectedCategory === "Medicines" && {
+            legality: values.legality?.value,
+          }),
+        };
+
+        const saveResponse = await fetch(
+          "http://localhost:5000/api/product/add",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(productPayload),
+          }
+        );
+
+        if (!saveResponse.ok) {
+          throw new Error("Product saving failed");
+        }
+
+        toast.success("Product added successfully!");
+        resetForm();
+      } catch (error) {
+        console.error("Error submitting product:", error);
+        toast.error(error.message || "Failed to add product");
+      }
     },
   });
 
@@ -391,8 +492,9 @@ const Product = () => {
             </p>
 
             <input
-              type="text"
+              type="number"
               name="Discount"
+              min={0}
               placeholder="Discounts (optional)"
               value={formik.values.Discount}
               onChange={formik.handleChange}
@@ -589,8 +691,9 @@ const Product = () => {
             </p>
 
             <input
-              type="text"
+              type="number"
               name="Discount"
+              min={0}
               placeholder="Discounts (optional)"
               value={formik.values.Discount}
               onChange={formik.handleChange}

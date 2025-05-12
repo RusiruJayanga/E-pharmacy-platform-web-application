@@ -1,23 +1,12 @@
 import React, { useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import "./account.css";
-//ribben css
-import "../../../../components/user/common/margin/margin.css";
 //account section css
 import "../info/seller_info.css";
 //log out
 import { useAuth } from "../../../../config/AuthContext";
 
 const Account = () => {
-  //user info fatch
-  const user = {
-    name: "Health Plus Pharmacy",
-    phone: "0771234567",
-    email: "rusirujayanga@gmail.com",
-    district: "Colombo",
-    postalCode: "81000",
-    address: "123, Main Street, Colombo 03",
-  };
   //category select
   const [selectedCategory, setSelectedCategory] = useState("Settings");
   const categories = [
@@ -36,11 +25,12 @@ const Account = () => {
     navigate("/");
   };
 
+  //decode user data
+  const token = localStorage.getItem("customerToken");
+  const user = JSON.parse(atob(token.split(".")[1]));
+
   return (
     <div>
-      {/* ribben */}
-      <div className="ribben"></div>
-      {}
       {/* account section */}
       <div className="user-account-info-margin"></div>
       <div className="account-info-container">
@@ -50,24 +40,20 @@ const Account = () => {
           <div className="account-info-content">
             <span>
               <p>Phone Number - </p>
-              <h5> {user.phone}</h5>
+              <h5> {user.phone_number}</h5>
             </span>
             <span>
               <p>Email - </p>
               <h5> {user.email}</h5>
             </span>
-            <span>
-              <p>District - </p>
-              <h5> {user.district}</h5>
-            </span>
           </div>
           <div className="account-info-content">
             <span>
-              <p>Postal code - </p>
-              <h5> {user.postalCode}</h5>
+              <p>Postal Code - </p>
+              <h5> {user.postal_code}</h5>
             </span>
             <span className="account-info-span">
-              <p>Address - </p>
+              <p>Address -</p>
               <h5 className="account-info-h5">{user.address}</h5>
             </span>
             <button onClick={handleLogout}>Log Out</button>
@@ -116,18 +102,60 @@ const Account = () => {
                   <h6>Change</h6>
                 </span>
               </div>
-              <h4>Security Information -</h4>
+              <h4>Security Information</h4>
               <div className="setting-content">
                 <span>
                   <p>Change Password -</p>
                   <h6>Change</h6>
                 </span>
-                <span>
-                  <p>Request To Be Seller -</p>
-                  <Link to="/Request">
-                    <button>Request</button>
-                  </Link>
-                </span>
+                {user?.account_status === "Pharmacist Pendin" && (
+                  <span>
+                    <p>Request To Be Seller -</p>
+                    <Link to="/Request">
+                      <button>Request</button>
+                    </Link>
+                  </span>
+                )}
+                {[
+                  "Doctor Pending",
+                  "Pharmacist Pnding",
+                  "Lab Owner Pending",
+                ].includes(user?.account_status) && (
+                  <span>
+                    <p>Request To Be Seller -</p>
+                    <h6 className="setting-pending">Pending</h6>
+                  </span>
+                )}
+                {user?.account_status === "Rejected" && (
+                  <span>
+                    <p>Request To Be Seller -</p>
+                    <h6 className="setting-delete">Rejected</h6>
+                  </span>
+                )}
+                {user?.account_status === "Pharmacist Pendin" && (
+                  <span>
+                    <p>Seller Account -</p>
+                    <Link to="/Doctor_login">
+                      <button>Login</button>
+                    </Link>
+                  </span>
+                )}
+                {user?.account_status === "Pharmacist Pending" && (
+                  <span>
+                    <p>Seller Account -</p>
+                    <Link to="/Pharmacist_login">
+                      <button>Login</button>
+                    </Link>
+                  </span>
+                )}
+                {user?.account_status === "Lab Owner" && (
+                  <span>
+                    <p>Seller Account -</p>
+                    <Link to="/Lab_login">
+                      <button>Login</button>
+                    </Link>
+                  </span>
+                )}
                 <span>
                   <p>Delete Account -</p>
                   <h6 className="setting-delete">Delete</h6>

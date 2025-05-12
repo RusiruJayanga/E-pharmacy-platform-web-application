@@ -37,7 +37,15 @@ export const registerCustomer = async (req, res) => {
 
     //generate token
     const token = jwt.sign(
-      { customerId: customer._id },
+      {
+        customerId: customer._id,
+        account_status: customer.account_status,
+        name: customer.name,
+        email: customer.email,
+        phone_number: customer.phone_number,
+        postal_code: customer.postal_code,
+        address: customer.address,
+      },
       process.env.JWT_SECRET,
       { expiresIn: "1d" }
     );
@@ -48,6 +56,9 @@ export const registerCustomer = async (req, res) => {
         name: customer.name,
         email: customer.email,
         phone_number: customer.phone_number,
+        account_status: customer.account_status,
+        postal_code: customer.postal_code,
+        address: customer.address,
       },
     });
   } catch (err) {

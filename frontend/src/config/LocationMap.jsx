@@ -34,7 +34,17 @@ const LocationMap = ({ location, onLocationChange, editable = false }) => {
         draggableCursor: editable ? "crosshair" : "default",
       }}
     >
-      <Marker position={location || center} />
+      <Marker
+        position={location || center}
+        draggable={editable}
+        onDragEnd={(e) => {
+          const lat = e.latLng.lat();
+          const lng = e.latLng.lng();
+          if (onLocationChange) {
+            onLocationChange({ lat, lng });
+          }
+        }}
+      />
     </GoogleMap>
   );
 };

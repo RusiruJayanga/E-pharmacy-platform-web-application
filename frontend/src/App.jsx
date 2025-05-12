@@ -2,6 +2,9 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 //scroll to top
 import ScrollToTop from "../src/config/ScrollToTop";
+//alert
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 //main components
 import Footer from "./components/user/common/footer/Footer";
 import Navigation_bar_head from "./components/user/customer/navigation/Navigation_bar_head";
@@ -35,21 +38,30 @@ import Product_pharmacist_seller from "./pages/user/seller/pharmacist/product/Pr
 import Request_pharmacist_seller from "./pages/user/seller/pharmacist/request/Request";
 import Orders_pharmacist_seller from "./pages/user/seller/pharmacist/orders/Orders";
 import Account_pharmacist_seller from "./pages/user/seller/pharmacist/account/Account";
+import Login_pharmacist_seller from "./pages/user/seller/pharmacist/login/Login";
 //seller doctor pages
 import Home_doctor_seller from "./pages/user/seller/doctor/home/Home";
 import Ads_doctor_seller from "./pages/user/seller/doctor/ads/Ads";
 import Appointments_doctor_seller from "./pages/user/seller/doctor/appointments/Appointments";
 import Account_doctor_seller from "./pages/user/seller/doctor/account/Account";
+import Login_doctor_seller from "./pages/user/seller/doctor/login/Login";
 //lab pages
 import Home_lab_seller from "./pages/user/seller/lab/home/Home";
 import Ads_lab_seller from "./pages/user/seller/lab/ads/Ads";
 import Appointments_lab_seller from "./pages/user/seller/lab/appointments/Appointments";
 import Account_lab_seller from "./pages/user/seller/lab/account/Account";
+import Login_lab_seller from "./pages/user/seller/lab/login/Login";
 
 const App = () => {
   return (
     <div>
       <ScrollToTop />
+      <ToastContainer
+        position="top-center"
+        autoClose={3500}
+        theme="dark"
+        style={{ zIndex: 10010 }}
+      />
       <Navigation_bar_head />
       {/* navigation */}
       <Routes>
@@ -143,6 +155,7 @@ const App = () => {
           path="/Request_pharmacist"
           element={<Request_pharmacist_seller />}
         />
+        <Route path="/Pharmacist_login" element={<Login_pharmacist_seller />} />
       </Routes>
       {/* seller doctor pages */}
       <Routes>
@@ -153,6 +166,7 @@ const App = () => {
           element={<Appointments_doctor_seller />}
         />
         <Route path="/Account_doctor" element={<Account_doctor_seller />} />
+        <Route path="/Doctor_login" element={<Login_doctor_seller />} />
       </Routes>
       {/* seller lab pages */}
       <Routes>
@@ -160,6 +174,7 @@ const App = () => {
         <Route path="/Ads_lab" element={<Ads_lab_seller />} />
         <Route path="/Appointments_lab" element={<Appointments_lab_seller />} />
         <Route path="/Account_lab" element={<Account_lab_seller />} />
+        <Route path="/Lab_login" element={<Login_lab_seller />} />
       </Routes>
       <Footer />
     </div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 //margin css
 import "../../../../components/user/common/margin/margin.css";
@@ -103,39 +103,32 @@ const Medicines = () => {
       options: NorthWestern,
     },
   ];
+
   //product fatch
-  const medicineProducts = [
-    {
-      id: 16,
-      name: "Paracetamol",
-      price: "Rs. 25.00",
-      image: "paracetamol.png",
-    },
-    {
-      id: 17,
-      name: "Cetirizine",
-      price: "Rs. 18.00",
-      image: "cetirizine.png",
-    },
-    {
-      id: 18,
-      name: "Antacid Syrup",
-      price: "Rs. 85.00",
-      image: "antacid-syrup.png",
-    },
-    {
-      id: 19,
-      name: "Cough Syrup",
-      price: "Rs. 120.00",
-      image: "cough-syrup.png",
-    },
-    {
-      id: 20,
-      name: "Ibuprofen",
-      price: "Rs. 35.00",
-      image: "ibuprofen.png",
-    },
-  ];
+  const [medicines, setMedicines] = useState([]);
+  const [selectedDistrict, setSelectedDistrict] = useState(null);
+
+  useEffect(() => {
+    const fetchMedicines = async () => {
+      try {
+        let url = "http://localhost:5000/api/medicines?";
+        if (selectedcategoryCheckbox && selectedcategoryCheckbox !== "All") {
+          url += `category=${encodeURIComponent(selectedcategoryCheckbox)}&`;
+        }
+        if (selectedDistrict && selectedDistrict !== "Island Wide") {
+          url += `district=${encodeURIComponent(selectedDistrict)}`;
+        }
+
+        const res = await fetch(url);
+        const data = await res.json();
+        setMedicines(data);
+      } catch (error) {
+        console.error("Failed to fetch medicines:", error);
+      }
+    };
+
+    fetchMedicines();
+  }, [selectedcategoryCheckbox, selectedDistrict]);
 
   return (
     <div>
@@ -192,7 +185,10 @@ const Medicines = () => {
           <div className="product-filter-location-dropbox">
             <Select
               options={groupedFilterOptions}
-              defaultValue={{ label: "Island Wide", value: "Island_Wide" }}
+              onChange={(selected) =>
+                setSelectedDistrict(selected?.value || null)
+              }
+              placeholder="Select District"
             />
           </div>
         </div>
@@ -201,8 +197,8 @@ const Medicines = () => {
       {/* product card section */}
       <div className="product-container">
         {/* repeat */}
-        {medicineProducts.map((product) => (
-          <div className="product-card" key={product.id}>
+        {medicines.map((product) => (
+          <div className="product-card" key={product._id}>
             <div className="product-card-discription">
               <span>
                 <p>Name -</p>
@@ -215,15 +211,20 @@ const Medicines = () => {
               </div>
             </div>
             <div className="product-card-image">
-              <img src={`upload/${product.image}`} alt={product.name} />
+              <img src={product.images?.[0]} alt={product.name} />
             </div>
             <div className="product-card-price">
               <span>
                 <p>Price -</p>
-                <h5>{product.price}</h5>
+                <h5>
+                  Rs.{" "}
+                  {product.options?.[0]?.price
+                    ? product.options[0].price.toFixed(2)
+                    : "N/A"}
+                </h5>
               </span>
             </div>
-            <Link to={`/Medicines_details`}>
+            <Link to={`/Medicines_details/${product._id}`}>
               <div className="product-card-see-more">
                 <p>See More</p>
               </div>

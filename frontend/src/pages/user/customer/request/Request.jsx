@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import "./request.css";
 //ribben css
 import "../../../../components/user/common/margin/margin.css";
@@ -14,8 +15,9 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Request = () => {
+  //redirect
+  const navigate = useNavigate();
   //add location
-
   const defaultLocation = {
     lat: 6.9271,
     lng: 79.8612,
@@ -338,7 +340,6 @@ const Request = () => {
       registrationCertificate: null,
       governmentId: null,
       location: null,
-      postalCode: "",
       //doctor fields
       name: "",
       slmcRegistration: "",
@@ -365,67 +366,93 @@ const Request = () => {
       const role = selectedCategory;
       let formattedValues = { ...values, role };
 
-      if (role === "Pharmacist") {
-        formattedValues = {
-          role,
-          owner_name: values.ownerName,
-          pharmacy_name: values.pharmacyName,
-          national_id: values.nationalId,
-          slmc_number: values.slmcNumber,
-          district: values.district?.value || "",
-          address: values.address,
-          postal_code: values.postalCode,
-          phone_number: values.phoneNumber,
-          email: values.email,
-          password: values.password,
-          working_hours: {
-            open: values.openingTime,
-            close: values.closingTime,
-          },
-          registration_certificate: values.registrationCertificate?.name || "",
-          government_id: values.governmentId?.name || "",
-          location: values.location || {},
-        };
-      } else if (role === "Doctor") {
-        formattedValues = {
-          role,
-          name: values.name,
-          slmc_number: values.slmcRegistration,
-          national_id: values.nationalId,
-          specialty: values.specialty?.value || "",
-          district: values.district?.value || "",
-          address: values.address,
-          phone_number: values.phoneNumber,
-          email: values.email,
-          password: values.password,
-          license_file: values.medicalLicense?.name || "",
-          profile_picture: values.profilePicture?.name || "",
-        };
-      } else if (role === "Lab Owner") {
-        formattedValues = {
-          role,
-          pathologist_name: values.pathologistName,
-          lab_name: values.labName,
-          national_id: values.nationalId,
-          lab_tests: values.labTests?.map((test) => test.value) || [],
-          business_reg_number: values.businessRegNumber,
-          district: values.district?.value || "",
-          address: values.address,
-          postal_code: values.postalCode,
-          phone_number: values.phoneNumber,
-          email: values.email,
-          password: values.password,
-          working_hours: {
-            open: values.openingTime,
-            close: values.closingTime,
-          },
-          nmra_cert: values.nmraCertification?.name || "",
-          diagnostic_license: values.labLicense?.name || "",
-          profile_picture: values.profilePicture?.name || "",
-          location: values.location || {},
-        };
-      }
       try {
+        // Upload files first
+        let fileUrls = {};
+
+        if (role === "Pharmacist") {
+          const [registrationCertUrl, governmentIdUrl] = await uploadFiles([
+            values.registrationCertificate,
+            values.governmentId,
+          ]);
+          fileUrls = { registrationCertUrl, governmentIdUrl };
+        } else if (role === "Doctor") {
+          const [medicalLicenseUrl, profilePictureUrl] = await uploadFiles([
+            values.medicalLicense,
+            values.profilePicture,
+          ]);
+          fileUrls = { medicalLicenseUrl, profilePictureUrl };
+        } else if (role === "Lab Owner") {
+          const [nmraCertUrl, labLicenseUrl, profilePictureUrl] =
+            await uploadFiles([
+              values.nmraCertification,
+              values.labLicense,
+              values.profilePicture,
+            ]);
+          fileUrls = { nmraCertUrl, labLicenseUrl, profilePictureUrl };
+        }
+
+        if (role === "Pharmacist") {
+          formattedValues = {
+            role,
+            owner_name: values.ownerName,
+            pharmacy_name: values.pharmacyName,
+            national_id: values.nationalId,
+            slmc_number: values.slmcNumber,
+            district: values.district?.value || "",
+            address: values.address,
+            postal_code: values.postalCode,
+            phone_number: values.phoneNumber,
+            email: values.email,
+            password: values.password,
+            working_hours: {
+              open: values.openingTime,
+              close: values.closingTime,
+            },
+            registration_certificate: fileUrls.registrationCertUrl,
+            government_id: fileUrls.governmentIdUrl,
+            location: values.location || {},
+          };
+        } else if (role === "Doctor") {
+          formattedValues = {
+            role,
+            name: values.name,
+            slmc_number: values.slmcRegistration,
+            national_id: values.nationalId,
+            specialty: values.specialty?.value || "",
+            district: values.district?.value || "",
+            address: values.address,
+            phone_number: values.phoneNumber,
+            email: values.email,
+            password: values.password,
+            license_file: fileUrls.medicalLicenseUrl,
+            profile_picture: fileUrls.profilePictureUrl,
+          };
+        } else if (role === "Lab Owner") {
+          formattedValues = {
+            role,
+            pathologist_name: values.pathologistName,
+            lab_name: values.labName,
+            national_id: values.nationalId,
+            lab_tests: values.labTests?.map((test) => test.value) || [],
+            business_reg_number: values.businessRegNumber,
+            district: values.district?.value || "",
+            address: values.address,
+            postal_code: values.postalCode,
+            phone_number: values.phoneNumber,
+            email: values.email,
+            password: values.password,
+            working_hours: {
+              open: values.openingTime,
+              close: values.closingTime,
+            },
+            nmra_cert: fileUrls.nmraCertUrl,
+            diagnostic_license: fileUrls.labLicenseUrl,
+            profile_picture: fileUrls.profilePictureUrl,
+            location: values.location || {},
+          };
+        }
+
         const response = await fetch(
           "http://localhost:5000/api/auth/request-seller-role",
           {
@@ -441,11 +468,40 @@ const Request = () => {
 
         toast.success(result.message);
         resetForm();
+        navigate("/Account");
       } catch (error) {
         toast.error(error.message || "Request failed. Try again.");
       }
     },
   });
+
+  //token
+  const token = localStorage.getItem("customerToken");
+
+  //file upload
+  const uploadFiles = async (files) => {
+    try {
+      const formData = new FormData();
+      files.filter(Boolean).forEach((file) => {
+        formData.append("files", file);
+      });
+
+      const response = await fetch("http://localhost:5000/api/files/upload", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        body: formData,
+      });
+
+      const result = await response.json();
+      if (!response.ok) throw new Error("File upload failed");
+      return result.urls;
+    } catch (error) {
+      console.error("File upload error:", error);
+      throw error;
+    }
+  };
 
   return (
     <div>
@@ -680,9 +736,10 @@ const Request = () => {
             <div className="request-location-map">
               <LocationMap
                 location={sellerLocation}
-                onLocationChange={(loc) =>
-                  formik.setFieldValue("location", loc)
-                }
+                onLocationChange={(loc) => {
+                  formik.setFieldValue("location", loc);
+                  setSellerLocation(loc);
+                }}
                 editable={true}
               />
             </div>
@@ -1107,9 +1164,10 @@ const Request = () => {
             <div className="request-location-map">
               <LocationMap
                 location={sellerLocation}
-                onLocationChange={(loc) =>
-                  formik.setFieldValue("location", loc)
-                }
+                onLocationChange={(loc) => {
+                  formik.setFieldValue("location", loc);
+                  setSellerLocation(loc);
+                }}
                 editable={true}
               />
             </div>

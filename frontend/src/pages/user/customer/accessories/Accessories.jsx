@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 //margin css
 import "../../../../components/user/common/margin/margin.css";
@@ -104,7 +104,30 @@ const Accessories = () => {
     },
   ];
   //product fatch
-  const products = ["1", "2", "3", "4", "5", "6"];
+  const [selectedDistrict, setSelectedDistrict] = useState(null);
+  const [accessories, setAccessories] = useState([]);
+
+  useEffect(() => {
+    const fetchAccessories = async () => {
+      try {
+        let url = "http://localhost:5000/api/accessories?";
+        if (selectedcategoryCheckbox && selectedcategoryCheckbox !== "All") {
+          url += `category=${encodeURIComponent(selectedcategoryCheckbox)}&`;
+        }
+        if (selectedDistrict && selectedDistrict !== "Island Wide") {
+          url += `district=${encodeURIComponent(selectedDistrict)}`;
+        }
+
+        const res = await fetch(url);
+        const data = await res.json();
+        setAccessories(data);
+      } catch (error) {
+        console.error("Failed to fetch accessories:", error);
+      }
+    };
+
+    fetchAccessories();
+  }, [selectedcategoryCheckbox, selectedDistrict]);
 
   return (
     <div>
@@ -161,7 +184,10 @@ const Accessories = () => {
           <div className="product-filter-location-dropbox">
             <Select
               options={groupedFilterOptions}
-              defaultValue={{ label: "Island Wide", value: "Island_Wide" }}
+              onChange={(selected) =>
+                setSelectedDistrict(selected?.value || null)
+              }
+              placeholder="Select District"
             />
           </div>
         </div>
@@ -170,29 +196,29 @@ const Accessories = () => {
       {/* product card section */}
       <div className="product-container">
         {/* repeat */}
-        {products.map((product, idx) => (
-          <div className="product-card" id={idx}>
+        {accessories.map((product) => (
+          <div className="product-card" key={product._id}>
             <div className="product-card-discription">
               <span>
                 <p>Name -</p>
-                <h5>Lorem ipsum dolor{product}</h5>
+                <h5>{product.name}</h5>
               </span>
-              <div className="product-card-offers hot">
-                <p>
-                  <i class="bi bi-prescription2"></i>
-                </p>
-              </div>
             </div>
             <div className="product-card-image">
-              <img src="product.png" alt="product" />
+              <img src={product.images?.[0]} alt={product.name} />
             </div>
             <div className="product-card-price">
               <span>
                 <p>Price -</p>
-                <h5>Rs/ 89855.00</h5>
+                <h5>
+                  Rs.{" "}
+                  {product.options?.[0]?.price
+                    ? product.options[0].price.toFixed(2)
+                    : "N/A"}
+                </h5>
               </span>
             </div>
-            <Link to="/Accessories_details">
+            <Link to={`/Accessories_details/${product._id}`}>
               <div className="product-card-see-more">
                 <p>See More</p>
               </div>
