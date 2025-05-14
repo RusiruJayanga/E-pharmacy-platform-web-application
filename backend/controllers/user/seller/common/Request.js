@@ -68,6 +68,7 @@ export const requestSellerRole = async (req, res) => {
           account_status: "Pending",
           registration_certificate: req.body.registration_certificate,
           government_id: req.body.government_id,
+          profile_picture: req.body.profile_picture,
         });
         await createdSeller.save({ session });
         break;

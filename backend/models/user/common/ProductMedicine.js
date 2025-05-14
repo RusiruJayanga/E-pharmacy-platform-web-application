@@ -18,6 +18,7 @@ const medicineSchema = new mongoose.Schema({
   },
   discount: { type: Number, required: false, default: 0 },
   images: [String],
+  rate: { type: Number, default: 0 },
 });
 
 const Medicine = mongoose.model("Medicine", medicineSchema);

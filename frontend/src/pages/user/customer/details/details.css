@@ -29,8 +29,9 @@
   width: 400px;
   object-fit: cover;
   border-radius: var(--border_radius_2);
-  background-color: var(--bg_color_5);
+  background-color: var#f8f9fa;
   border: 1px solid var(--bg_color_2);
+  mix-blend-mode: darken;
 }
 .details-box-container .details-box-image .thumbnail-row {
   height: 100px;
@@ -128,9 +129,11 @@
   .details-box-options-button-container
   h5 {
   height: 30px;
+  min-width: 50px;
   width: auto;
   display: flex;
   align-items: center;
+  justify-content: center;
   padding: 6px;
   border-radius: 3px;
   border: 1px solid var(--bg_color_strong_2);

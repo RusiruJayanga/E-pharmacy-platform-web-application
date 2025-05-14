@@ -1,18 +1,17 @@
 import express from "express";
 import multer from "multer";
-import { uploadMultipleFilesToDrive } from "./GoogleDrive.js";
-import fs from "fs";
+import { uploadToCloudinary } from "./Cloudinary.js";
 
 const router = express.Router();
 const upload = multer({ dest: "temp/" });
 
 router.post("/upload", upload.array("files"), async (req, res) => {
   try {
-    const folderId = "10WvIZAxXKi_EO-PD5bIFeHyW7rdht-zU";
-    const urls = await uploadMultipleFilesToDrive(req.files, folderId);
-    req.files.forEach((file) => {
-      fs.unlinkSync(file.path);
-    });
+    const urls = await Promise.all(
+      req.files.map(async (file) => {
+        return await uploadToCloudinary(file.path);
+      })
+    );
 
     res.status(200).json({ urls });
   } catch (err) {

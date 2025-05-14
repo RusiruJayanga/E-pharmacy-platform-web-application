@@ -500,7 +500,7 @@ const Product = () => {
               onChange={formik.handleChange}
             />
 
-            <h6>Upload Product Images (Maximum 5)</h6>
+            <h6>Upload Product Images (Maximum 4)</h6>
             <label className="custom-file-upload">
               <input
                 type="file"
@@ -508,8 +508,8 @@ const Product = () => {
                 accept=".jpg,.jpeg,.png"
                 multiple
                 onChange={(e) => {
-                  if (e.target.files.length > 5) {
-                    alert("You can upload a maximum of 5 images.");
+                  if (e.target.files.length > 4) {
+                    alert("You can upload a maximum of 4 images.");
                     e.target.value = "";
                   } else {
                     formik.setFieldValue(
@@ -699,7 +699,7 @@ const Product = () => {
               onChange={formik.handleChange}
             />
             {/* File Uploads */}
-            <h6>Upload Product Images (Maximum 5)</h6>
+            <h6>Upload Product Images (Maximum 4)</h6>
             <label className="custom-file-upload">
               <input
                 type="file"
@@ -707,8 +707,8 @@ const Product = () => {
                 accept=".jpg,.jpeg,.png"
                 multiple
                 onChange={(e) => {
-                  if (e.target.files.length > 5) {
-                    alert("You can upload a maximum of 5 images.");
+                  if (e.target.files.length > 4) {
+                    alert("You can upload a maximum of 4 images.");
                     e.target.value = "";
                   } else {
                     formik.setFieldValue(

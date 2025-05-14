@@ -20,6 +20,7 @@ const CartSchema = new mongoose.Schema({
     type: Number,
     min: 1,
     required: true,
+    default: 1,
   },
   option: {
     type: String,

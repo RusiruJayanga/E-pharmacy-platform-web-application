@@ -15,16 +15,18 @@ const labSchema = new mongoose.Schema({
     open: String,
     close: String,
   },
-  nmra_cert: { type: String },
-  diagnostic_license: { type: String },
-  profile_picture: { type: String },
+  nmra_cert: { type: String, required: true },
+  diagnostic_license: { type: String, required: true },
+  profile_picture: { type: String, required: true },
   email: { type: String, required: true },
   password: { type: String, required: true },
   location: {
     lat: Number,
     lng: Number,
   },
+  description: { type: String, required: true },
   account_status: { type: String, default: "Pending", required: true },
+  rate: { type: Number, default: 0 },
 });
 
 // Hash password before saving

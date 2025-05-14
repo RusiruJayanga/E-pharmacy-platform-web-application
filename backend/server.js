@@ -8,6 +8,17 @@ import customerLoginRoutes from "./routes/user/customer/Login.js";
 import customerRegisterRoutes from "./routes/user/customer/Signup.js";
 import customerMedicineRoutes from "./routes/user/customer/MedicinePage.js";
 import customerAccessoryRoutes from "./routes/user/customer/AccessoryPage.js";
+import customerDoctorRoutes from "./routes/user/customer/DoctorPage.js";
+import customerLabRoutes from "./routes/user/customer/LabPage.js";
+import customerPharmacyRoutes from "./routes/user/customer/PharmacyPage.js";
+import customerHomePageRoutes from "./routes/user/customer/HomePage.js";
+import customerCartRoutes from "./routes/user/customer/Cart.js";
+import customerSaveRoutes from "./routes/user/customer/Save.js";
+import customerMedicineDetailsRoutes from "./routes/user/customer/MedicineDetails.js";
+import customerAccessoryDetailsRoutes from "./routes/user/customer/AccessoryDetails.js";
+import customerPharmacyDetailsRoutes from "./routes/user/customer/PharmacyDetails.js";
+import customerDoctorDetailsRoutes from "./routes/user/customer/DoctorDetails.js";
+import customerLabDetailsRoutes from "./routes/user/customer/LabDetails.js";
 //seller
 import sellerRequestRoutes from "./routes/user/seller/common/Request.js";
 //pharmacist
@@ -44,8 +55,19 @@ app.listen(PORT, () => {
 //customer
 app.use("/api/auth", customerLoginRoutes);
 app.use("/api/auth", customerRegisterRoutes);
+app.use("/api/home", customerHomePageRoutes);
 app.use("/api/medicines", customerMedicineRoutes);
 app.use("/api/accessories", customerAccessoryRoutes);
+app.use("/api/pharmacies", customerPharmacyRoutes);
+app.use("/api/doctors", customerDoctorRoutes);
+app.use("/api/labs", customerLabRoutes);
+app.use("/api/cart", customerCartRoutes);
+app.use("/api/save", customerSaveRoutes);
+app.use("/api/medicines", customerMedicineDetailsRoutes);
+app.use("/api/accessories", customerAccessoryDetailsRoutes);
+app.use("/api/pharmacies", customerPharmacyDetailsRoutes);
+app.use("/api/doctors", customerDoctorDetailsRoutes);
+app.use("/api/labs", customerLabDetailsRoutes);
 //seller
 app.use("/api/auth", sellerRequestRoutes);
 //pharmacist

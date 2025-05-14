@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
+import axios from "axios";
 import "./home.css";
 //auto count
 import CountUp from "react-countup";
@@ -16,6 +17,9 @@ import "../../../../components/user/common/margin/margin.css";
 //contact validation
 import { useFormik } from "formik";
 import * as Yup from "yup";
+//alert
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 //images for home slider
 const images = ["slider1.jpg", "slider2.jpg", "slider3.jpg", "slider4.jpg"];
@@ -66,100 +70,46 @@ const Home = () => {
   ];
 
   //product fatch
-  const products = [
-    {
-      id: 1,
-      name: "Baby Diapers",
-      price: "Rs. 999.00",
-      image: "baby-diapers.png",
-    },
-    {
-      id: 2,
-      name: "Thermometer - Digital",
-      price: "Rs. 599.00",
-      image: "thermometer.png",
-    },
-    {
-      id: 3,
-      name: "Blood Pressure Monitor",
-      price: "Rs. 2,499.00",
-      image: "bp-monitor.png",
-    },
-    {
-      id: 4,
-      name: "Adult Diapers",
-      price: "Rs. 699.00",
-      image: "adult-diapers.png",
-    },
-    {
-      id: 5,
-      name: "Nebulizer Machine",
-      price: "Rs. 3,899.00",
-      image: "nebulizer.png",
-    },
-    {
-      id: 6,
-      name: "Pulse Oximeter",
-      price: "Rs. 1,299.00",
-      image: "oximeter.png",
-    },
-    {
-      id: 7,
-      name: "Face Mask (Box of 50)",
-      price: "Rs. 299.00",
-      image: "face-mask.png",
-    },
-    {
-      id: 8,
-      name: "Hand Sanitizer - 500ml",
-      price: "Rs. 199.00",
-      image: "hand-sanitizer.png",
-    },
-    {
-      id: 9,
-      name: "Wheelchair",
-      price: "Rs. 12,999.00",
-      image: "wheelchair.png",
-    },
-    {
-      id: 10,
-      name: "Walking Cane",
-      price: "Rs. 799.00",
-      image: "cane.png",
-    },
-  ];
-  const beautyProducts = [
-    {
-      id: 11,
-      name: "Vitamin C Face Serum",
-      price: "Rs. 799.00",
-      image: "vitamin-c-serum.png",
-    },
-    {
-      id: 12,
-      name: "Sunscreen SPF 50",
-      price: "Rs. 599.00",
-      image: "sunscreen.png",
-    },
-    {
-      id: 13,
-      name: "Aloe Vera Gel",
-      price: "Rs. 299.00",
-      image: "aloe-vera-gel.png",
-    },
-    {
-      id: 14,
-      name: "Charcoal Face Wash",
-      price: "Rs. 349.00",
-      image: "charcoal-facewash.png",
-    },
-    {
-      id: 15,
-      name: "Lip Balm - Strawberry",
-      price: "Rs. 199.00",
-      image: "lip-balm.png",
-    },
-  ];
+  const [products, setProducts] = useState([]);
+  const [beautyProducts, setBeautyProducts] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [initialLoadComplete, setInitialLoadComplete] = useState(false);
+
+  useEffect(() => {
+    fetchBeautyProducts();
+    fetchCategoryProducts(categories[0]);
+  }, []);
+
+  //category product fetch
+  const fetchCategoryProducts = async (category) => {
+    try {
+      const res = await axios.get(
+        `http://localhost:5000/api/home/category/${category}`
+      );
+      setProducts(res.data);
+      setSelectedCategory(category);
+      setInitialLoadComplete(true);
+    } catch (err) {
+      toast.error("Failed to load category products");
+    }
+  };
+
+  //beauty product fetch
+  const fetchBeautyProducts = async () => {
+    try {
+      const res = await axios.get("http://localhost:5000/api/home/beauty");
+      setBeautyProducts(res.data);
+      setInitialLoadComplete(true);
+    } catch (err) {
+      toast.error("Failed to load beauty products");
+    }
+  };
+
+  //details page
+  const navigate = useNavigate();
+  const handleCardClick = (productId) => {
+    navigate(`/Accessories_details`, { state: { productId } });
+  };
 
   //contact validation
   const formik = useFormik({
@@ -317,15 +267,18 @@ const Home = () => {
       {/* category slider section */}
       <div className="slider-container">
         <Slider {...sliderSettings}>
-          {categories.map((category, idx) => (
-            <div className="category-slider">
+          {categories.map((category, index) => (
+            <div
+              className="category-slider"
+              key={index}
+              onClick={() => fetchCategoryProducts(category)}
+              style={{ cursor: "pointer" }}
+            >
               <div className="slider-item">
-                <div>
-                  <img
-                    src={`slider/${category.toLowerCase()}.png`}
-                    alt="category"
-                  />
-                </div>
+                <img
+                  src={`slider/${category.toLowerCase()}.png`}
+                  alt={category}
+                />
                 <h5>{category}</h5>
               </div>
             </div>
@@ -336,42 +289,53 @@ const Home = () => {
       {/* product card section 1 */}
       <div className="product-container">
         {/* repeat */}
-        {products.map((product) => (
-          <div className="product-card" key={product.id}>
-            <div className="product-card-discription">
-              <span>
-                <p>Name -</p>
-                <h5>{product.name}</h5>
-              </span>
-              <div className="product-card-offers hot">
-                <p>
-                  <i className="bi bi-prescription2"></i>
-                </p>
+        {products.length > 0 ? (
+          products.map((product) => (
+            <div className="product-card" key={product._id}>
+              <div className="product-card-discription">
+                <span>
+                  <p>Name -</p>
+                  <h5>{product.name}</h5>
+                </span>
+                <div className="product-card-offers hot">
+                  <p>
+                    <i className="bi bi-prescription2"></i>
+                  </p>
+                </div>
               </div>
-            </div>
-            <div className="product-card-image">
-              <img src={`upload/${product.image}`} alt={product.name} />
-            </div>
-            <div className="product-card-price">
-              <span>
-                <p>Price -</p>
-                <h5>{product.price}</h5>
-              </span>
-            </div>
-            <Link to={`/Accessories_details/${product.id}`}>
-              <div className="product-card-see-more">
+              <div className="product-card-image">
+                <img src={`upload/${product.images[0]}`} alt={product.name} />
+              </div>
+              <div className="product-card-price">
+                <span>
+                  <p>Price -</p>
+                  <h5>Rs/ {product.options[0]?.price || "N/A"}.00</h5>
+                </span>
+              </div>
+              <div
+                onClick={() => handleCardClick(product._id)}
+                className="product-card-see-more"
+              >
                 <p>See More</p>
               </div>
-            </Link>
+            </div>
+          ))
+        ) : initialLoadComplete ? (
+          <div className="advertisement-product-available">
+            <h4>No Products Available</h4>
           </div>
-        ))}
+        ) : null}
         {/* repeat */}
       </div>
-      <NavLink to="/Accessories">
-        <div className="product-card-show-more-products">
-          Show more <i class="bi bi-arrow-right"></i>
-        </div>
-      </NavLink>
+      {products.length > 20 ? (
+        <NavLink to="/Accessories">
+          <div className="product-card-show-more-products">
+            Show more <i className="bi bi-arrow-right"></i>
+          </div>
+        </NavLink>
+      ) : initialLoadComplete ? (
+        <div></div>
+      ) : null}
       {/* product section 1 end */}
       {}
       {/* margin section 1 */}
@@ -384,45 +348,53 @@ const Home = () => {
       {/* product card section 2 */}
       <div className="product-container">
         {/* repeat */}
-        {beautyProducts.map((beautyproduct) => (
-          <div className="product-card" key={beautyproduct.id}>
-            <div className="product-card-discription">
-              <span>
-                <p>Name -</p>
-                <h5>{beautyproduct.name}</h5>
-              </span>
-              <div className="product-card-offers hot">
-                <p>
-                  <i className="bi bi-prescription2"></i>
-                </p>
+        {beautyProducts.length > 0 ? (
+          beautyProducts.map((product) => (
+            <div className="product-card" key={product._id}>
+              <div className="product-card-discription">
+                <span>
+                  <p>Name -</p>
+                  <h5>{product.name}</h5>
+                </span>
+                <div className="product-card-offers hot">
+                  <p>
+                    <i className="bi bi-prescription2"></i>
+                  </p>
+                </div>
               </div>
-            </div>
-            <div className="product-card-image">
-              <img
-                src={`upload/${beautyproduct.image}`}
-                alt={beautyproduct.name}
-              />
-            </div>
-            <div className="product-card-price">
-              <span>
-                <p>Price -</p>
-                <h5>{beautyproduct.price}</h5>
-              </span>
-            </div>
-            <Link to={`/Accessories_details/${beautyproduct.id}`}>
-              <div className="product-card-see-more">
+              <div className="product-card-image">
+                <img src={`upload/${product.images[0]}`} alt={product.name} />
+              </div>
+              <div className="product-card-price">
+                <span>
+                  <p>Price -</p>
+                  <h5>Rs/ {product.options[0]?.price || "N/A"}.00</h5>
+                </span>
+              </div>
+              <div
+                onClick={() => handleCardClick(product._id)}
+                className="product-card-see-more"
+              >
                 <p>See More</p>
               </div>
-            </Link>
+            </div>
+          ))
+        ) : initialLoadComplete ? (
+          <div className="advertisement-product-available">
+            <h4>No Products Available</h4>
           </div>
-        ))}
+        ) : null}
         {/* repeat */}
       </div>
-      <NavLink to="/Accessories">
-        <div className="product-card-show-more-products">
-          Show more <i class="bi bi-arrow-right"></i>
-        </div>
-      </NavLink>
+      {beautyProducts.length > 20 ? (
+        <NavLink to="/Accessories">
+          <div className="product-card-show-more-products">
+            Show more <i className="bi bi-arrow-right"></i>
+          </div>
+        </NavLink>
+      ) : initialLoadComplete ? (
+        <div></div>
+      ) : null}
       {/* product section 3 end */}
       {}
       {/* services section */}

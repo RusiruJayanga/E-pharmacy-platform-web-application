@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 //margin css
 import "../../../../components/user/common/margin/margin.css";
@@ -103,20 +103,61 @@ const Doctors = () => {
       options: NorthWestern,
     },
   ];
+
+  //csrd count
+  const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [initialLoadComplete, setInitialLoadComplete] = useState(false);
+
   //advertisement fatch
-  const advertisements = [
-    "1",
-    "2",
-    "3",
-    "4",
-    "5",
-    "6",
-    "7",
-    "8",
-    "9",
-    "10",
-    "11",
-  ];
+  const [selectedDistrict, setSelectedDistrict] = useState("Island Wide");
+  const [doctors, setDoctors] = useState([]);
+
+  useEffect(() => {
+    const fetchDoctors = async () => {
+      setLoading(true);
+      try {
+        const params = new URLSearchParams();
+        params.append("page", page);
+        params.append("limit", 21);
+
+        if (selectedcategoryCheckbox && selectedcategoryCheckbox !== "All") {
+          params.append("specialty", selectedcategoryCheckbox);
+        }
+
+        if (selectedDistrict && selectedDistrict !== "Island Wide") {
+          params.append("district", selectedDistrict);
+        }
+
+        const res = await fetch(`http://localhost:5000/api/doctors?${params}`);
+        const data = await res.json();
+
+        setDoctors((prev) =>
+          page === 1 ? data.doctors : [...prev, ...data.doctors]
+        );
+        setHasMore(data.hasMore);
+        setInitialLoadComplete(true);
+      } catch (error) {
+        console.error("Failed to fetch doctors:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchDoctors();
+  }, [selectedcategoryCheckbox, selectedDistrict, page]);
+
+  const loadMore = () => {
+    setPage((prev) => prev + 1);
+  };
+
+  //details page
+  const navigate = useNavigate();
+  const handleCardClick = (productId) => {
+    navigate(`/Doctors_details`, { state: { productId } });
+  };
+
   return (
     <div>
       {/* margin section 1 */}
@@ -153,13 +194,13 @@ const Doctors = () => {
               "Plastic Surgeon",
               "Allergist",
             ].map((id) => (
-              <div className="product-filter-category-item">
+              <div key={id} className="product-filter-category-item">
                 <input
                   type="checkbox"
                   checked={selectedcategoryCheckbox === id}
                   onChange={() => handlectedcategoryCheckboxChange(id)}
                 />
-                <label key={id}>{id}</label>
+                <label>{id}</label>
               </div>
             ))}
             {/* repeat */}
@@ -172,7 +213,8 @@ const Doctors = () => {
           <div className="product-filter-location-dropbox">
             <Select
               options={groupedFilterOptions}
-              defaultValue={{ label: "Island Wide", value: "Island_Wide" }}
+              defaultValue={{ label: "Island Wide", value: "Island Wide" }}
+              onChange={(option) => setSelectedDistrict(option.value)}
             />
           </div>
         </div>
@@ -181,31 +223,52 @@ const Doctors = () => {
       {/* advertisement id card section */}
       <div className="advertisement-id-container">
         {/* repeat */}
-        {advertisements.map((advertisement, idx) => (
-          <div className="advertisement-id-card" id={idx}>
-            <img src="doctor-ad.png" alt="advertisement" />
-            <div className="advertisement-id-card-content">
-              <h5>Lorem ipsum dolor{advertisement}</h5>
-              <p>Hepatologist</p>
-              <span>
-                <h5>Location</h5>{" "}
-                <p>
-                  4.5 <i class="bi bi-star-fill"></i>
-                </p>
-              </span>
-              <Link to="/Doctors_details">
-                <div className="advertisement-id-card-see-more">
+        {doctors.length > 0 ? (
+          doctors.map((doctor, idx) => (
+            <div className="advertisement-id-card" id={idx}>
+              <img
+                src={doctor.profile_picture || "advertisement-doctor.png"}
+                alt={doctor.name}
+              />
+              <div className="advertisement-id-card-content">
+                <h5>{doctor.name}</h5>
+                <p>{doctor.specialty}</p>
+                <span>
+                  <h5>{doctor.district}</h5>{" "}
+                  <p>
+                    {doctor.rate} <i class="bi bi-star-fill"></i>
+                  </p>
+                </span>
+                <div
+                  onClick={() => handleCardClick(doctor._id)}
+                  className="advertisement-id-card-see-more"
+                >
                   <p>See More</p>
                 </div>
-              </Link>
+              </div>
             </div>
+          ))
+        ) : initialLoadComplete ? (
+          <div className="advertisement-product-available">
+            <h4>No Doctors Available</h4>
           </div>
-        ))}
+        ) : null}
         {/* repeat */}
       </div>
-      <div className="advertisement-id-card-show-more-products">
-        Show more <i class="bi bi-arrow-down"></i>
-      </div>
+      {doctors.length > 0 ? (
+        hasMore && (
+          <div
+            className="advertisement-id-card-show-more-products"
+            onClick={!loading ? loadMore : null}
+            style={{ cursor: loading ? "not-allowed" : "pointer" }}
+          >
+            {loading ? "Loading..." : "Show more"}{" "}
+            <i className="bi bi-arrow-down"></i>
+          </div>
+        )
+      ) : initialLoadComplete ? (
+        <div></div>
+      ) : null}
       {/*advertisement section end */}
       {}
     </div>

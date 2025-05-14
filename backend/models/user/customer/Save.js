@@ -14,7 +14,7 @@ const saveSchema = new mongoose.Schema({
   productType: {
     type: String,
     required: true,
-    enum: ["Medicine", "Accessory", "Lab", "Doctor"],
+    enum: ["Medicine", "Accessory", "Lab", "Doctor", "Pharmacy"],
   },
 });
 

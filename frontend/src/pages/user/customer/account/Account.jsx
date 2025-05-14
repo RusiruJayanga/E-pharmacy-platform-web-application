@@ -108,7 +108,7 @@ const Account = () => {
                   <p>Change Password -</p>
                   <h6>Change</h6>
                 </span>
-                {user?.account_status === "Pharmacist Pendin" && (
+                {user?.account_status === "Pharmacist Pending" && (
                   <span>
                     <p>Request To Be Seller -</p>
                     <Link to="/Request">
@@ -140,7 +140,7 @@ const Account = () => {
                     </Link>
                   </span>
                 )}
-                {user?.account_status === "Pharmacist Pending" && (
+                {user?.account_status === "Pharmacist Pendin" && (
                   <span>
                     <p>Seller Account -</p>
                     <Link to="/Pharmacist_login">

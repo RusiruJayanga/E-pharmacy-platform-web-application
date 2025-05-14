@@ -209,6 +209,9 @@ const Request = () => {
       )
       .required("Required"),
     address: Yup.string().required("Required"),
+    description: Yup.string()
+      .max(100, "Description must be at most 100 characters")
+      .required("Required"),
   };
 
   const pharmacistSchema = Yup.object().shape({
@@ -245,6 +248,12 @@ const Request = () => {
     location: Yup.object().required("Required"),
     postalCode: Yup.string()
       .matches(/^\d{5}(?:[-\s]\d{4})?$/, "Invalid postal code format")
+      .required("Required"),
+    profilePicture: Yup.mixed()
+      .test("fileType", "Only images are allowed", (value) => {
+        if (!value) return false;
+        return ["image/jpeg", "image/png"].includes(value.type);
+      })
       .required("Required"),
   });
 
@@ -328,6 +337,7 @@ const Request = () => {
       password: "",
       phoneNumber: "",
       address: "",
+      description: "",
 
       //pharmacist fields
       ownerName: "",
@@ -371,11 +381,17 @@ const Request = () => {
         let fileUrls = {};
 
         if (role === "Pharmacist") {
-          const [registrationCertUrl, governmentIdUrl] = await uploadFiles([
-            values.registrationCertificate,
-            values.governmentId,
-          ]);
-          fileUrls = { registrationCertUrl, governmentIdUrl };
+          const [registrationCertUrl, governmentIdUrl, profilePictureUrl] =
+            await uploadFiles([
+              values.registrationCertificate,
+              values.governmentId,
+              values.profilePicture,
+            ]);
+          fileUrls = {
+            registrationCertUrl,
+            governmentIdUrl,
+            profilePictureUrl,
+          };
         } else if (role === "Doctor") {
           const [medicalLicenseUrl, profilePictureUrl] = await uploadFiles([
             values.medicalLicense,
@@ -411,6 +427,8 @@ const Request = () => {
             },
             registration_certificate: fileUrls.registrationCertUrl,
             government_id: fileUrls.governmentIdUrl,
+            profile_picture: fileUrls.profilePictureUrl,
+            description: values.description,
             location: values.location || {},
           };
         } else if (role === "Doctor") {
@@ -427,6 +445,7 @@ const Request = () => {
             password: values.password,
             license_file: fileUrls.medicalLicenseUrl,
             profile_picture: fileUrls.profilePictureUrl,
+            description: values.description,
           };
         } else if (role === "Lab Owner") {
           formattedValues = {
@@ -450,6 +469,7 @@ const Request = () => {
             diagnostic_license: fileUrls.labLicenseUrl,
             profile_picture: fileUrls.profilePictureUrl,
             location: values.location || {},
+            description: values.description,
           };
         }
 
@@ -705,6 +725,27 @@ const Request = () => {
                 : " "}
             </p>
 
+            <h6>Upload Profile Picture</h6>
+            <label className="custom-file-upload">
+              <input
+                type="file"
+                name="profilePicture"
+                accept=".jpg,.jpeg,.png"
+                onChange={(e) =>
+                  formik.setFieldValue(
+                    "profilePicture",
+                    e.currentTarget.files[0]
+                  )
+                }
+              />
+              Choose File
+            </label>
+            <p>
+              {formik.touched.profilePicture && formik.errors.profilePicture
+                ? formik.errors.profilePicture
+                : " "}
+            </p>
+
             <input
               type="email"
               name="email"
@@ -729,6 +770,24 @@ const Request = () => {
             <p>
               {formik.touched.password && formik.errors.password
                 ? formik.errors.password
+                : " "}
+            </p>
+
+            <h6>Description</h6>
+            <textarea
+              className="textinput input-element"
+              placeholder="Description about your pharmacy"
+              name="description"
+              maxLength={100}
+              value={formik.values.description}
+              onChange={formik.handleChange}
+            ></textarea>
+            <p>
+              {formik.values.description.length > 0 && (
+                <span>{formik.values.description.length}/100</span>
+              )}
+              {formik.touched.description && formik.errors.description
+                ? formik.errors.description
                 : " "}
             </p>
 
@@ -872,6 +931,24 @@ const Request = () => {
             <p>
               {formik.touched.password && formik.errors.password
                 ? formik.errors.password
+                : " "}
+            </p>
+
+            <h6>Description</h6>
+            <textarea
+              className="textinput input-element"
+              placeholder="Description about your practice"
+              name="description"
+              maxLength={100}
+              value={formik.values.description}
+              onChange={formik.handleChange}
+            ></textarea>
+            <p>
+              {formik.values.description.length > 0 && (
+                <span>{formik.values.description.length}/100</span>
+              )}
+              {formik.touched.description && formik.errors.description
+                ? formik.errors.description
                 : " "}
             </p>
 
@@ -1157,6 +1234,24 @@ const Request = () => {
               {" "}
               {formik.touched.password && formik.errors.password
                 ? formik.errors.password
+                : " "}
+            </p>
+
+            <h6>Description</h6>
+            <textarea
+              className="textinput input-element"
+              placeholder="Description about your lab"
+              name="description"
+              maxLength={100}
+              value={formik.values.description}
+              onChange={formik.handleChange}
+            ></textarea>
+            <p>
+              {formik.values.description.length > 0 && (
+                <span>{formik.values.description.length}/100</span>
+              )}
+              {formik.touched.description && formik.errors.description
+                ? formik.errors.description
                 : " "}
             </p>
 

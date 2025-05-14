@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 //margin css
 import "../../../../components/user/common/margin/margin.css";
@@ -97,20 +97,59 @@ const Pharmacies = () => {
       options: NorthWestern,
     },
   ];
+
+  //csrd count
+  const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [initialLoadComplete, setInitialLoadComplete] = useState(false);
+
   //advertisement fatch
-  const advertisements = [
-    "1",
-    "2",
-    "3",
-    "4",
-    "5",
-    "6",
-    "7",
-    "8",
-    "9",
-    "10",
-    "11",
-  ];
+  const [selectedDistrict, setSelectedDistrict] = useState("Island Wide");
+  const [pharmacies, setPharmacies] = useState([]);
+
+  useEffect(() => {
+    const fetchPharmacies = async () => {
+      setLoading(true);
+      try {
+        const params = new URLSearchParams();
+        params.append("page", page);
+        params.append("limit", 21);
+
+        if (selectedDistrict && selectedDistrict !== "Island Wide") {
+          params.append("district", selectedDistrict);
+        }
+
+        const res = await fetch(
+          `http://localhost:5000/api/pharmacies?${params}`
+        );
+        const data = await res.json();
+
+        setPharmacies((prev) =>
+          page === 1 ? data.pharmacies : [...prev, ...data.pharmacies]
+        );
+        setHasMore(data.hasMore);
+        setInitialLoadComplete(true);
+      } catch (error) {
+        console.error("Failed to fetch pharmacies:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPharmacies();
+  }, [selectedDistrict, page]);
+
+  const loadMore = () => {
+    setPage((prev) => prev + 1);
+  };
+
+  //details page
+  const navigate = useNavigate();
+  const handleCardClick = (productId) => {
+    navigate(`/Pharmacies_details`, { state: { productId } });
+  };
+
   return (
     <div>
       {/* margin section 1 */}
@@ -130,7 +169,8 @@ const Pharmacies = () => {
           <div className="product-filter-location-dropbox">
             <Select
               options={groupedFilterOptions}
-              defaultValue={{ label: "Island Wide", value: "Island_Wide" }}
+              defaultValue={{ label: "Island Wide", value: "Island Wide" }}
+              onChange={(option) => setSelectedDistrict(option.value)}
             />
           </div>
         </div>
@@ -147,30 +187,51 @@ const Pharmacies = () => {
       {/* advertisement card section */}
       <div className="advertisement-container">
         {/* repeat */}
-        {advertisements.map((advertisement, idx) => (
-          <div className="advertisement-card" id={idx}>
-            <img src="product.png" alt="advertisement" />
-            <div className="advertisement-card-content">
-              <h5>Lorem ipsum dolor{advertisement}</h5>
-              <span>
-                <h5>Location</h5>{" "}
-                <p>
-                  4.5 <i class="bi bi-star-fill"></i>
-                </p>
-              </span>
-              <Link to="/Pharmacies_details">
-                <div className="advertisement-card-see-more">
+        {pharmacies.length > 0 ? (
+          pharmacies.map((pharmacy, idx) => (
+            <div className="advertisement-card" key={pharmacy._id || idx}>
+              <img
+                src={pharmacy.profile_picture || "product.png"}
+                alt={pharmacy.pharmacy_name}
+              />
+              <div className="advertisement-card-content">
+                <h5>{pharmacy.pharmacy_name}</h5>
+                <span>
+                  <h5>{pharmacy.district}</h5>
+                  <p>
+                    {pharmacy.rate} <i className="bi bi-star-fill"></i>
+                  </p>
+                </span>
+                <div
+                  onClick={() => handleCardClick(pharmacy._id)}
+                  className="advertisement-card-see-more"
+                >
                   <p>See More</p>
                 </div>
-              </Link>
+              </div>
             </div>
+          ))
+        ) : initialLoadComplete ? (
+          <div className="advertisement-product-available">
+            <h4>No Labs Available</h4>
           </div>
-        ))}
+        ) : null}
         {/* repeat */}
       </div>
-      <div className="advertisement-card-show-more-products">
-        Show more <i class="bi bi-arrow-down"></i>
-      </div>
+      {pharmacies.length > 0 ? (
+        hasMore && (
+          <div
+            className="advertisement-id-card-show-more-products"
+            onClick={!loading ? loadMore : null}
+            style={{ cursor: loading ? "not-allowed" : "pointer" }}
+          >
+            {loading ? "Loading..." : "Show more"}{" "}
+            <i className="bi bi-arrow-down"></i>
+          </div>
+        )
+      ) : initialLoadComplete ? (
+        <div></div>
+      ) : null}
       {/*advertisement section end */}
       {}
     </div>

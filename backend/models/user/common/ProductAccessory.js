@@ -13,6 +13,7 @@ const accessorySchema = new mongoose.Schema({
   category: { type: String, required: true },
   discount: { type: Number, required: false, default: 0 },
   images: [String],
+  rate: { type: Number, default: 0 },
 });
 
 const Accessory = mongoose.model("Accessory", accessorySchema);

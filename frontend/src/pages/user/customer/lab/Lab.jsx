@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 //margin css
 import "../../../../components/user/common/margin/margin.css";
@@ -103,20 +103,59 @@ const Lab = () => {
       options: NorthWestern,
     },
   ];
+
+  //csrd count
+  const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [initialLoadComplete, setInitialLoadComplete] = useState(false);
+
   //advertisement fatch
-  const advertisements = [
-    "1",
-    "2",
-    "3",
-    "4",
-    "5",
-    "6",
-    "7",
-    "8",
-    "9",
-    "10",
-    "11",
-  ];
+  const [selectedDistrict, setSelectedDistrict] = useState("Island Wide");
+  const [labs, setLabs] = useState([]);
+
+  useEffect(() => {
+    const fetchLabs = async () => {
+      setLoading(true);
+      try {
+        const params = new URLSearchParams();
+        params.append("page", page);
+        params.append("limit", 21);
+
+        if (selectedcategoryCheckbox && selectedcategoryCheckbox !== "All") {
+          params.append("lab_tests", selectedcategoryCheckbox);
+        }
+
+        if (selectedDistrict && selectedDistrict !== "Island Wide") {
+          params.append("district", selectedDistrict);
+        }
+
+        const res = await fetch(`http://localhost:5000/api/labs?${params}`);
+        const data = await res.json();
+
+        setLabs((prev) => (page === 1 ? data.labs : [...prev, ...data.labs]));
+        setHasMore(data.hasMore);
+        setInitialLoadComplete(true);
+      } catch (error) {
+        console.error("Failed to fetch labss:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchLabs();
+  }, [selectedcategoryCheckbox, selectedDistrict, page]);
+
+  const loadMore = () => {
+    setPage((prev) => prev + 1);
+  };
+
+  //details page
+  const navigate = useNavigate();
+  const handleCardClick = (productId) => {
+    navigate(`/Lab_details`, { state: { productId } });
+  };
+
   return (
     <div>
       {/* margin section 1 */}
@@ -153,13 +192,13 @@ const Lab = () => {
               "CA-125 Test",
               "Hepatitis B & C Test",
             ].map((id) => (
-              <div className="product-filter-category-item">
+              <div key={id} className="product-filter-category-item">
                 <input
                   type="checkbox"
                   checked={selectedcategoryCheckbox === id}
                   onChange={() => handlectedcategoryCheckboxChange(id)}
                 />
-                <label key={id}>{id}</label>
+                <label>{id}</label>
               </div>
             ))}
             {/* repeat */}
@@ -172,7 +211,8 @@ const Lab = () => {
           <div className="product-filter-location-dropbox">
             <Select
               options={groupedFilterOptions}
-              defaultValue={{ label: "Island Wide", value: "Island_Wide" }}
+              defaultValue={{ label: "Island Wide", value: "Island Wide" }}
+              onChange={(option) => setSelectedDistrict(option.value)}
             />
           </div>
         </div>
@@ -181,30 +221,51 @@ const Lab = () => {
       {/* advertisement card section */}
       <div className="advertisement-container">
         {/* repeat */}
-        {advertisements.map((advertisement, idx) => (
-          <div className="advertisement-card" id={idx}>
-            <img src="product.png" alt="advertisement" />
-            <div className="advertisement-card-content">
-              <h5>Lorem ipsum dolor{advertisement}</h5>
-              <span>
-                <h5>Location</h5>{" "}
-                <p>
-                  4.5 <i class="bi bi-star-fill"></i>
-                </p>
-              </span>
-              <Link to="/Lab_details">
-                <div className="advertisement-card-see-more">
+        {labs.length > 0 ? (
+          labs.map((lab, idx) => (
+            <div className="advertisement-card" key={lab._id || idx}>
+              <img
+                src={lab.profile_picture || "advertisement-lab.png"}
+                alt={lab.lab_name}
+              />
+              <div className="advertisement-card-content">
+                <h5>{lab.lab_name}</h5>
+                <span>
+                  <h5>{lab.district}</h5>
+                  <p>
+                    {lab.rate} <i className="bi bi-star-fill"></i>
+                  </p>
+                </span>
+                <div
+                  onClick={() => handleCardClick(lab._id)}
+                  className="advertisement-card-see-more"
+                >
                   <p>See More</p>
                 </div>
-              </Link>
+              </div>
             </div>
+          ))
+        ) : initialLoadComplete ? (
+          <div className="advertisement-product-available">
+            <h4>No Labs Available</h4>
           </div>
-        ))}
+        ) : null}
         {/* repeat */}
       </div>
-      <div className="advertisement-card-show-more-products">
-        Show more <i class="bi bi-arrow-down"></i>
-      </div>
+      {labs.length > 0 ? (
+        hasMore && (
+          <div
+            className="advertisement-id-card-show-more-products"
+            onClick={!loading ? loadMore : null}
+            style={{ cursor: loading ? "not-allowed" : "pointer" }}
+          >
+            {loading ? "Loading..." : "Show more"}{" "}
+            <i className="bi bi-arrow-down"></i>
+          </div>
+        )
+      ) : initialLoadComplete ? (
+        <div></div>
+      ) : null}
       {/*advertisement section end */}
       {}
     </div>

@@ -11,9 +11,11 @@ const doctorSchema = new mongoose.Schema({
   phone_number: { type: String, required: true },
   email: { type: String, required: true },
   password: { type: String, required: true },
-  license_file: { type: String },
+  license_file: { type: String, required: true },
   profile_picture: { type: String, required: true },
+  description: { type: String, required: true },
   account_status: { type: String, default: "Pending", required: true },
+  rate: { type: Number, default: 0 },
 });
 
 // Hash password before saving

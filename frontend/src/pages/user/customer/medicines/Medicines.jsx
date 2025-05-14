@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 //margin css
 import "../../../../components/user/common/margin/margin.css";
 //filter css
@@ -104,31 +104,55 @@ const Medicines = () => {
     },
   ];
 
+  //csrd count
+  const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [initialLoadComplete, setInitialLoadComplete] = useState(false);
+
   //product fatch
   const [medicines, setMedicines] = useState([]);
   const [selectedDistrict, setSelectedDistrict] = useState(null);
 
   useEffect(() => {
     const fetchMedicines = async () => {
+      setLoading(true);
       try {
-        let url = "http://localhost:5000/api/medicines?";
+        let url = `http://localhost:5000/api/medicines?page=${page}&limit=20`;
         if (selectedcategoryCheckbox && selectedcategoryCheckbox !== "All") {
-          url += `category=${encodeURIComponent(selectedcategoryCheckbox)}&`;
+          url += `&category=${encodeURIComponent(selectedcategoryCheckbox)}`;
         }
         if (selectedDistrict && selectedDistrict !== "Island Wide") {
-          url += `district=${encodeURIComponent(selectedDistrict)}`;
+          url += `&district=${encodeURIComponent(selectedDistrict)}`;
         }
 
         const res = await fetch(url);
         const data = await res.json();
-        setMedicines(data);
+
+        setMedicines((prev) =>
+          page === 1 ? data.products : [...prev, ...data.products]
+        );
+        setHasMore(data.hasMore);
+        setInitialLoadComplete(true);
       } catch (error) {
         console.error("Failed to fetch medicines:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchMedicines();
-  }, [selectedcategoryCheckbox, selectedDistrict]);
+  }, [selectedcategoryCheckbox, selectedDistrict, page]);
+
+  const loadMore = () => {
+    setPage((prev) => prev + 1);
+  };
+
+  //details page
+  const navigate = useNavigate();
+  const handleCardClick = (productId) => {
+    navigate(`/Medicines_details`, { state: { productId } });
+  };
 
   return (
     <div>
@@ -197,45 +221,66 @@ const Medicines = () => {
       {/* product card section */}
       <div className="product-container">
         {/* repeat */}
-        {medicines.map((product) => (
-          <div className="product-card" key={product._id}>
-            <div className="product-card-discription">
-              <span>
-                <p>Name -</p>
-                <h5>{product.name}</h5>
-              </span>
-              <div className="product-card-offers hot">
-                <p>
-                  <i className="bi bi-prescription2"></i>
-                </p>
+        {medicines.length > 0 ? (
+          medicines.map((product) => (
+            <div className="product-card" key={product._id}>
+              <div className="product-card-discription">
+                <span>
+                  <p>Name -</p>
+                  <h5>{product.name}</h5>
+                </span>
+                <div className="product-card-offers hot">
+                  <p>
+                    <i className="bi bi-prescription2"></i>
+                  </p>
+                </div>
               </div>
-            </div>
-            <div className="product-card-image">
-              <img src={product.images?.[0]} alt={product.name} />
-            </div>
-            <div className="product-card-price">
-              <span>
-                <p>Price -</p>
-                <h5>
-                  Rs.{" "}
-                  {product.options?.[0]?.price
-                    ? product.options[0].price.toFixed(2)
-                    : "N/A"}
-                </h5>
-              </span>
-            </div>
-            <Link to={`/Medicines_details/${product._id}`}>
-              <div className="product-card-see-more">
+              <div className="product-card-image">
+                <img
+                  src={product.images?.[0] || "product.png"}
+                  alt={product.name}
+                />
+              </div>
+              <div className="product-card-price">
+                <span>
+                  <p>Price -</p>
+                  <h5>
+                    Rs/{" "}
+                    {product.options?.[0]?.price
+                      ? product.options[0].price.toFixed(2)
+                      : "N/A"}
+                  </h5>
+                </span>
+              </div>
+              <div
+                onClick={() => handleCardClick(product._id)}
+                className="product-card-see-more"
+              >
                 <p>See More</p>
               </div>
-            </Link>
+            </div>
+          ))
+        ) : initialLoadComplete ? (
+          <div className="advertisement-product-available">
+            <h4>No Products Available</h4>
           </div>
-        ))}
+        ) : null}
         {/* repeat */}
       </div>
-      <div className="product-card-show-more-products">
-        Show more <i class="bi bi-arrow-down"></i>
-      </div>
+      {medicines.length > 0 ? (
+        hasMore && (
+          <div
+            className="product-card-show-more-products"
+            onClick={!loading ? loadMore : null}
+            style={{ cursor: loading ? "not-allowed" : "pointer" }}
+          >
+            {loading ? "Loading..." : "Show more"}{" "}
+            <i className="bi bi-arrow-down"></i>
+          </div>
+        )
+      ) : initialLoadComplete ? (
+        <div></div>
+      ) : null}
       {/* product section end */}
       {}
     </div>

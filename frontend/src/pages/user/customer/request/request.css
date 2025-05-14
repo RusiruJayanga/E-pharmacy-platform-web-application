@@ -55,6 +55,20 @@ textarea {
   width: 100%;
   margin-top: 15px;
 }
+.request-form textarea {
+  height: 100px;
+  padding-top: 10px;
+  border-radius: var(--border_radius_2);
+  border: 1px solid var(--primary_color);
+  padding-right: 16px;
+  padding-left: 16px;
+  font-size: 16px;
+  font-weight: 300;
+}
+.request-form p span {
+  color: var(--text_color_1);
+  margin-right: 10px;
+}
 .request-form p {
   font-size: 13px;
   height: 15px;
