@@ -5,10 +5,16 @@ import { motion } from "framer-motion";
 //validation
 import { useFormik } from "formik";
 import * as Yup from "yup";
+//alert
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-const Lab_prescription = ({ isOpen, onClose }) => {
+const Lab_prescription = ({ isOpen, onClose, labId }) => {
   //validation
   const [hasSubmitted, setHasSubmitted] = useState(false);
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+
   const formik = useFormik({
     initialValues: {
       file: null,
@@ -31,21 +37,95 @@ const Lab_prescription = ({ isOpen, onClose }) => {
         ),
       note: Yup.string().max(200, "Note cannot exceed 200 characters"),
     }),
-    onSubmit: (values) => {
-      console.log("Prescription uploaded:", values);
+    onSubmit: async (values, { resetForm }) => {
+      try {
+        setIsLoading(true);
+
+        const token = localStorage.getItem("customerToken");
+
+        if (!token) {
+          toast.error("You must be logged in");
+          return;
+        }
+
+        let customer_id;
+        try {
+          const payload = JSON.parse(atob(token.split(".")[1]));
+          customer_id = payload.customerId;
+        } catch (err) {
+          toast.error("Invalid token format");
+          return;
+        }
+
+        if (!labId || !selectedFile) {
+          toast.error(
+            "Please select a pharmacy and upload a prescription image"
+          );
+          return;
+        }
+
+        const formData = new FormData();
+        formData.append("files", selectedFile);
+
+        const uploadResponse = await fetch(
+          "http://localhost:5000/api/files/upload",
+          {
+            method: "POST",
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+            body: formData,
+          }
+        );
+
+        if (!uploadResponse.ok) {
+          throw new Error("Image upload failed");
+        }
+
+        const { urls } = await uploadResponse.json();
+        const image = urls[0];
+        const response = await fetch(
+          "http://localhost:5000/api/pharmacies/prescription/add",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              customer_id,
+              product_id: labId,
+              productType: "Lab",
+              image,
+              description: values.note.trim(),
+            }),
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error("Prescription saving failed");
+        }
+
+        toast.success("Prescription uploaded successfully !");
+        resetForm();
+        setSelectedFile(null);
+      } catch (error) {
+        console.error("Error submitting prescription:", error);
+        toast.error(error.message || "Upload failed");
+      } finally {
+        setIsLoading(false);
+      }
+      setTimeout(() => {
+        onClose(true);
+      }, 4000);
     },
   });
-
-  const handleFileChange = (e) => {
-    const file = e.currentTarget.files[0];
-    formik.setFieldValue("file", file);
-  };
 
   //popup close
   if (!isOpen) return null;
 
   return (
     <div className="popup-overlay" onClick={onClose}>
+      <ToastContainer position="top-center" autoClose={3500} theme="dark" />
       <motion.div
         className="prescription-popup-content"
         onClick={(e) => e.stopPropagation()}
@@ -71,8 +151,11 @@ const Lab_prescription = ({ isOpen, onClose }) => {
               <input
                 type="file"
                 name="file"
-                accept=".pdf,.jpg,.jpeg,.png"
-                onChange={handleFileChange}
+                onChange={(e) => {
+                  const file = e.currentTarget.files[0];
+                  formik.setFieldValue("file", file);
+                  setSelectedFile(file);
+                }}
               />
               <h2>
                 <i className="bi bi-cloud-arrow-up-fill"></i>
@@ -88,10 +171,11 @@ const Lab_prescription = ({ isOpen, onClose }) => {
             </div>
             <textarea
               name="note"
-              placeholder="Note (optional)"
-              value={formik.values.note}
-              maxLength={200}
               onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.note}
+              placeholder="Enter additional notes..."
+              maxLength={200}
             ></textarea>
             <div className="prescription-popup-error">
               <p>
@@ -102,7 +186,9 @@ const Lab_prescription = ({ isOpen, onClose }) => {
               </p>
             </div>
           </div>
-          <button type="submit">Request</button>
+          <button type="submit" disabled={isLoading}>
+            {isLoading ? "Processing" : "Request"}
+          </button>
         </form>
       </motion.div>
     </div>

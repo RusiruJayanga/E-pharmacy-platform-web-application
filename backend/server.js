@@ -19,6 +19,7 @@ import customerAccessoryDetailsRoutes from "./routes/user/customer/AccessoryDeta
 import customerPharmacyDetailsRoutes from "./routes/user/customer/PharmacyDetails.js";
 import customerDoctorDetailsRoutes from "./routes/user/customer/DoctorDetails.js";
 import customerLabDetailsRoutes from "./routes/user/customer/LabDetails.js";
+import customerPharmacyPrescriptionRoutes from "./routes/user/customer/PrescriptionAdd.js";
 //seller
 import sellerRequestRoutes from "./routes/user/seller/common/Request.js";
 //pharmacist
@@ -68,6 +69,7 @@ app.use("/api/accessories", customerAccessoryDetailsRoutes);
 app.use("/api/pharmacies", customerPharmacyDetailsRoutes);
 app.use("/api/doctors", customerDoctorDetailsRoutes);
 app.use("/api/labs", customerLabDetailsRoutes);
+app.use("/api/pharmacies", customerPharmacyPrescriptionRoutes);
 //seller
 app.use("/api/auth", sellerRequestRoutes);
 //pharmacist

@@ -199,6 +199,7 @@ const Product = () => {
     //form submit
     onSubmit: async (values, { resetForm }) => {
       try {
+        setIsLoading(true);
         const raw = localStorage.getItem("pharmacistToken");
         if (!raw) {
           toast.error("You must be logged in");
@@ -288,9 +289,14 @@ const Product = () => {
       } catch (error) {
         console.error("Error submitting product:", error);
         toast.error(error.message || "Failed to add product");
+      } finally {
+        setIsLoading(false);
       }
     },
   });
+
+  //loading
+  const [isLoading, setIsLoading] = useState(false);
 
   return (
     <div>
@@ -528,7 +534,9 @@ const Product = () => {
                 : " "}
             </p>
 
-            <button type="submit">Add</button>
+            <button type="submit" disabled={isLoading}>
+              {isLoading ? "Processing" : "Add"}
+            </button>
           </form>
         )}
         {selectedCategory === "Accessories" && (
@@ -727,7 +735,9 @@ const Product = () => {
                 : " "}
             </p>
 
-            <button type="submit">Add</button>
+            <button type="submit" disabled={isLoading}>
+              {isLoading ? "Processing" : "Add"}
+            </button>
           </form>
         )}
       </div>

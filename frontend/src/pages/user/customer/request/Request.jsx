@@ -501,6 +501,7 @@ const Request = () => {
   //file upload
   const uploadFiles = async (files) => {
     try {
+      setIsLoading(true);
       const formData = new FormData();
       files.filter(Boolean).forEach((file) => {
         formData.append("files", file);
@@ -520,8 +521,13 @@ const Request = () => {
     } catch (error) {
       console.error("File upload error:", error);
       throw error;
+    } finally {
+      setIsLoading(false);
     }
   };
+
+  //loading
+  const [isLoading, setIsLoading] = useState(false);
 
   return (
     <div>
@@ -809,7 +815,9 @@ const Request = () => {
                 : " "}
             </p>
 
-            <button type="submit">Request</button>
+            <button type="submit" disabled={isLoading}>
+              {isLoading ? "Processing" : "Request"}
+            </button>
           </form>
         )}
         {selectedCategory === "Doctor" && (
@@ -995,7 +1003,9 @@ const Request = () => {
                 : " "}
             </p>
 
-            <button type="submit">Request</button>
+            <button type="submit" disabled={isLoading}>
+              {isLoading ? "Processing" : "Request"}
+            </button>
           </form>
         )}
         {selectedCategory === "Lab Owner" && (
@@ -1272,7 +1282,9 @@ const Request = () => {
                 : " "}
             </p>
 
-            <button type="submit">Request</button>
+            <button type="submit" disabled={isLoading}>
+              {isLoading ? "Processing" : "Request"}
+            </button>
           </form>
         )}
       </div>

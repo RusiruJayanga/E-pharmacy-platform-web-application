@@ -16,6 +16,7 @@ const saveSchema = new mongoose.Schema({
     required: true,
     enum: ["Medicine", "Accessory", "Lab", "Doctor", "Pharmacy"],
   },
+  date: { type: Date, default: Date.now, required: true },
 });
 
 const WishlistModel = mongoose.model("Save", saveSchema);

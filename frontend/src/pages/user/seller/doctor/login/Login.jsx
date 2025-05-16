@@ -13,7 +13,6 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({ email: "", password: "" });
-  const [isLoading, setIsLoading] = useState(false);
 
   const resetForm = () => {
     setEmail("");
@@ -60,6 +59,9 @@ const Login = () => {
     }
   };
 
+  //loading
+  const [isLoading, setIsLoading] = useState(false);
+
   return (
     <div>
       <div className="seller-login">
@@ -100,7 +102,7 @@ const Login = () => {
               <p>{errors.password}</p>
             </div>
             <button type="submit" disabled={isLoading}>
-              {isLoading ? "Loading..." : "Login"}
+              {isLoading ? "Processing" : "Login"}
             </button>
           </form>
         </div>

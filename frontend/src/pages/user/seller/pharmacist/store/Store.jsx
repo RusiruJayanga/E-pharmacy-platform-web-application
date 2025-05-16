@@ -45,7 +45,7 @@ const Store = () => {
       );
       const data = await res.json();
       if (!res.ok) throw new Error(data.message);
-      toast.success("Product deleted");
+      toast.success("Item removed");
       setProducts(products.filter((p) => p._id !== id));
     } catch (err) {
       toast.error(err.message || "Delete failed");

@@ -178,8 +178,8 @@ const Signup = ({ isOpen, onClose }) => {
               {hasSubmitted && formik.errors.password && formik.errors.password}
             </p>
 
-            <button type="submit" disabled={isLoading || formik.isSubmitting}>
-              {isLoading ? "Loading..." : "Signup"}
+            <button type="submit" disabled={isLoading}>
+              {isLoading ? "Processing" : "Signup"}
             </button>
           </form>
         </div>

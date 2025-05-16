@@ -33,6 +33,8 @@
 .product-card .product-card-discription h5 {
   font-size: 15px;
   font-weight: 400;
+  width: 170px;
+  overflow: hidden;
 }
 .product-card .product-card-offers {
   width: 50px;
@@ -129,6 +131,7 @@
   object-fit: cover;
   border-radius: var(--border_radius_2);
   border: 1px solid var(--bg_color_2);
+  background-color: #f8f9fa;
 }
 .advertisement-container .advertisement-card .advertisement-card-content {
   width: 160px;

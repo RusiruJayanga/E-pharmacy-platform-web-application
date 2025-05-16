@@ -224,10 +224,13 @@ const Lab_details = () => {
       </div>
       {}
       {/* prescription model */}
-      <PrescriptionModel
-        isOpen={isPrescriptionOpen}
-        onClose={() => setIsPrescriptionOpen(false)}
-      />
+      {lab && (
+        <PrescriptionModel
+          isOpen={isPrescriptionOpen}
+          onClose={() => setIsPrescriptionOpen(false)}
+          labId={lab._id}
+        />
+      )}
       {}
     </div>
   );

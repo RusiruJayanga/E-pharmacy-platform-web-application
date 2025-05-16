@@ -309,7 +309,12 @@ const Home = () => {
               <div className="product-card-price">
                 <span>
                   <p>Price -</p>
-                  <h5>Rs/ {product.options[0]?.price || "N/A"}.00</h5>
+                  <h5>
+                    Rs/{" "}
+                    {product.options?.[0]?.price
+                      ? product.options[0].price.toFixed(2)
+                      : "N/A"}
+                  </h5>
                 </span>
               </div>
               <div
@@ -356,7 +361,7 @@ const Home = () => {
                   <p>Name -</p>
                   <h5>{product.name}</h5>
                 </span>
-                <div className="product-card-offers hot">
+                <div className="product-card-offers">
                   <p>
                     <i className="bi bi-prescription2"></i>
                   </p>
@@ -368,7 +373,12 @@ const Home = () => {
               <div className="product-card-price">
                 <span>
                   <p>Price -</p>
-                  <h5>Rs/ {product.options[0]?.price || "N/A"}.00</h5>
+                  <h5>
+                    Rs/{" "}
+                    {product.options?.[0]?.price
+                      ? product.options[0].price.toFixed(2)
+                      : "N/A"}
+                  </h5>
                 </span>
               </div>
               <div

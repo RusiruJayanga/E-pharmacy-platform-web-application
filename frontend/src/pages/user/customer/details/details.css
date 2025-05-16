@@ -315,7 +315,7 @@
   gap: 20px;
   cursor: default;
   background-color: var(--bg_color_5);
-  border-radius: var(--border_radius_2);
+  border-radius: var(--border_radius_1);
 }
 .location-container .location-content {
   width: 400px;

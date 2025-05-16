@@ -52,6 +52,7 @@
   object-fit: cover;
   border-radius: var(--border_radius_2);
   border: 1px solid var(--bg_color_2);
+  background-color: #f8f9fa;
 }
 .cart-container .cart-info {
   display: flex;

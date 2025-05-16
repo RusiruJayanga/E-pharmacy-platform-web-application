@@ -72,6 +72,7 @@
   object-fit: cover;
   border-radius: var(--border_radius_2);
   border: 1px solid var(--bg_color_2);
+  background-color: #f8f9fa;
 }
 .save-container .save-item-container .save-item h4 {
   width: 350px;

@@ -239,7 +239,12 @@ const Accessories = () => {
               <div className="product-card-price">
                 <span>
                   <p>Price -</p>
-                  <h5>Rs/ {product.options[0]?.price || "N/A"}.00</h5>
+                  <h5>
+                    Rs/{" "}
+                    {product.options?.[0]?.price
+                      ? product.options[0].price.toFixed(2)
+                      : "N/A"}
+                  </h5>
                 </span>
               </div>
               <div

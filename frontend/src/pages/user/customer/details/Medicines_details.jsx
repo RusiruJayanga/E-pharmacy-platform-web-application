@@ -278,10 +278,13 @@ const Medicines_details = () => {
       </div>
       {}
       {/* prescription model */}
-      <PrescriptionModel
-        isOpen={isPrescriptionOpen}
-        onClose={() => setIsPrescriptionOpen(false)}
-      />
+      {product && (
+        <PrescriptionModel
+          isOpen={isPrescriptionOpen}
+          onClose={() => setIsPrescriptionOpen(false)}
+          productId={product._id}
+        />
+      )}
       {}
     </div>
   );

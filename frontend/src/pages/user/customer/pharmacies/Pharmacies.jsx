@@ -199,7 +199,7 @@ const Pharmacies = () => {
                 <span>
                   <h5>{pharmacy.district}</h5>
                   <p>
-                    {pharmacy.rate} <i className="bi bi-star-fill"></i>
+                    {pharmacy.rate}/5 <i className="bi bi-star-fill"></i>
                   </p>
                 </span>
                 <div

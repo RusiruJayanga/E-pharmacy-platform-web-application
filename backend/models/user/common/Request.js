@@ -14,7 +14,7 @@ const requestSchema = new mongoose.Schema({
   productType: {
     type: String,
     required: true,
-    enum: ["Medicine", "Lab", "Doctor"],
+    enum: ["Medicine", "Pharmacy", "Lab", "Doctor"],
   },
   description: { type: String, required: false },
   image: { type: String, required: true },

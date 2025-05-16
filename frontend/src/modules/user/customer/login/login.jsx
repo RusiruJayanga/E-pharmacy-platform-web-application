@@ -105,7 +105,7 @@ const Login = ({ isOpen, onClose }) => {
             <p>{errors.password}</p>
           </div>
           <button type="submit" disabled={isLoading}>
-            {isLoading ? "Loading..." : "Login"}
+            {isLoading ? "Processing" : "Login"}
           </button>
         </form>
       </motion.div>
