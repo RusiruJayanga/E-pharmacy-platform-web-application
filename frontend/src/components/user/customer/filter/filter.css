@@ -3,12 +3,14 @@
   max-width: 1200px;
   height: auto;
   margin-inline: auto;
-  border: 1px solid var(--bg_color_2);
   margin-top: 20px;
   border-radius: var(--border_radius_1);
+  background-color: var(--bg_color_5);
+  border: 1px solid var(--bg_color_2);
   display: flex;
   flex-wrap: wrap;
   margin-top: 60px;
+  padding: 10px;
   gap: 20px;
 }
 .product-filter-content .product-filter-category,

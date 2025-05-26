@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import axios from "axios";
 import "./details.css";
 //ribben css
 import "../../../../components/user/common/margin/margin.css";
@@ -82,7 +83,7 @@ const Medicines_details = () => {
           product_id: product._id,
           productType: "Medicine",
           option: selectedSize,
-          price: currentPrice,
+          price: price,
         }),
       });
 
@@ -137,6 +138,34 @@ const Medicines_details = () => {
   //prescription upload
   const [isPrescriptionOpen, setIsPrescriptionOpen] = useState(false);
 
+  //price
+  const price = currentPrice - (product?.discount / 100) * currentPrice;
+
+  const [reviews, setReviews] = useState([]);
+  const [averageRating, setAverageRating] = useState(0);
+
+  useEffect(() => {
+    const fetchReviews = async () => {
+      try {
+        const res = await axios.get(
+          `http://localhost:5000/api/reviews/product/${product?._id}`
+        );
+        setReviews(res.data);
+
+        // Calculate average rating
+        if (res.data.length > 0) {
+          const avg =
+            res.data.reduce((sum, r) => sum + r.rating, 0) / res.data.length;
+          setAverageRating(avg.toFixed(1));
+        }
+      } catch (err) {
+        console.error("Failed to fetch reviews", err);
+      }
+    };
+
+    if (product?._id) fetchReviews();
+  }, [product?._id]);
+
   return (
     <div>
       {/* ribben */}
@@ -167,11 +196,6 @@ const Medicines_details = () => {
           </div>
           <div className="details-box-content">
             <h3>{product.name}</h3>
-            <span>
-              <Link to="/Seller_info">
-                <h5 className="details-box-seller-info">Seller Info</h5>
-              </Link>
-            </span>
             <div className="details-box-description">
               <p>Description -</p>
               <p>{product.description}</p>
@@ -184,7 +208,7 @@ const Medicines_details = () => {
             )}
             <span>
               <p>Price - </p>
-              <h4>Rs/ {currentPrice}.00</h4>
+              <h4>Rs/ {price.toFixed(2)}</h4>
             </span>
             <div className="details-box-options">
               <p>Options -</p>
@@ -239,41 +263,49 @@ const Medicines_details = () => {
         <div className="review-head">
           <h2>Reviews</h2>
           <h4>
-            5/5
-            <i className="bi bi-star-fill"></i>
-            <i className="bi bi-star-fill"></i>
-            <i className="bi bi-star-fill"></i>
-            <i className="bi bi-star-fill"></i>
-            <i className="bi bi-star-fill"></i>
-            <h5>1 ratings</h5>
+            {averageRating}/5{" "}
+            {[...Array(5)].map((_, i) => (
+              <i
+                key={i}
+                className={`bi ${
+                  i < Math.round(averageRating) ? "bi-star-fill" : "bi-star"
+                }`}
+              ></i>
+            ))}
+            <h5>{reviews.length} ratings</h5>
           </h4>
           <p>All from verified purchases</p>
         </div>
         <div className="review-box">
           {/* repeat */}
-          <div className="review-box-review">
-            <img src="user-icon.png" alt="profile" />
-            <div className="review-box-content">
-              <h5>
-                5/5
-                <i className="bi bi-star-fill"></i>
-                <i className="bi bi-star-fill"></i>
-                <i className="bi bi-star-fill"></i>
-                <i className="bi bi-star-fill"></i>
-                <i className="bi bi-star-fill"></i>
-              </h5>
-              <h5>Rusiru</h5>
-              <p>
-                Good , Aluminum Heatsink Radiator Heat sink for Electronic IC
-                Chip RAM MOS Dynatron Raspberry Pi Cooling With Thermal
-                Conductive Tape.
-              </p>
+          {reviews.map((review) => (
+            <div className="review-box-review" key={review._id}>
+              <img src="/user-icon.png" alt="profile" />
+              <div className="review-box-content">
+                <h5>
+                  {review.rating}/5{" "}
+                  {[...Array(5)].map((_, i) => (
+                    <i
+                      key={i}
+                      className={`bi ${
+                        i < review.rating ? "bi-star-fill" : "bi-star"
+                      }`}
+                    ></i>
+                  ))}
+                </h5>
+                <h5>{review.customer_id?.name}</h5>
+                <p>{review.comment}</p>
+                <small>{new Date(review.date).toLocaleDateString()}</small>
+              </div>
             </div>
-          </div>
+          ))}
+          {reviews.length === 0 && <p>No reviews yet for this product.</p>}
           {/* repeat */}
-          <div className="review-box-show-more-products">
-            Show more <i className="bi bi-arrow-down"></i>
-          </div>
+          {reviews.length > 3 && (
+            <div className="review-box-show-more-products">
+              Show more <i className="bi bi-arrow-down"></i>
+            </div>
+          )}
         </div>
       </div>
       {}

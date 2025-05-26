@@ -131,7 +131,7 @@
 }
 
 .cart-container .cart-summary {
-  height: 350px;
+  height: 390px;
   flex: 1;
   padding: 20px;
   border: 1px solid var(--secondary_color);
@@ -152,10 +152,20 @@
   justify-content: center;
   text-transform: uppercase;
 }
+.cart-container .cart-summary .cart-summary-delevery-method {
+  width: 100%;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+
 .cart-container .cart-summary span {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-top: 5px;
 }
 .cart-container .cart-summary span:nth-child(2) {
   margin-top: 20px;
@@ -167,22 +177,8 @@
   color: var(--text_color_highlight_2);
   margin-top: 30px;
 }
-.cart-container .cart-summary h5 {
-  width: 100%;
-  height: 40px;
-  margin-top: 30px;
-  background-color: #fec349;
-  border: 1px solid #fec349;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: 300ms ease-out;
-}
-.cart-container .cart-summary h5 img {
-  width: auto;
-  height: 40px;
+.cart-container .cart-summary .cart-summary-button {
+  margin-top: 20px;
 }
 .cart-container .cart-summary .cart-card-option {
   background-color: #2c2f2f;
@@ -190,12 +186,33 @@
   color: var(--text_color_lite);
   margin-top: 10px;
 }
-.cart-container .cart-summary h5:hover {
-  background-color: var(--bg_color_4);
-  color: var(--text_color_1);
+/* thank page */
+.thank {
+  width: 100%;
+  height: 75vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: default;
 }
-.cart-container .empty {
-  text-align: center;
-  margin-top: 50px;
-  color: #888;
+.thank img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+}
+.thank h2 {
+  color: var(--text_color_highlight_1);
+  text-transform: capitalize;
+}
+.thank button {
+  width: 150px;
+  margin-top: 20px;
+  background-color: var(--primary_color);
+  color: var(--text_color_lite);
+  border: 1px solid var(--primary_color);
+}
+.thank button:hover {
+  background-color: var(--bg_color_4);
+  color: var(--text_color_highlight_1);
 }

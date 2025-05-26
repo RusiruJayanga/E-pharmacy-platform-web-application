@@ -14,19 +14,10 @@
   background-color: var(--bg_color_2);
 }
 .search-bar-container input {
-  width: 500px;
+  width: 80%;
   height: 60px;
   border-radius: 3px;
   border: 1px solid var(--bg_color_2);
-}
-.search-bar-container .search-bar-filter-location-dropbox {
-  width: 320px;
-}
-.css-19bb58m {
-  height: 60px;
-}
-.css-5clf4x {
-  height: 60px;
 }
 .search-bar-container button {
   width: 170px;
@@ -35,7 +26,60 @@
   color: var(--text_color_lite);
   border: 1px solid #178bcd;
 }
-.search-bar-container button:hover {
-  background-color: var(--bg_color_4);
-  color: #178bcd;
+/* file upload */
+.upload-container {
+  max-width: 1100px;
+  height: auto;
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: var(--border_radius_2);
+  background-color: var(--bg_color_2);
+}
+.upload-container .custom-prescription-upload {
+  width: 80%;
+  height: 60px;
+  border-radius: 3px;
+  border: 1px solid var(--bg_color_2);
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: var(--bg_color_5);
+  color: var(--text_color_highlight_3);
+  border-radius: var(--border_radius_2);
+  cursor: pointer;
+  font-size: 16px;
+  transition: 200ms ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.upload-container .custom-prescription-upload input[type="file"] {
+  display: none;
+}
+.upload-container button {
+  width: 170px;
+  height: 60px;
+  background-color: #178bcd;
+  color: var(--text_color_lite);
+  border: 1px solid #178bcd;
+}
+.prescription-result {
+  max-width: 1100px;
+  height: auto;
+  margin-inline: auto;
+  border-radius: var(--border_radius_2);
+  border: 1px solid var(--bg_color_2);
+  margin-top: 20px;
+  padding: 10px;
+}
+.prescription-result h5 {
+  color: var(--text_color_highlight_1);
+}
+.prescription-result p {
+  margin-top: 20px;
 }

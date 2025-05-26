@@ -93,8 +93,7 @@ const Medicines_prescription = ({ isOpen, onClose, productId }) => {
             },
             body: JSON.stringify({
               customer_id,
-              product_id: productId,
-              productType: "Lab",
+              seller_id: productId,
               image,
               description: values.note.trim(),
             }),

@@ -45,11 +45,12 @@ const Login = () => {
         const data = await response.json();
 
         if (!response.ok) throw new Error(data.message);
+        localStorage.setItem("labToken", JSON.stringify(data));
 
         toast.success("Login successful!");
         setTimeout(() => {
           resetForm();
-          navigate("/Home_pharmacist");
+          navigate("/Home_lab");
         }, 1000);
       } catch (error) {
         toast.error(error.message || "Login failed");

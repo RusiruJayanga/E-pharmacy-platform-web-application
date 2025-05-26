@@ -77,7 +77,7 @@ const Home = () => {
 
   useEffect(() => {
     fetchBeautyProducts();
-    fetchCategoryProducts(categories[0]);
+    fetchCategoryProducts("All");
   }, []);
 
   //category product fetch
@@ -134,8 +134,20 @@ const Home = () => {
         .required("Required")
         .max(200, "Message must be 200 characters or less"),
     }),
-    onSubmit: (values) => {
-      console.log("Submitting:", values);
+    onSubmit: async (values, { resetForm }) => {
+      try {
+        const res = await fetch("http://localhost:5000/api/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(values),
+        });
+        if (!res.ok) throw new Error();
+
+        toast.success("Message sent ✓");
+        resetForm();
+      } catch {
+        toast.error("Couldn’t send — try again");
+      }
     },
   });
 
@@ -179,14 +191,14 @@ const Home = () => {
         <div className="count-box">
           <img src="count1.png" alt="count" />
           <div className="count-content">
-            <h2>{inView && <CountUp start={0} end={300} duration={2} />}+</h2>
+            <h2>{inView && <CountUp start={0} end={25} duration={2} />}+</h2>
             <h4>Sri Lankan Cities</h4>
           </div>
         </div>
         <div className="count-box">
           <img src="count2.png" alt="count" />
           <div className="count-content">
-            <h2>{inView && <CountUp start={0} end={69669} duration={2} />}</h2>
+            <h2>{inView && <CountUp start={0} end={28} duration={2} />}</h2>
             <h4>Orders Delivered</h4>
           </div>
         </div>
@@ -304,7 +316,10 @@ const Home = () => {
                 </div>
               </div>
               <div className="product-card-image">
-                <img src={`upload/${product.images[0]}`} alt={product.name} />
+                <img
+                  src={product.images?.[0] || "product.png"}
+                  alt={product.name}
+                />
               </div>
               <div className="product-card-price">
                 <span>
@@ -368,7 +383,10 @@ const Home = () => {
                 </div>
               </div>
               <div className="product-card-image">
-                <img src={`upload/${product.images[0]}`} alt={product.name} />
+                <img
+                  src={product.images?.[0] || "product.png"}
+                  alt={product.name}
+                />
               </div>
               <div className="product-card-price">
                 <span>

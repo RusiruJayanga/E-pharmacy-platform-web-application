@@ -5,7 +5,7 @@ export const getPharmacies = async (req, res) => {
     const { district, page = 1, limit = 21 } = req.query;
     const skip = (page - 1) * limit;
 
-    const query = { account_status: "Pending" };
+    const query = { account_status: "Approved" };
 
     if (district && district !== "Island Wide") {
       query.district = district;

@@ -6,18 +6,16 @@ const requestSchema = new mongoose.Schema({
     ref: "Customer",
     required: true,
   },
-  product_id: {
+  seller_id: {
     type: mongoose.Schema.Types.ObjectId,
+    ref: "Pharmacist",
     required: true,
-    refPath: "productType",
-  },
-  productType: {
-    type: String,
-    required: true,
-    enum: ["Medicine", "Pharmacy", "Lab", "Doctor"],
   },
   description: { type: String, required: false },
+  seller_description: { type: String, required: false },
   image: { type: String, required: true },
+  request_date: { type: Date, default: Date.now, required: true },
+  due_date: { type: Date, required: false },
   status: {
     type: String,
     enum: ["Pending", "Accepted", "Rejected"],

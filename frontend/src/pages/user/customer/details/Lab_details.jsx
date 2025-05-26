@@ -157,10 +157,12 @@ const Lab_details = () => {
       )}
       {}
       {/* map location section */}
+      <div className="location-head">
+        <h2>Location</h2>
+      </div>
       {lab ? (
         <div className="location-container">
           <div className="location-content">
-            <h3>Location</h3>
             <h5>Find Laboratory Location</h5>
             <div className="location-instructions">
               <p>
@@ -179,49 +181,6 @@ const Lab_details = () => {
       ) : (
         <p>Loading product...</p>
       )}
-      {}
-      {/* reviews section */}
-      <div className="review-container">
-        <div className="review-head">
-          <h2>Reviews</h2>
-          <h4>
-            5/5
-            <i class="bi bi-star-fill"></i>
-            <i class="bi bi-star-fill"></i>
-            <i class="bi bi-star-fill"></i>
-            <i class="bi bi-star-fill"></i>
-            <i class="bi bi-star-fill"></i>
-            <h5>684 ratings</h5>
-          </h4>
-          <p>All from verified purchases</p>
-        </div>
-        <div className="review-box">
-          {/* repeat */}
-          <div className="review-box-review">
-            <img src="user-icon.png" alt="profile" />
-            <div className="review-box-content">
-              <h5>
-                5/5
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-              </h5>
-              <h5>Rusiru</h5>
-              <p>
-                Good , Aluminum Heatsink Radiator Heat sink for Electronic IC
-                Chip RAM MOS Dynatron Raspberry Pi Cooling With Thermal
-                Conductive Tape.
-              </p>
-            </div>
-          </div>
-          {/* repeat */}
-          <div className="review-box-show-more-products">
-            Show more <i class="bi bi-arrow-down"></i>
-          </div>
-        </div>
-      </div>
       {}
       {/* prescription model */}
       {lab && (

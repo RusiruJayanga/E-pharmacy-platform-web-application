@@ -19,12 +19,12 @@ export const loginDoctor = async (req, res) => {
     //generate token
     const token = jwt.sign(
       {
-        pharmacistId: doctor._id,
+        doctorId: doctor._id,
         account_status: doctor.account_status,
-        pharmacy_name: doctor.pharmacy_name,
+        profile_picture: doctor.profile_picture,
+        name: doctor.name,
         email: doctor.email,
         phone_number: doctor.phone_number,
-        postal_code: doctor.postal_code,
         address: doctor.address,
       },
       process.env.JWT_SECRET,
@@ -34,12 +34,12 @@ export const loginDoctor = async (req, res) => {
     res.status(200).json({
       token,
       user: {
-        id: doctor._id,
-        pharmacy_name: doctor.pharmacy_name,
+        doctorId: doctor._id,
+        account_status: doctor.account_status,
+        profile_picture: doctor.profile_picture,
+        name: doctor.name,
         email: doctor.email,
         phone_number: doctor.phone_number,
-        account_status: doctor.account_status,
-        postal_code: doctor.postal_code,
         address: doctor.address,
       },
     });

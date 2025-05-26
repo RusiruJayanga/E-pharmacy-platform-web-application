@@ -2,8 +2,7 @@ import Request from "../../../models/user/common/Request.js";
 
 export const uploadPrescription = async (req, res) => {
   try {
-    const { customer_id, product_id, image, productType, description } =
-      req.body;
+    const { customer_id, seller_id, image, description } = req.body;
 
     if (!customer_id || !image) {
       return res.status(400).json({ message: "Missing required fields" });
@@ -11,8 +10,7 @@ export const uploadPrescription = async (req, res) => {
 
     const newRequest = new Request({
       customer_id,
-      product_id,
-      productType,
+      seller_id,
       description,
       image,
       status: "Pending",

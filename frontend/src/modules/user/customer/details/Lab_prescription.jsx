@@ -85,7 +85,7 @@ const Lab_prescription = ({ isOpen, onClose, labId }) => {
         const { urls } = await uploadResponse.json();
         const image = urls[0];
         const response = await fetch(
-          "http://localhost:5000/api/pharmacies/prescription/add",
+          "http://localhost:5000/api/pharmacies/prescription/lab/add",
           {
             method: "POST",
             headers: {
@@ -93,8 +93,8 @@ const Lab_prescription = ({ isOpen, onClose, labId }) => {
             },
             body: JSON.stringify({
               customer_id,
-              product_id: labId,
-              productType: "Lab",
+              seller_id: labId,
+              sellerType: "Lab",
               image,
               description: values.note.trim(),
             }),

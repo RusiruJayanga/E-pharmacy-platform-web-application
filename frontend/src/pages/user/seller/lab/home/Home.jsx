@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import axios from "axios";
 import "../../doctor/home/home.css";
 //margin css
 import "../../../../../components/user/common/margin/margin.css";
@@ -6,58 +8,153 @@ import "../../../../../components/user/common/margin/margin.css";
 import CountUp from "react-countup";
 import { useInView } from "react-intersection-observer";
 import "../../../customer/home/home.css";
-//request css
-import "../../pharmacist/request/request.css";
+//alert
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Home = () => {
-  //auto count
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.7,
   });
-  //category select
-  const [selectedCategory, setSelectedCategory] = useState("New Request");
-  const categories = ["New Request", "Cancelled Request"];
+
+  const [selectedCategory, setSelectedCategory] = useState("New Appointments");
+  const categories = [
+    "New Appointments",
+    "End Appointments",
+    "Rejected Appointments",
+  ];
+
+  const [newAppointments, setNewAppointments] = useState([]);
+  const [endAppointments, setEndAppointments] = useState([]);
+  const [rejectedAppointments, setRejectedAppointments] = useState([]);
+  const [stats, setStats] = useState({
+    totalAppointments: 0,
+    totalClients: 0,
+    averageRating: 0,
+  });
+
+  const fetchAllData = async () => {
+    // helper returns the raw JWT string
+    const token = JSON.parse(localStorage.getItem("labToken"))?.token;
+    if (!token) {
+      toast.error("Please log in");
+      return;
+    }
+
+    try {
+      const authHeader = { Authorization: `Bearer ${token}` };
+
+      const [newRes, endRes, rejectRes, statsRes] = await Promise.all([
+        axios.get("http://localhost:5000/api/lab/appointments/lab/new", {
+          headers: authHeader,
+        }),
+        axios.get("http://localhost:5000/api/lab/appointments/lab/end", {
+          headers: authHeader,
+        }),
+        axios.get("http://localhost:5000/api/lab/appointments/lab/rejected", {
+          headers: authHeader,
+        }),
+        axios.get("http://localhost:5000/api/lab/lab/stats", {
+          headers: authHeader,
+        }),
+      ]);
+
+      setNewAppointments(newRes.data);
+      setEndAppointments(endRes.data);
+      setRejectedAppointments(rejectRes.data);
+      setStats(statsRes.data);
+    } catch (err) {
+      toast.error(
+        err.response?.data?.message || err.message || "Failed to load data"
+      );
+    }
+  };
+
+  useEffect(() => {
+    fetchAllData();
+  }, []);
+
+  //details page
+  const navigate = useNavigate();
+  const handleCardClick = (appointmentId) => {
+    navigate(`/Appointment_lab`, { state: { appointmentId } });
+  };
+
+  const renderAppointmentItem = (item) => (
+    <div key={item._id}>
+      <div className="appointment-item-container">
+        <div className="appointment-item-content">
+          <h3>{item.customer_id?.name}</h3>
+          <span>
+            <p>Appointment ID - </p>
+            <h6>{item._id}</h6>
+          </span>
+          <span>
+            <p>Customer Email - </p>
+            <h6>{item.customer_id?.email || "N/A"}</h6>
+          </span>
+        </div>
+        <div className="appointment-item-content">
+          <span>
+            <p>Payment Status - </p>
+            <h6>{item.payment_status}</h6>
+          </span>
+          <span>
+            <p>Book Date - </p>
+            <h6>{new Date(item.book_date).toLocaleDateString()}</h6>
+          </span>
+          <span>
+            <p>Status - </p>
+            <h4 className={item.status}>{item.status}</h4>
+          </span>
+        </div>
+        <div className="appointment-item-action">
+          <button onClick={() => handleCardClick(item._id)}>Show</button>
+        </div>
+      </div>
+    </div>
+  );
 
   return (
     <div>
-      {/* margin section 1 */}
       <div className="margin-section-container lab-home-section1"></div>
-      {}
-      {/* count section */}
+
       <div className="count-container" ref={ref}>
         <div className="count-box">
           <img src="doctor-count1.png" alt="count" />
           <div className="count-content">
-            <h2>{inView && <CountUp start={0} end={7} duration={2} />}+</h2>
+            <h2>
+              {inView && (
+                <CountUp start={0} end={stats.totalAppointments} duration={2} />
+              )}
+              +
+            </h2>
             <h4>Appointments</h4>
           </div>
         </div>
         <div className="count-box">
           <img src="doctor-count2.png" alt="count" />
           <div className="count-content">
-            <h2>{inView && <CountUp start={0} end={4} duration={2} />}</h2>
+            <h2>
+              {inView && (
+                <CountUp start={0} end={stats.totalClients} duration={2} />
+              )}
+            </h2>
             <h4>Clients</h4>
           </div>
         </div>
-        <div className="count-box">
-          <img src="seller-count3.png" alt="count" />
-          <div className="count-content">
-            <h2>
-              <i class="bi bi-star-fill"></i>
-              {inView && <CountUp start={0} end={5} duration={2} />}
-            </h2>
-            <h4>Customers Rated</h4>
-          </div>
-        </div>
       </div>
-      {}
-      {/* request section */}
-      <div className="request-container">
-        <div className="request-option-box">
-          {categories.map((category, index) => (
+
+      <div className="appointment-head">
+        <h2>My Appointments</h2>
+      </div>
+
+      <div className="appointment-container">
+        <div className="appointment-option-box">
+          {categories.map((category) => (
             <h4
-              key={index}
+              key={category}
               className={selectedCategory === category ? "active-category" : ""}
               onClick={() => setSelectedCategory(category)}
             >
@@ -65,50 +162,34 @@ const Home = () => {
             </h4>
           ))}
         </div>
-        {selectedCategory === "New Request" && (
-          <div>
-            <div className="request-item-container">
-              <div className="request-item-content">
-                <h3>Paracetamol 500mg</h3>
-                <span>
-                  <p>Request Date - </p>
-                  <h6>2023-10-01</h6>
-                </span>
-                <span>
-                  <p>Category - </p>
-                  <h6>Shop</h6>
-                </span>
-              </div>
-              <div className="request-item-content request-item-content-last">
-                <button>Review</button>
-                <button>Accept</button>
-                <button>Cancel</button>
-              </div>
+
+        {selectedCategory === "New Appointments" &&
+          (newAppointments.length > 0 ? (
+            newAppointments.map(renderAppointmentItem)
+          ) : (
+            <div className="advertisement-product-available">
+              <h4>No Appointments</h4>
             </div>
-          </div>
-        )}
-        {selectedCategory === "Cancelled Request" && (
-          <div>
-            <div className="request-item-container">
-              <div className="request-item-content">
-                <h3>Paracetamol 500mg</h3>
-                <span>
-                  <p>Request Date - </p>
-                  <h6>2023-10-01</h6>
-                </span>
-                <span>
-                  <p>Category - </p>
-                  <h6>Shop</h6>
-                </span>
-              </div>
-              <div className="request-item-content request-item-content-last">
-                <button>Review</button>
-              </div>
+          ))}
+
+        {selectedCategory === "End Appointments" &&
+          (endAppointments.length > 0 ? (
+            endAppointments.map(renderAppointmentItem)
+          ) : (
+            <div className="advertisement-product-available">
+              <h4>No Appointments</h4>
             </div>
-          </div>
-        )}
+          ))}
+
+        {selectedCategory === "Rejected Appointments" &&
+          (rejectedAppointments.length > 0 ? (
+            rejectedAppointments.map(renderAppointmentItem)
+          ) : (
+            <div className="advertisement-product-available">
+              <h4>No Appointments</h4>
+            </div>
+          ))}
       </div>
-      {}
     </div>
   );
 };

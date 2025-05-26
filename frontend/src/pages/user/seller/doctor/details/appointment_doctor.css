@@ -1,0 +1,143 @@
+.appointment-info-box {
+  max-width: 1000px;
+  height: auto;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: start;
+  flex-wrap: wrap;
+  margin-top: 30px;
+  padding: 20px;
+  background-color: var(--bg_color_5);
+  border-radius: var(--border_radius_1);
+  border: 1px solid var(--bg_color_2);
+  margin-inline: auto;
+  margin-top: 60px;
+  cursor: default;
+  gap: 20px;
+}
+.appointment-info-content {
+  width: 100%;
+  height: auto;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.appointment-info-box h3 {
+  color: var(--text_color_highlight_1);
+}
+.appointment-info-box .appointment-info-content span {
+  width: 470px;
+  height: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-top: 16px;
+  gap: 10px;
+  flex-direction: column;
+}
+.appointment-info-box .appointment-info-content span p {
+  opacity: 0.7;
+}
+.appointment-info-box .appointment-info-content span h6 {
+  font-size: 16px;
+}
+.appointment-info-box form {
+  width: 400px;
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 20px;
+  gap: 10px;
+}
+.appointment-info-box form input {
+  width: 100%;
+}
+.appointment-info-box form textarea {
+  width: 100%;
+  height: 100px;
+}
+.appointment-info-box form button:nth-child(1) {
+  width: 100px;
+  background-color: #cf5353;
+  color: var(--text_color_lite);
+  border: 1px solid #cf5353;
+}
+.appointment-info-box form button:nth-child(1):hover {
+  background-color: var(--bg_color_5);
+  color: #cf5353;
+}
+.appointment-info-box form button:nth-child(2) {
+  width: 100px;
+  background-color: #178bcd;
+  color: var(--text_color_lite);
+  border: 1px solid #178bcd;
+}
+.appointment-info-box form button:nth-child(2):hover {
+  background-color: var(--bg_color_5);
+  color: #178bcd;
+}
+
+.appointment-info-box form .form-reject-button {
+  width: 100px;
+  background-color: #cf5353;
+  color: var(--text_color_lite);
+  border: 1px solid #cf5353;
+}
+.appointment-info-box form .form-reject-button:hover {
+  background-color: var(--bg_color_5);
+  color: #cf5353;
+}
+.appointment-info-box form .form-approve-button {
+  width: 100px;
+  background-color: #178bcd;
+  color: var(--text_color_lite);
+  border: 1px solid #178bcd;
+}
+.appointment-info-box form .form-approve-button:hover {
+  background-color: var(--bg_color_5);
+  color: #178bcd;
+}
+
+/* lab apponment */
+.appointment-info-image {
+  max-width: 1000px;
+  height: auto;
+  margin-top: 30px;
+  padding: 10px;
+  background-color: var(--bg_color_5);
+  border-radius: var(--border_radius_1);
+  margin-inline: auto;
+  margin-top: 60px;
+  cursor: default;
+  gap: 20px;
+  border: 1px solid var(--bg_color_2);
+}
+.appointment-info-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: var(--border_radius_2);
+  background-color: var(--bg_color_4);
+  margin-top: 20px;
+}
+.appointment-info-image h5 {
+  color: var(--text_color_highlight_1);
+}
+.appointment-profile-image {
+  max-width: 200px;
+  height: 200px;
+  padding: 10px;
+  margin-inline: auto;
+  background-color: var(--bg_color_5);
+  border-radius: var(--border_radius_1);
+  border: 1px solid var(--bg_color_2);
+  margin-top: 60px;
+}
+.appointment-profile-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

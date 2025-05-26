@@ -2,6 +2,11 @@ import mongoose from "mongoose";
 import bcrypt from "bcryptjs";
 
 const labSchema = new mongoose.Schema({
+  user_id: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Customer",
+    required: true,
+  },
   pathologist_name: { type: String, required: true },
   lab_name: { type: String, required: true },
   national_id: { type: String, required: true },

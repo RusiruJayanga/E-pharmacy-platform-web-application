@@ -1,0 +1,41 @@
+.form-review {
+  max-width: 1000px;
+  height: auto;
+  margin-inline: auto;
+  cursor: default;
+  position: relative;
+  margin-top: 100px;
+}
+.form-review h5 {
+  color: var(--text_color_highlight_1);
+  margin-bottom: 20px;
+}
+.form-review textarea {
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+}
+.form-review button {
+  width: 100px;
+  background-color: #178bcd;
+  color: var(--text_color_lite);
+  border: 1px solid #178bcd;
+  margin-top: 20px;
+}
+.form-review button:hover {
+  background-color: var(--bg_color_5);
+  color: #178bcd;
+}
+/* StarRating.css */
+.star-rating {
+  display: flex;
+  gap: 5px;
+  margin: 10px 0;
+}
+.star-rating input {
+  display: none;
+}
+.star {
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
+}

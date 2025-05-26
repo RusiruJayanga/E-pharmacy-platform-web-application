@@ -80,6 +80,41 @@ const Doctors_details = () => {
     }
   };
 
+  //chanel doctor
+  const handleChannelDoctor = async () => {
+    try {
+      const token = localStorage.getItem("customerToken");
+      if (!token) {
+        toast.error("Please login to save items");
+        return;
+      }
+
+      const response = await fetch(
+        "http://localhost:5000/api/appointments/doctor",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            product_id: doctor._id,
+          }),
+        }
+      );
+
+      const data = await response.json();
+      if (response.ok) {
+        toast.success("Appointment requested!");
+      } else {
+        toast.error(data.message || "Failed to request");
+      }
+    } catch (error) {
+      toast.error("Could not book appointment");
+      console.error(error);
+    }
+  };
+
   return (
     <div>
       {/* ribben */}
@@ -118,7 +153,7 @@ const Doctors_details = () => {
               <h5>{doctor.district}</h5>
             </span>
             <div className="details-box-button-container">
-              <button>
+              <button onClick={handleChannelDoctor}>
                 <h4>
                   <i class="bi bi-chat-dots"></i>
                 </h4>
@@ -139,49 +174,6 @@ const Doctors_details = () => {
       ) : (
         <p>Loading product...</p>
       )}
-      {}
-      {/* reviews section */}
-      <div className="review-container">
-        <div className="review-head">
-          <h2>Reviews</h2>
-          <h4>
-            5/5
-            <i class="bi bi-star-fill"></i>
-            <i class="bi bi-star-fill"></i>
-            <i class="bi bi-star-fill"></i>
-            <i class="bi bi-star-fill"></i>
-            <i class="bi bi-star-fill"></i>
-            <h5>684 ratings</h5>
-          </h4>
-          <p>All from verified purchases</p>
-        </div>
-        <div className="review-box">
-          {/* repeat */}
-          <div className="review-box-review">
-            <img src="user-icon.png" alt="profile" />
-            <div className="review-box-content">
-              <h5>
-                5/5
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-              </h5>
-              <h5>Rusiru</h5>
-              <p>
-                Good , Aluminum Heatsink Radiator Heat sink for Electronic IC
-                Chip RAM MOS Dynatron Raspberry Pi Cooling With Thermal
-                Conductive Tape.
-              </p>
-            </div>
-          </div>
-          {/* repeat */}
-          <div className="review-box-show-more-products">
-            Show more <i class="bi bi-arrow-down"></i>
-          </div>
-        </div>
-      </div>
       {}
     </div>
   );

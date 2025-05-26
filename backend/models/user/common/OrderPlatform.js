@@ -11,8 +11,8 @@ const orderSchema = new mongoose.Schema({
   order_date: { type: Date, default: Date.now, required: true },
   delevery_method: {
     type: String,
-    enum: ["Normal", "Express"],
-    default: "Normal",
+    enum: ["Standard", "Express"],
+    default: "Standard",
   },
 });
 

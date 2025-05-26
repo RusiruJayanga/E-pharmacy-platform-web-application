@@ -23,18 +23,6 @@ const Navigation_bar = () => {
             >
               Home
             </NavLink>
-            <NavLink
-              className="nav-list-left nav-responsive-left"
-              to="/Ads_doctor"
-            >
-              Add Ads
-            </NavLink>
-            <NavLink
-              className="nav-list-left nav-responsive-left"
-              to="/Appointments_doctor"
-            >
-              Appointments
-            </NavLink>
           </ul>
           <ul className="nav-right nav-far-right">
             <Link to="/Account_doctor">

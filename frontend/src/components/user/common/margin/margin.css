@@ -1,4 +1,20 @@
 /* margin section styles */
+/* head section */
+.head-section {
+  max-width: 500px;
+  margin-inline: auto;
+  cursor: default;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.head-section h2 {
+  color: var(--text_color_highlight_1);
+  text-transform: uppercase;
+}
+.margin-head-1 {
+  margin-top: 60px;
+}
 /* margin section */
 .margin-section-container {
   width: 100%;

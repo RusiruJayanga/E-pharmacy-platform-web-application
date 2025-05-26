@@ -6,15 +6,20 @@ const reviewSchema = new mongoose.Schema({
     ref: "Customer",
     required: true,
   },
-  target: {
+  seller_id: {
     type: mongoose.Schema.Types.ObjectId,
-    required: true,
-    refPath: "targetModel",
+    ref: "Pharmacist",
+    required: false,
   },
-  targetModel: {
+  product_id: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: false,
+    refPath: "productType",
+  },
+  productType: {
     type: String,
-    required: true,
-    enum: ["Pharmacist", "Medicine", "Accessory", "Doctor", "Lab"],
+    required: false,
+    enum: ["Medicine", "Accessory"],
   },
   rating: {
     type: Number,
@@ -29,6 +34,7 @@ const reviewSchema = new mongoose.Schema({
   date: {
     type: Date,
     default: Date.now,
+    required: true,
   },
 });
 

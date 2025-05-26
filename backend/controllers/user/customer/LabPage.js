@@ -5,14 +5,15 @@ export const getLabs = async (req, res) => {
     const { district, lab_tests, page = 1, limit = 21 } = req.query;
     const skip = (page - 1) * limit;
 
-    const query = { account_status: "Pending" };
+    const query = { account_status: "Approved" };
 
     if (district && district !== "Island Wide") {
       query.district = district;
     }
 
     if (lab_tests && lab_tests !== "All") {
-      query.lab_tests = lab_tests;
+      const testsArray = Array.isArray(lab_tests) ? lab_tests : [lab_tests];
+      query.lab_tests = { $in: testsArray };
     }
 
     const labsQuery = Lab.find(query)

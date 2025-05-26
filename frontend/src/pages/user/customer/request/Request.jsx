@@ -477,7 +477,10 @@ const Request = () => {
           "http://localhost:5000/api/auth/request-seller-role",
           {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
             body: JSON.stringify(formattedValues),
           }
         );
@@ -488,7 +491,6 @@ const Request = () => {
 
         toast.success(result.message);
         resetForm();
-        navigate("/Account");
       } catch (error) {
         toast.error(error.message || "Request failed. Try again.");
       }

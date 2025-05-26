@@ -19,9 +19,10 @@ export const loginLab = async (req, res) => {
     //generate token
     const token = jwt.sign(
       {
-        pharmacistId: lab._id,
+        labId: lab._id,
         account_status: lab.account_status,
-        pharmacy_name: lab.pharmacy_name,
+        lab_name: lab.lab_name,
+        profile_picture: lab.profile_picture,
         email: lab.email,
         phone_number: lab.phone_number,
         postal_code: lab.postal_code,
@@ -34,11 +35,12 @@ export const loginLab = async (req, res) => {
     res.status(200).json({
       token,
       user: {
-        id: lab._id,
-        pharmacy_name: lab.pharmacy_name,
+        labId: lab._id,
+        account_status: lab.account_status,
+        lab_name: lab.lab_name,
+        profile_picture: lab.profile_picture,
         email: lab.email,
         phone_number: lab.phone_number,
-        account_status: lab.account_status,
         postal_code: lab.postal_code,
         address: lab.address,
       },

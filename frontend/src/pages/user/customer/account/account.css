@@ -13,6 +13,182 @@
   background-repeat: no-repeat;
   margin-top: -60px;
 }
+/* account section */
+.user-account-info-container {
+  max-width: 1000px;
+  height: auto;
+  margin-top: -150px;
+  z-index: 2;
+  margin-inline: auto;
+  text-align: center;
+  cursor: default;
+  position: relative;
+}
+.user-account-info-container img {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background-color: var(--bg_color_4);
+}
+.user-account-info-container h3 {
+  color: var(--text_color_highlight_1);
+}
+.user-account-info-container .user-account-info-box {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: start;
+  flex-wrap: wrap;
+  margin-top: 30px;
+  padding: 30px;
+  background-color: var(--bg_color_5);
+  border-radius: var(--border_radius_1);
+  border: 1px solid var(--bg_color_2);
+  gap: 20px;
+}
+.user-account-info-container .user-account-info-box .user-account-info-content {
+  width: 450px;
+  height: auto;
+  text-align: left;
+}
+.user-account-info-container
+  .user-account-info-box
+  .user-account-info-content
+  h4 {
+  color: var(--text_color_highlight_2);
+}
+.user-account-info-container
+  .user-account-info-box
+  .user-account-info-content
+  span {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-top: 16px;
+  gap: 10px;
+  flex-direction: column;
+}
+.user-account-info-container
+  .user-account-info-box
+  .user-account-info-content
+  span
+  p {
+  opacity: 0.7;
+}
+.user-account-info-container
+  .user-account-info-box
+  .user-account-info-content
+  span
+  h5 {
+  margin-top: 5px;
+}
+.user-account-info-container
+  .user-account-info-box
+  .user-account-info-content
+  button {
+  width: 150px;
+  margin-top: 30px;
+  background-color: var(--primary_color);
+  color: var(--text_color_lite);
+  border: 1px solid var(--primary_color);
+}
+.user-account-info-container
+  .user-account-info-box
+  .user-account-info-content
+  button:hover {
+  background-color: var(--bg_color_5);
+  color: var(--text_color_highlight_1);
+}
+.user-account-info-container
+  .user-account-info-box
+  .user-account-info-content
+  .user-account-info-span {
+  margin-bottom: 10px;
+}
+.user-account-info-container
+  .user-account-info-box
+  .user-account-info-content
+  .user-account-info-h5 {
+  line-height: 1.5;
+}
+/* settings section */
+.user-setting-container {
+  width: 450px;
+  height: auto;
+  text-align: left;
+  padding-left: 20px;
+  border-left: 1px solid var(--bg_color_2);
+}
+.user-setting-container .user-setting-content h4 {
+  color: var(--text_color_highlight_2);
+}
+.user-setting-container .user-setting-content span {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-top: 16px;
+  gap: 10px;
+  flex-direction: column;
+}
+.user-setting-container .setting-content {
+  margin-top: 30px;
+}
+.user-setting-container .setting-content h4 {
+  color: var(--text_color_highlight_2);
+}
+.user-setting-container .setting-content span {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-top: 16px;
+  gap: 10px;
+  flex-direction: column;
+}
+.user-setting-container .setting-content span p {
+  opacity: 0.7;
+}
+.user-setting-container .setting-content span h5 {
+  margin: 4px 0 0 0;
+}
+.user-setting-container .setting-content span button,
+.user-setting-container .user-setting-content span button {
+  width: 150px;
+  background-color: var(--primary_color);
+  color: var(--text_color_lite);
+  border: 1px solid var(--primary_color);
+}
+.user-setting-container .setting-content span button:hover,
+.user-setting-container .user-setting-content span button:hover {
+  background-color: var(--bg_color_5);
+  color: var(--text_color_highlight_1);
+}
+.user-setting-container .setting-content .setting-button {
+  margin-top: 30px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  gap: 10px;
+}
+.user-setting-container .setting-content .setting-button button:nth-child(1) {
+  width: 150px;
+  background-color: #178bcd;
+  color: var(--text_color_lite);
+  border: 1px solid #178bcd;
+}
+.user-setting-container
+  .setting-content
+  .setting-button
+  button:nth-child(1):hover {
+  background-color: var(--bg_color_5);
+  color: #178bcd;
+}
 /* head section */
 .activity-head {
   max-width: 500px;
@@ -29,267 +205,38 @@
 }
 /* account activity section */
 .account-activity-container {
-  max-width: 1200px;
+  max-width: 1100px;
   height: auto;
   margin-inline: auto;
   margin-top: 60px;
-  display: flex;
-  gap: 20px;
   padding: 10px;
   cursor: default;
 }
 .account-activity-container .activity-category {
-  width: 200px;
-  height: 230px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: start;
-  position: sticky;
-  top: 200px;
-}
-.account-activity-container .activity-category h4 {
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.activity-category h4 {
+  width: 250px;
   height: 40px;
-  border-left: 3px solid transparent;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: var(--bg_color_5);
   color: var(--text_color_highlight_3);
+  border-left: 3px solid transparent;
   cursor: pointer;
 }
-.account-activity-container .activity-category .active-category {
+.activity-category .active-category {
   background-color: var(--bg_color_2);
   border-left: 3px solid var(--bg_color_strong_2);
 }
-.account-activity-container .activity-container {
-  width: 950px;
-  height: auto;
-}
-/* settings section */
-.account-activity-container .activity-container .setting-container {
-  width: auto;
-  height: auto;
-  padding: 10px;
-  border-radius: var(--border_radius_1);
-  background-color: var(--bg_color_5);
-  border: 1px solid var(--bg_color_2);
-  transition: 300ms ease-out;
-}
-.account-activity-container .activity-container .setting-container:hover {
-  border: 1px solid var(--bg_color_3);
-}
-.account-activity-container .activity-container .setting-container h4 {
-  color: var(--text_color_highlight_1);
-  margin-top: 20px;
-}
-.account-activity-container
-  .activity-container
-  .setting-container
-  .setting-content {
+.activity-container {
   width: 100%;
   height: auto;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 30px;
-}
-.account-activity-container
-  .activity-container
-  .setting-container
-  .setting-content
-  span {
-  width: 300px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.account-activity-container
-  .activity-container
-  .setting-container
-  .setting-content
-  span
-  p {
-  opacity: 0.7;
-}
-.account-activity-container
-  .activity-container
-  .setting-container
-  .setting-content
-  span
-  button {
-  width: 100px;
-  height: 40px;
-  background-color: var(--primary_color);
-  color: var(--text_color_lite);
-  border: 1px solid var(--primary_color);
-}
-.account-activity-container
-  .activity-container
-  .setting-container
-  .setting-content
-  span
-  button:hover {
-  background-color: var(--bg_color_5);
-  color: var(--text_color_highlight_1);
-}
-.account-activity-container
-  .activity-container
-  .setting-container
-  .setting-content
-  span
-  h6 {
-  font-size: 16px;
-  cursor: pointer;
-  transition: 300ms ease-out;
-}
-.account-activity-container
-  .activity-container
-  .setting-container
-  .setting-content
-  span
-  h6:hover {
-  color: #0000ff;
-}
-.account-activity-container
-  .activity-container
-  .setting-container
-  .setting-content
-  span
-  .setting-delete:hover {
-  color: #ff0000;
-}
-.account-activity-container
-  .activity-container
-  .setting-container
-  .setting-content
-  span
-  .setting-pending:hover {
-  color: #00bd00;
-}
-/* pending order section */
-.account-activity-container .activity-container .pending-order-item {
-  width: 80%;
-  height: auto;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 40px;
-  padding: 10px;
-  border-radius: var(--border_radius_1);
-  background-color: var(--bg_color_5);
-  margin-bottom: 10px;
-  border: 1px solid var(--bg_color_2);
-  transition: 300ms ease-out;
-}
-.account-activity-container .activity-container .pending-order-item:hover {
-  border: 1px solid var(--bg_color_3);
-}
-.account-activity-container .activity-container .pending-order-item img {
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
-  border-radius: var(--border_radius_2);
-  border: 1px solid var(--bg_color_2);
-}
-.account-activity-container
-  .activity-container
-  .pending-order-item
-  .pending-order-item-content {
-  width: 250px;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-}
-.account-activity-container
-  .activity-container
-  .pending-order-item
-  .pending-order-item-content
-  h3 {
-  color: var(--text_color_highlight_1);
-}
-.account-activity-container
-  .activity-container
-  .pending-order-item
-  .pending-order-item-content
-  span {
-  width: auto;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.account-activity-container
-  .activity-container
-  .pending-order-item
-  .pending-order-item-content
-  span
-  p {
-  opacity: 0.7;
-}
-.account-activity-container
-  .activity-container
-  .pending-order-item
-  .pending-order-item-content
-  span
-  h6 {
-  font-size: 16px;
-}
-/* appointment section */
-.appointments-container {
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  flex-wrap: wrap;
-  padding: 10px;
-  border-radius: var(--border_radius_1);
-  background-color: var(--bg_color_5);
-  margin-top: 10px;
-  border: 1px solid var(--bg_color_2);
-  gap: 20px;
-  transition: 300ms ease-out;
-}
-.appointments-container:hover {
-  border: 1px solid var(--bg_color_3);
-}
-.appointments-container img {
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
-  border-radius: var(--border_radius_2);
-  border: 1px solid var(--bg_color_2);
-}
-.appointments-container .appointments-content h3 {
-  color: var(--text_color_highlight_1);
-}
-.appointments-container .appointments-content span {
-  width: auto;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.appointments-container .appointments-content span p {
-  opacity: 0.7;
-}
-.appointments-container .appointments-content span h6 {
-  font-size: 16px;
-}
-.appointments-content-right {
-  display: flex;
-  align-items: end;
-  margin-left: auto;
-}
-.appointments-content-right button {
-  width: 100px;
-  background-color: #178bcd;
-  color: var(--text_color_lite);
-  border: 1px solid #178bcd;
-}
-.appointments-content-right button:hover {
-  background-color: var(--bg_color_5);
-  color: #178bcd;
+  margin-inline: auto;
+  margin-top: 20px;
 }

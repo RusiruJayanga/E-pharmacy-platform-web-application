@@ -235,9 +235,6 @@ const Doctors = () => {
                 <p>{doctor.specialty}</p>
                 <span>
                   <h5>{doctor.district}</h5>{" "}
-                  <p>
-                    {doctor.rate} <i class="bi bi-star-fill"></i>
-                  </p>
                 </span>
                 <div
                   onClick={() => handleCardClick(doctor._id)}

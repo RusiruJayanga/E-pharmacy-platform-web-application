@@ -93,8 +93,7 @@ const Pharmacies_prescription = ({ isOpen, onClose, pharmacyId }) => {
             },
             body: JSON.stringify({
               customer_id,
-              product_id: pharmacyId,
-              productType: "Pharmacy",
+              seller_id: pharmacyId,
               image,
               description: values.note.trim(),
             }),

@@ -48,13 +48,42 @@ export const requestSellerRole = async (req, res) => {
       });
     }
 
-    //create the seller
+    // Decode token to get customer info
+    let customerId = null;
+    const authHeader = req.headers.authorization;
+
+    if (authHeader?.startsWith("Bearer ")) {
+      const token = authHeader.split(" ")[1];
+      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+      const customerEmail = decoded.email;
+
+      const existingCustomer = await Customer.findOne({
+        email: customerEmail,
+      }).session(session);
+
+      if (existingCustomer) {
+        customerId = existingCustomer._id;
+        existingCustomer.account_status = `${role} Pending`;
+        await existingCustomer.save({ session });
+      } else {
+        await session.abortTransaction();
+        session.endSession();
+        return res.status(404).json({ message: "Customer not found" });
+      }
+    } else {
+      await session.abortTransaction();
+      session.endSession();
+      return res.status(401).json({ message: "Authorization required" });
+    }
+
+    // Create the seller with customer ID as user_id
     let createdSeller = null;
 
     switch (role) {
       case "Doctor":
         createdSeller = new Doctor({
           ...req.body,
+          user_id: customerId,
           account_status: "Pending",
           license_file: req.body.license_file,
           profile_picture: req.body.profile_picture,
@@ -65,6 +94,7 @@ export const requestSellerRole = async (req, res) => {
       case "Pharmacist":
         createdSeller = new Pharmacist({
           ...req.body,
+          user_id: customerId,
           account_status: "Pending",
           registration_certificate: req.body.registration_certificate,
           government_id: req.body.government_id,
@@ -76,6 +106,7 @@ export const requestSellerRole = async (req, res) => {
       case "Lab Owner":
         createdSeller = new Lab({
           ...req.body,
+          user_id: customerId,
           account_status: "Pending",
           nmra_cert: req.body.nmra_cert,
           diagnostic_license: req.body.diagnostic_license,
@@ -83,22 +114,6 @@ export const requestSellerRole = async (req, res) => {
         });
         await createdSeller.save({ session });
         break;
-    }
-
-    //decode token
-    const authHeader = req.headers.authorization;
-    if (authHeader?.startsWith("Bearer ")) {
-      const token = authHeader.split(" ")[1];
-      const decoded = jwt.verify(token, process.env.JWT_SECRET);
-      const customerEmail = decoded.email;
-
-      const existingCustomer = await Customer.findOne({
-        email: customerEmail,
-      }).session(session);
-      if (existingCustomer) {
-        existingCustomer.account_status = `${role} Pending`;
-        await existingCustomer.save({ session });
-      }
     }
 
     await session.commitTransaction();

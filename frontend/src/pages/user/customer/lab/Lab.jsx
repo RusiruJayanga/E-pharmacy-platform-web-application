@@ -232,9 +232,6 @@ const Lab = () => {
                 <h5>{lab.lab_name}</h5>
                 <span>
                   <h5>{lab.district}</h5>
-                  <p>
-                    {lab.rate} <i className="bi bi-star-fill"></i>
-                  </p>
                 </span>
                 <div
                   onClick={() => handleCardClick(lab._id)}

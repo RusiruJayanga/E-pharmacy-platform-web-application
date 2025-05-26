@@ -58,6 +58,15 @@ const Store = () => {
     return "instock";
   };
 
+  //edit page
+  const navigate = useNavigate();
+  const handleCardClickAccessory = (productId) => {
+    navigate(`/Accessories_edit`, { state: { productId } });
+  };
+  const handleCardClickMedicine = (productId) => {
+    navigate(`/Medicines_edit`, { state: { productId } });
+  };
+
   return (
     <div>
       {/* ribben */}
@@ -109,13 +118,13 @@ const Store = () => {
             </div>
             <div className="store-item-action">
               {product.legality ? (
-                <Link to={`/Edit_medicine/${product._id}`}>
-                  <button>Show</button>
-                </Link>
+                <button onClick={() => handleCardClickMedicine(product._id)}>
+                  Edit
+                </button>
               ) : (
-                <Link to={`/Edit_accessory/${product._id}`}>
-                  <button>Show</button>
-                </Link>
+                <button onClick={() => handleCardClickAccessory(product._id)}>
+                  Edit
+                </button>
               )}
               <button
                 onClick={() =>

@@ -1,4 +1,10 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 
 const AuthContext = createContext();
 
@@ -12,7 +18,6 @@ export const AuthProvider = ({ children }) => {
     const token = localStorage.getItem("customerToken");
     if (token) {
       setAuthToken(token);
-      // You might want to decode the token here to get user info
     }
   }, []);
 

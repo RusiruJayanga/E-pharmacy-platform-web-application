@@ -18,8 +18,8 @@ const appointmentSchema = new mongoose.Schema({
   },
   description: { type: String, required: false },
   book_date: { type: Date, default: Date.now, required: true },
-  due_date: { type: Date, required: true },
-  image: { type: String, required: true },
+  due_date: { type: Date, required: false },
+  image: { type: String, required: false },
   status: {
     type: String,
     enum: ["Pending", "Accepted", "Rejected"],

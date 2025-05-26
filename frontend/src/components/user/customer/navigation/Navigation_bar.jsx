@@ -90,30 +90,7 @@ const Navigation_bar = () => {
                 <i class="bi bi-bookmark"></i>
               </h4>
             </Link>
-            {/* translate dropdown */}
-            <h4
-              className="nav-list-right translate-drop"
-              onClick={(e) => {
-                e.stopPropagation();
-                translatesetShowDropdown(!translateshowDropdown);
-                accountsetShowDropdown(false);
-              }}
-            >
-              <i className="bi bi-translate"></i>
-              {translateshowDropdown && (
-                <motion.div
-                  initial={{ opacity: 0, y: -5 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.4 }}
-                  className="dropdown-menu dropdown-menu-translate"
-                >
-                  <p className="dropdown-item">English</p>
-                  <p className="dropdown-item">සිංහල</p>
-                  <p className="dropdown-item">தமிழ்</p>
-                </motion.div>
-              )}
-            </h4>
+
             {/* Account Dropdown */}
             {token ? (
               <Link to="/Account">

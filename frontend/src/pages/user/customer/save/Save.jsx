@@ -21,11 +21,6 @@ const Save = () => {
     "Accessories",
   ];
 
-  //fetch saved items
-  const token = localStorage.getItem("customerToken");
-  const payload = JSON.parse(atob(token.split(".")[1]));
-  const customer_id = payload.customerId;
-
   const getCategoryFromType = (type) => {
     switch (type) {
       case "Medicine":
@@ -42,6 +37,19 @@ const Save = () => {
         return "Unknown";
     }
   };
+  //fetch saved items
+  const token = localStorage.getItem("customerToken");
+  let customer_id = null;
+
+  if (token) {
+    try {
+      const payload = JSON.parse(atob(token.split(".")[1]));
+      customer_id = payload.customerId;
+    } catch (err) {
+      console.error("Invalid token:", err);
+      toast.error("Invalid session. Please log in again.");
+    }
+  }
 
   const fetchSavedItems = async () => {
     try {

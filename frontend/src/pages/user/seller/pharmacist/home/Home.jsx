@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "./home.css";
 //margin css
 import "../../../../../components/user/common/margin/margin.css";
@@ -23,32 +24,39 @@ import {
 
 const Home = () => {
   //auto count
-  const { ref, inView } = useInView({
-    triggerOnce: true,
-    threshold: 0.7,
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.7 });
+
+  const [counts, setCounts] = useState({
+    deliveredOrders: 0,
+    totalProducts: 0,
+    rating: 0,
   });
-  //chart data
-  const mounthlySellData = [
-    { month: "Jan", sales: 1200 },
-    { month: "Feb", sales: 2100 },
-    { month: "Mar", sales: 800 },
-    { month: "Apr", sales: 1600 },
-    { month: "May", sales: 2400 },
-    { month: "Jun", sales: 2800 },
-    { month: "Jul", sales: 3200 },
-    { month: "Aug", sales: 3000 },
-    { month: "Sep", sales: 2700 },
-    { month: "Oct", sales: 2000 },
-    { month: "Nov", sales: 1800 },
-    { month: "Dec", sales: 1500 },
-  ];
-  const inventoryData = [
-    { name: "Painkillers", quantity: 120 },
-    { name: "Vitamins", quantity: 300 },
-    { name: "Antibiotics", quantity: 200 },
-    { name: "Skin Care", quantity: 150 },
-    { name: "Others", quantity: 100 },
-  ];
+
+  //fetch data
+  const [inventoryData, setInventoryData] = useState([]);
+  const [monthlySales, setMonthlySales] = useState([]);
+  useEffect(() => {
+    (async () => {
+      try {
+        const token = localStorage.getItem("pharmacistToken");
+        const decoded = JSON.parse(atob(token.split(".")[1]));
+        const sellerId = decoded.pharmacistId;
+        const { data } = await axios.get(
+          `http://localhost:5000/api/pharmacist/home/${sellerId}`
+        );
+        setCounts({
+          deliveredOrders: data.deliveredOrders,
+          totalProducts: data.totalProducts,
+          rating: data.rating,
+        });
+        setInventoryData(data.inventory);
+        setMonthlySales(data.monthlySales);
+      } catch (err) {
+        console.error(err);
+      }
+    })();
+  }, []);
+
   const pieCOLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#AA66CC"];
 
   return (
@@ -61,14 +69,23 @@ const Home = () => {
         <div className="count-box">
           <img src="seller-count1.png" alt="count" />
           <div className="count-content">
-            <h2>{inView && <CountUp start={0} end={30} duration={2} />}+</h2>
+            <h2>
+              {inView && (
+                <CountUp start={0} end={counts.deliveredOrders} duration={2} />
+              )}
+            </h2>
             <h4>Orders Delivered</h4>
           </div>
         </div>
         <div className="count-box">
           <img src="seller-count2.png" alt="count" />
           <div className="count-content">
-            <h2>{inView && <CountUp start={0} end={24} duration={2} />}</h2>
+            <h2>
+              {" "}
+              {inView && (
+                <CountUp start={0} end={counts.totalProducts} duration={2} />
+              )}
+            </h2>
             <h4>Products</h4>
           </div>
         </div>
@@ -76,8 +93,10 @@ const Home = () => {
           <img src="seller-count3.png" alt="count" />
           <div className="count-content">
             <h2>
-              <i class="bi bi-star-fill"></i>
-              {inView && <CountUp start={0} end={5} duration={2} />}
+              <i className="bi bi-star-fill"></i>
+              {inView && (
+                <CountUp start={0} end={2} duration={2} decimals={1} />
+              )}
             </h2>
             <h4>Customers Rated</h4>
           </div>
@@ -89,7 +108,7 @@ const Home = () => {
         <div className="chart-mounthly-sell">
           <h3>Monthly Sells</h3>
           <ResponsiveContainer>
-            <LineChart data={mounthlySellData}>
+            <LineChart data={monthlySales}>
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="month" />
               <YAxis />
@@ -115,12 +134,11 @@ const Home = () => {
                 cx="50%"
                 cy="50%"
                 outerRadius={140}
-                fill="#8884d8"
                 label
               >
                 {inventoryData.map((entry, index) => (
                   <Cell
-                    key={`cell-${index}`}
+                    key={entry.name}
                     fill={pieCOLORS[index % pieCOLORS.length]}
                   />
                 ))}

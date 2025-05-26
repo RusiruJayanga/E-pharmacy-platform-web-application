@@ -50,7 +50,7 @@ h4 {
 }
 h5 {
   font-size: 18px;
-  font-weight: 400;
+  font-weight: 500;
 }
 p {
   font-size: 16px;
@@ -170,4 +170,27 @@ input {
 
 .custom-file-upload input[type="file"] {
   display: none;
+}
+/* appointment details style */
+.appointment {
+  width: 200px;
+  height: 40px;
+  color: var(--bg_color_4);
+  border-radius: var(--border_radius_2);
+  background-color: green;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.confirm-button {
+  width: 100px;
+  color: var(--text_color_lite);
+  border: 1px solid #cf5353;
+  background-color: #cf5353;
+}
+.cancel-button {
+  width: 100px;
+  background-color: #178bcd;
+  color: var(--text_color_lite);
+  border: 1px solid #178bcd;
 }

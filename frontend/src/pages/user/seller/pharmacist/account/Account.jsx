@@ -8,23 +8,15 @@ import "../../../../user/customer/info/seller_info.css";
 
 const Account = () => {
   //user info fatch
-  const user = {
-    name: "Health Plus Pharmacy",
-    phone: "0771234567",
-    email: "healthplus@example.com",
-    district: "Colombo",
-    postalCode: "81000",
-    address: "123, Main Street, Colombo 03",
-  };
-  //category select
-  const [selectedCategory, setSelectedCategory] = useState("Settings");
-  const categories = [
-    "Settings",
-    "Pending Orders",
-    "Completed Orders",
-    "Appointments",
-    "Notifications",
-  ];
+  const token = localStorage.getItem("pharmacistToken");
+  const user = JSON.parse(atob(token.split(".")[1]));
+
+  //logout
+  const navigate = useNavigate();
+  function handleLogout() {
+    localStorage.removeItem("pharmacistToken");
+    navigate("/");
+  }
 
   return (
     <div>
@@ -34,33 +26,33 @@ const Account = () => {
       {/* account section */}
       <div className="pharmacy-account-info-margin"></div>
       <div className="account-info-container">
-        <img src="user-icon.png" alt="user" />
+        <img src={user.profile_picture || "user-icon.png"} alt="user" />
         <h3> {user.name}</h3>
         <div className="account-info-box">
           <div className="account-info-content">
             <span>
-              <p>Phone Number - </p>
-              <h5>{user.phone}</h5>
+              <p>Seller ID - </p>
+              <h5>{user.pharmacistId}</h5>
             </span>
             <span>
               <p>Email - </p>
               <h5>{user.email} </h5>
             </span>
             <span>
-              <p>District - </p>
-              <h5>{user.district} </h5>
+              <p>Phone Number - </p>
+              <h5>{user.phone_number} </h5>
             </span>
           </div>
           <div className="account-info-content">
             <span>
               <p>Postal code - </p>
-              <h5> {user.postalCode}</h5>
+              <h5> {user.postal_code}</h5>
             </span>
             <span className="account-info-span">
               <p>Address - </p>
               <h5 className="account-info-h5">{user.address}</h5>
             </span>
-            <button>Log Out</button>
+            <button onClick={handleLogout}>Log Out</button>
           </div>
         </div>
       </div>
