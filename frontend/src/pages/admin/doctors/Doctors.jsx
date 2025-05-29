@@ -21,7 +21,6 @@ const Doctors = () => {
     "Rejected Requests": "Rejected",
   };
 
-  // Fetch doctors based on selected category
   useEffect(() => {
     const fetchDoctors = async () => {
       try {

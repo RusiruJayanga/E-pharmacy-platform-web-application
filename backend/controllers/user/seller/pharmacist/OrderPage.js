@@ -1,6 +1,5 @@
 import OrderItem from "../../../../models/user/common/OrderItem.js";
 
-//fetch orders
 export const getSellerOrders = async (req, res) => {
   try {
     const { sellerId } = req.params;
@@ -25,7 +24,6 @@ export const getSellerOrders = async (req, res) => {
   }
 };
 
-//update order item status
 export const updateOrderItemStatus = async (req, res) => {
   try {
     const { itemId } = req.params;

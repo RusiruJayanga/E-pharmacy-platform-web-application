@@ -10,7 +10,7 @@ import { AuthProvider } from "./config/AuthContext";
 
 createRoot(document.getElementById("root")).render(
   <AuthProvider>
-    <LoadScript googleMapsApiKey="AIzaSyDylV7_zS_tUJALvKT9ILAeu3YWmYSXKLo">
+    <LoadScript googleMapsApiKey="">
       <StrictMode>
         <BrowserRouter>
           <App />

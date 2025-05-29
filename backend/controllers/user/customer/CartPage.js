@@ -3,7 +3,6 @@ import Medicine from "../../../models/user/common/ProductMedicine.js";
 import Accessory from "../../../models/user/common/ProductAccessory.js";
 import jwt from "jsonwebtoken";
 
-//get all cart items for a customer
 export const getCartItems = async (req, res) => {
   try {
     const auth = req.headers.authorization || "";
@@ -24,7 +23,6 @@ export const getCartItems = async (req, res) => {
   }
 };
 
-//update quantity of an item
 export const updateCartQuantity = async (req, res) => {
   const { cartId } = req.params;
   const { newQuantity } = req.body;
@@ -53,7 +51,6 @@ export const updateCartQuantity = async (req, res) => {
   }
 };
 
-//delete cart item
 export const deleteCartItem = async (req, res) => {
   const { cartId } = req.params;
 

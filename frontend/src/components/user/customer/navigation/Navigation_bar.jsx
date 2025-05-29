@@ -70,7 +70,7 @@ const Navigation_bar = () => {
           <ul className="nav-right">
             <Link to="/Search">
               <span>
-                <p>Search Prescription With AI !</p>
+                <p>Search !</p>
 
                 <h4 className="nav-list-right">
                   <i class="bi bi-search"></i>

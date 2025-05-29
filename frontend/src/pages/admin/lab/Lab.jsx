@@ -20,7 +20,6 @@ const Lab = () => {
     "Rejected Requests": "Rejected",
   };
 
-  // Fetch labs based on selected category
   useEffect(() => {
     const fetchLabs = async () => {
       try {

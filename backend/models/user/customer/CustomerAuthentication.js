@@ -14,7 +14,6 @@ const customerSchema = new mongoose.Schema({
   account_status: { type: String, default: "Approved", required: true },
 });
 
-// Hash password before saving
 customerSchema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();
   this.password = await bcrypt.hash(this.password, 10);

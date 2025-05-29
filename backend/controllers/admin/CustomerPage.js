@@ -10,7 +10,6 @@ export const getAllCustomers = async (req, res) => {
   }
 };
 
-// Delete a customer
 export const deleteCustomer = async (req, res) => {
   try {
     const { id } = req.params;

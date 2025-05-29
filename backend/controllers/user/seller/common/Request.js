@@ -20,7 +20,6 @@ export const requestSellerRole = async (req, res) => {
 
     const { email, phone_number } = req.body;
 
-    //check for duplicate seller email or phone
     let existingSeller = null;
 
     if (role === "Doctor") {
@@ -48,7 +47,6 @@ export const requestSellerRole = async (req, res) => {
       });
     }
 
-    // Decode token to get customer info
     let customerId = null;
     const authHeader = req.headers.authorization;
 
@@ -76,7 +74,6 @@ export const requestSellerRole = async (req, res) => {
       return res.status(401).json({ message: "Authorization required" });
     }
 
-    // Create the seller with customer ID as user_id
     let createdSeller = null;
 
     switch (role) {

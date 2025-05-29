@@ -33,7 +33,6 @@ const pharmacistSchema = new mongoose.Schema({
   rate: { type: Number, default: 0 },
 });
 
-// Hash password before saving
 pharmacistSchema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();
   this.password = await bcrypt.hash(this.password, 10);

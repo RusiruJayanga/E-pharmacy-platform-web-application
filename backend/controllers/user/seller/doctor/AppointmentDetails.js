@@ -1,6 +1,5 @@
 import Appointment from "../../../../models/user/common/Appointment.js";
 
-// Get appointment details
 export const getAppointmentById = async (req, res) => {
   const { appointmentId } = req.params;
 
@@ -19,7 +18,6 @@ export const getAppointmentById = async (req, res) => {
   }
 };
 
-// Approve appointment
 export const approveAppointment = async (req, res) => {
   const { appointmentId } = req.params;
   const { due_date } = req.body;
@@ -44,7 +42,6 @@ export const approveAppointment = async (req, res) => {
   }
 };
 
-// Reject appointment
 export const rejectAppointment = async (req, res) => {
   const { appointmentId } = req.params;
 

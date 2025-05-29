@@ -13,7 +13,6 @@ const modelMap = {
   Pharmacy: Pharmacist,
 };
 
-//get all saved items by customer
 export const getSavedItems = async (req, res) => {
   try {
     const { customer_id } = req.params;
@@ -39,7 +38,6 @@ export const getSavedItems = async (req, res) => {
   }
 };
 
-//delete a saved item
 export const deleteSavedItem = async (req, res) => {
   try {
     const { id } = req.params;

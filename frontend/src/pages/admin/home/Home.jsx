@@ -3,7 +3,7 @@ import CountUp from "react-countup";
 import { useInView } from "react-intersection-observer";
 import axios from "axios";
 import "../../../pages/user/customer/home/home.css";
-//chart
+
 import {
   PieChart,
   Pie,

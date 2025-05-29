@@ -1,7 +1,6 @@
 import Request from "../../../../models/user/common/Request.js";
 import Customer from "../../../../models/user/customer/CustomerAuthentication.js";
 
-// Get request with populated customer details
 export const getRequestById = async (req, res) => {
   try {
     const request = await Request.findById(req.params.id).populate(
@@ -14,7 +13,6 @@ export const getRequestById = async (req, res) => {
   }
 };
 
-// Approve request
 export const approveRequest = async (req, res) => {
   try {
     const { seller_description } = req.body;
@@ -31,7 +29,6 @@ export const approveRequest = async (req, res) => {
   }
 };
 
-// Reject request
 export const rejectRequest = async (req, res) => {
   try {
     const request = await Request.findById(req.params.id);

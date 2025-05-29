@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-//google map
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 
 const containerStyle = {
@@ -13,7 +12,6 @@ const center = {
 };
 
 const LocationMap = ({ location, onLocationChange, editable = false }) => {
-  //input location
   const handleMapClick = (e) => {
     if (!editable) return;
     const lat = e.latLng.lat();

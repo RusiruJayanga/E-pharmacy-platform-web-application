@@ -2,7 +2,6 @@ import Doctor from "../../models/user/seller/doctor/DoctorAuthentication.js";
 import Customer from "../../models/user/customer/CustomerAuthentication.js";
 import mongoose from "mongoose";
 
-// Get doctors by status
 export const getDoctorsByStatus = async (req, res) => {
   try {
     const { status } = req.params;
@@ -22,7 +21,6 @@ export const getDoctorsByStatus = async (req, res) => {
   }
 };
 
-// Update doctor status
 export const updateDoctorStatus = async (req, res) => {
   const session = await mongoose.startSession();
   session.startTransaction();

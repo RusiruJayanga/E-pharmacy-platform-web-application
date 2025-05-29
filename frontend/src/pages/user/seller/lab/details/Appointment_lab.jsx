@@ -20,7 +20,6 @@ const Appointment_doctor = () => {
       return;
     }
 
-    // Fetch appointment details
     const fetchAppointment = async () => {
       try {
         const res = await axios.get(

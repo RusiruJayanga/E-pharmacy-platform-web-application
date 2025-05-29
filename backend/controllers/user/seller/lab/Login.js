@@ -16,7 +16,6 @@ export const loginLab = async (req, res) => {
       return res.status(400).json({ message: "Invalid email or password" });
     }
 
-    //generate token
     const token = jwt.sign(
       {
         labId: lab._id,

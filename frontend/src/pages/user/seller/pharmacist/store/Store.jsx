@@ -10,7 +10,6 @@ import "react-toastify/dist/ReactToastify.css";
 const Store = () => {
   const [products, setProducts] = useState([]);
 
-  //fetch product
   useEffect(() => {
     const raw = localStorage.getItem("pharmacistToken");
     if (!raw) return toast.error("Please login first");
@@ -34,7 +33,6 @@ const Store = () => {
     fetchProducts();
   }, []);
 
-  //delete product
   const handleDelete = async (id, type) => {
     try {
       const res = await fetch(

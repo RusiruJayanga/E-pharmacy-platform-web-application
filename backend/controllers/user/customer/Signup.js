@@ -11,7 +11,6 @@ export const registerCustomer = async (req, res) => {
       console.error("JWT_SECRET not set in environment variables.");
       return res.status(500).json({ message: "Server configuration error" });
     }
-    //check for existing customer by email or phone
     const existingCustomer = await Customer.findOne({
       $or: [{ email }, { phone_number }],
     });
@@ -35,7 +34,6 @@ export const registerCustomer = async (req, res) => {
 
     await customer.save();
 
-    //generate token
     const token = jwt.sign(
       {
         customerId: customer._id,

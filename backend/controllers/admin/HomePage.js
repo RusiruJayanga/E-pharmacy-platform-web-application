@@ -5,20 +5,15 @@ import Customer from "../../models/user/customer/CustomerAuthentication.js";
 
 export const getAdminStats = async (req, res) => {
   try {
-    // Get delivered orders count
     const deliveredOrdersCount = await OrderItem.countDocuments({
       status: "delivered",
     });
 
-    // Get total products count (medicine + accessories)
     const medicineCount = await Medicine.countDocuments();
     const accessoryCount = await Accessory.countDocuments();
     const totalProductsCount = medicineCount + accessoryCount;
-
-    // Get customers count
     const customersCount = await Customer.countDocuments();
 
-    // Get monthly sales data
     const currentYear = new Date().getFullYear();
     const monthlySales = await OrderItem.aggregate([
       {
@@ -46,7 +41,6 @@ export const getAdminStats = async (req, res) => {
       { $sort: { month: 1 } },
     ]);
 
-    // Format monthly sales data with month names
     const monthNames = [
       "Jan",
       "Feb",
@@ -69,7 +63,6 @@ export const getAdminStats = async (req, res) => {
       };
     });
 
-    // Get inventory data by category
     const medicineInventory = await Medicine.aggregate([
       { $group: { _id: "$category", totalQuantity: { $sum: "$quantity" } } },
     ]);

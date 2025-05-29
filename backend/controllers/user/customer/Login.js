@@ -16,7 +16,6 @@ export const loginCustomer = async (req, res) => {
       return res.status(400).json({ message: "Invalid email or password" });
     }
 
-    //generate token
     const token = jwt.sign(
       {
         customerId: customer._id,

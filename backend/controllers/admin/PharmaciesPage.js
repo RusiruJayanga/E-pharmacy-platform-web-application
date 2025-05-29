@@ -2,7 +2,6 @@ import Pharmacist from "../../models/user/seller/pharmacist/PharmacistAuthentica
 import Customer from "../../models/user/customer/CustomerAuthentication.js";
 import mongoose from "mongoose";
 
-// Get doctors by status
 export const getPharmacistsByStatus = async (req, res) => {
   try {
     const { status } = req.params;
@@ -22,7 +21,6 @@ export const getPharmacistsByStatus = async (req, res) => {
   }
 };
 
-// Update doctor status
 export const updatePharmacistStatus = async (req, res) => {
   const session = await mongoose.startSession();
   session.startTransaction();
@@ -88,7 +86,6 @@ export const updatePharmacistStatus = async (req, res) => {
   }
 };
 
-// Get doctor details
 export const getPharmacistDetails = async (req, res) => {
   try {
     const { id } = req.params;

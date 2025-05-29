@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../../user/seller/doctor/details/appointment_doctor.css";
 import { useLocation, useNavigate } from "react-router-dom";
-//alert
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -12,7 +11,6 @@ const Labs_details = () => {
   const { labId } = location.state || {};
   const [selectedLab, setSelectedLab] = useState(null);
 
-  // Fetch detailed doctor info
   useEffect(() => {
     const fetchLabDetails = async () => {
       try {

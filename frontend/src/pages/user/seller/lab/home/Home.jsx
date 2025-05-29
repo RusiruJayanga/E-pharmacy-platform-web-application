@@ -35,7 +35,6 @@ const Home = () => {
   });
 
   const fetchAllData = async () => {
-    // helper returns the raw JWT string
     const token = JSON.parse(localStorage.getItem("labToken"))?.token;
     if (!token) {
       toast.error("Please log in");

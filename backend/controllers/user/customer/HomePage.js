@@ -1,6 +1,5 @@
 import Accessory from "../../../models/user/common/ProductAccessory.js";
 
-//slider filter
 export const getAccessoriesByCategory = async (req, res) => {
   const { category } = req.params;
 
@@ -26,7 +25,6 @@ export const getAccessoriesByCategory = async (req, res) => {
   }
 };
 
-//beauty filter
 export const getBeautyAccessories = async (req, res) => {
   const beautyCategories = ["Cosmetics", "Skin Care", "Hair Care"];
 
