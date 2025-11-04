@@ -103,7 +103,7 @@ const Cart = () => {
 
   //paypal
   const PAYPAL_CLIENT_ID =
-    "ASUsq6Nhh-mX4v3WU5vNc7cLHGZWGNPxJclU53zxypB1UNcYpsXLkkCwLzBODLZPwT2cTR61EMW4_Lrn";
+    "";
   const EX_RATE = 330;
   const paypalRef = useRef(null);
   const [sdkReady, setSdkReady] = useState(false);
